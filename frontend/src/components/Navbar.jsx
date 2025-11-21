@@ -49,13 +49,13 @@ const Navbar = () => {
               {isActive('/projects') && <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-black"></span>}
             </Link>
             <Link 
-              to="/articles" 
+              to="/experience" 
               className={`text-base font-medium transition-colors hover:text-black relative ${
-                isActive('/articles') ? 'text-black' : 'text-gray-700'
+                isActive('/experience') ? 'text-black' : 'text-gray-700'
               }`}
             >
-              Articles
-              {isActive('/articles') && <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-black"></span>}
+              Experience
+              {isActive('/experience') && <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-black"></span>}
             </Link>
           </div>
 

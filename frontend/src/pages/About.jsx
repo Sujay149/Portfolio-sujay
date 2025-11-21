@@ -2,27 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { mockData } from '../mock';
 
 const About = () => {
-  const [experienceProgress, setExperienceProgress] = useState(0);
   const [educationProgress, setEducationProgress] = useState(0);
-  const experienceRef = useRef();
   const educationRef = useRef();
 
   useEffect(() => {
     const handleScroll = () => {
-      // Experience section scroll progress
-      if (experienceRef.current) {
-        const rect = experienceRef.current.getBoundingClientRect();
-        const sectionTop = rect.top;
-        const sectionHeight = rect.height;
-        const windowHeight = window.innerHeight;
-        
-        if (sectionTop < windowHeight && sectionTop + sectionHeight > 0) {
-          const visibleHeight = Math.min(windowHeight, sectionTop + sectionHeight) - Math.max(0, sectionTop);
-          const progress = Math.min(100, Math.max(0, (visibleHeight / sectionHeight) * 150 - 25));
-          setExperienceProgress(progress);
-        }
-      }
-
       // Education section scroll progress
       if (educationRef.current) {
         const rect = educationRef.current.getBoundingClientRect();
@@ -59,13 +43,13 @@ const About = () => {
           <div className="lg:col-span-1 space-y-4">
             <h2 className="text-xs font-bold uppercase tracking-wider text-gray-600">BIOGRAPHY</h2>
             <p className="text-sm leading-relaxed text-gray-700">
-              Hi, I'm <strong className="text-black">CodeBucks</strong>, a web developer and UI/UX designer with a passion for creating beautiful, functional, and user-centered digital experiences. With 4 years of experience in the field, I am always looking for new and innovative ways to bring my clients' visions to life.
+              Hi, I'm <strong className="text-black">Sujay Babu Thota</strong>, a Full Stack Developer with hands-on experience building production-ready web applications and AI-powered systems. Currently pursuing B.Tech in Computer Science and Design at SRKR Engineering College, I specialize in modern frameworks and scalable architectures.
             </p>
             <p className="text-sm leading-relaxed text-gray-700">
-              I believe that design is about more than just making things look pretty – it's about solving problems and creating intuitive, enjoyable experiences for users.
+              I believe that technology is about more than just code – it's about solving real-world problems and creating impactful, user-centered solutions that make a difference in people's lives.
             </p>
             <p className="text-sm leading-relaxed text-gray-700">
-              Whether I'm working on a website, mobile app, or other digital product, I bring my commitment to design excellence and user-centered thinking to every project I work on. I look forward to the opportunity to bring my skills and passion to your next project.
+              Whether I'm building AI-powered healthcare assistants or full-stack e-commerce platforms, I bring my commitment to excellence, innovation, and product-oriented development to every project. I look forward to bringing my skills and passion to your next project.
             </p>
           </div>
 
@@ -87,18 +71,18 @@ const About = () => {
           {/* Right - Stats */}
           <div className="lg:col-span-1 flex flex-col justify-center space-y-8">
             <div className="text-right">
-              <div className="text-7xl lg:text-8xl font-black text-black">40+</div>
-              <div className="text-sm font-medium text-gray-600 mt-1">Satisfied Clients</div>
-            </div>
-            
-            <div className="text-right">
-              <div className="text-7xl lg:text-8xl font-black text-black">50+</div>
+              <div className="text-7xl lg:text-8xl font-black text-black">10+</div>
               <div className="text-sm font-medium text-gray-600 mt-1">Projects Completed</div>
             </div>
             
             <div className="text-right">
-              <div className="text-7xl lg:text-8xl font-black text-black">4+</div>
-              <div className="text-sm font-medium text-gray-600 mt-1">Years Of Experience</div>
+              <div className="text-7xl lg:text-8xl font-black text-black">3+</div>
+              <div className="text-sm font-medium text-gray-600 mt-1">Client Projects</div>
+            </div>
+            
+            <div className="text-right">
+              <div className="text-7xl lg:text-8xl font-black text-black">2+</div>
+              <div className="text-sm font-medium text-gray-600 mt-1">Years Experience</div>
             </div>
           </div>
         </div>
@@ -170,78 +154,6 @@ const About = () => {
           </div>
         </div>
 
-        {/* Experience Section */}
-        <div className="mb-32" id="experience" ref={experienceRef}>
-          <h2 className="text-center text-5xl font-bold text-black mb-16">Experience</h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              {/* Animated timeline line */}
-              <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200">
-                <div 
-                  className="w-full bg-purple-500 transition-all duration-200 ease-out"
-                  style={{ height: `${experienceProgress}%` }}
-                ></div>
-              </div>
-              
-              <div className="space-y-12">
-                {/* Software Engineer @Google */}
-                <div className="flex gap-8">
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full border-4 border-white shadow-lg relative z-10 transition-all duration-300 ${
-                    experienceProgress > 10 ? 'bg-purple-500 scale-100' : 'bg-gray-300 scale-75'
-                  }`}></div>
-                  <div className={`flex-1 transition-all duration-500 ${
-                    experienceProgress > 10 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-                  }`}>
-                    <h3 className="text-2xl font-bold text-black mb-2">
-                      Software Engineer <span className="text-purple-500">@Google</span>
-                    </h3>
-                    <div className="text-base text-gray-600 mb-4">2022-Present | Mountain View, CA</div>
-                    <p className="text-base text-gray-700 leading-relaxed">
-                      Worked on a team responsible for developing new features for Google's search engine, including improving the accuracy and relevance of search results and developing new tools for data analysis and visualization.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Intern @Facebook */}
-                <div className="flex gap-8">
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full border-4 border-white shadow-lg relative z-10 transition-all duration-300 ${
-                    experienceProgress > 45 ? 'bg-purple-500 scale-100' : 'bg-gray-300 scale-75'
-                  }`}></div>
-                  <div className={`flex-1 transition-all duration-500 ${
-                    experienceProgress > 45 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-                  }`}>
-                    <h3 className="text-2xl font-bold text-black mb-2">
-                      Intern <span className="text-purple-500">@Facebook</span>
-                    </h3>
-                    <div className="text-base text-gray-600 mb-4">Summer 2021 | Menlo Park, CA.</div>
-                    <p className="text-base text-gray-700 leading-relaxed">
-                      Worked on a team responsible for developing a new mobile app feature that allowed users to create and share short-form video content, including designing and implementing a new user interface and developing the backend infrastructure to support the feature.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Software Developer @Amazon */}
-                <div className="flex gap-8">
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full border-4 border-white shadow-lg relative z-10 transition-all duration-300 ${
-                    experienceProgress > 80 ? 'bg-purple-500 scale-100' : 'bg-gray-300 scale-75'
-                  }`}></div>
-                  <div className={`flex-1 transition-all duration-500 ${
-                    experienceProgress > 80 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-                  }`}>
-                    <h3 className="text-2xl font-bold text-black mb-2">
-                      Software Developer <span className="text-purple-500">@Amazon</span>
-                    </h3>
-                    <div className="text-base text-gray-600 mb-4">2020-2021 | Seattle, WA.</div>
-                    <p className="text-base text-gray-700 leading-relaxed">
-                      Worked on a team responsible for developing Amazon's mobile app, including implementing new features for the product catalog and search functionality, optimizing app performance and reliability.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Education Section */}
         <div className="mb-20" id="education" ref={educationRef}>
           <h2 className="text-center text-5xl font-bold text-black mb-16">Education</h2>
@@ -256,53 +168,25 @@ const About = () => {
               </div>
               
               <div className="space-y-12">
-                {/* Bachelor Of Science */}
-                <div className="flex gap-8">
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full border-4 border-white shadow-lg relative z-10 transition-all duration-300 ${
-                    educationProgress > 10 ? 'bg-purple-500 scale-100' : 'bg-gray-300 scale-75'
-                  }`}></div>
-                  <div className={`flex-1 transition-all duration-500 ${
-                    educationProgress > 10 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-                  }`}>
-                    <h3 className="text-2xl font-bold text-black mb-2">Bachelor Of Science In Computer Science</h3>
-                    <div className="text-base text-gray-600 mb-4">2016-2020 | Massachusetts Institute Of Technology (MIT)</div>
-                    <p className="text-base text-gray-700 leading-relaxed">
-                      Relevant courses included Data Structures and Algorithms, Computer Systems Engineering, and Artificial Intelligence.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Master Of Computer Science */}
-                <div className="flex gap-8">
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full border-4 border-white shadow-lg relative z-10 transition-all duration-300 ${
-                    educationProgress > 45 ? 'bg-purple-500 scale-100' : 'bg-gray-300 scale-75'
-                  }`}></div>
-                  <div className={`flex-1 transition-all duration-500 ${
-                    educationProgress > 45 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-                  }`}>
-                    <h3 className="text-2xl font-bold text-black mb-2">Master Of Computer Science</h3>
-                    <div className="text-base text-gray-600 mb-4">2020-2022 | Stanford University</div>
-                    <p className="text-base text-gray-700 leading-relaxed">
-                      Completed a master's project on deep learning, developing a new neural network architecture for natural language understanding.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Online Coursework */}
-                <div className="flex gap-8">
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full border-4 border-white shadow-lg relative z-10 transition-all duration-300 ${
-                    educationProgress > 80 ? 'bg-purple-500 scale-100' : 'bg-gray-300 scale-75'
-                  }`}></div>
-                  <div className={`flex-1 transition-all duration-500 ${
-                    educationProgress > 80 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-                  }`}>
-                    <h3 className="text-2xl font-bold text-black mb-2">Online Coursework</h3>
-                    <div className="text-base text-gray-600 mb-4">2016-2020 | Coursera And EdX</div>
-                    <p className="text-base text-gray-700 leading-relaxed">
-                      Completed coursework in advanced topics such as Reinforcement Learning, Computer Vision, and Machine Learning Engineering.
-                    </p>
-                  </div>
-                </div>
+                {mockData.about.education.map((edu, index) => {
+                  const threshold = index === 0 ? 10 : 50;
+                  return (
+                    <div key={index} className="flex gap-8">
+                      <div className={`flex-shrink-0 w-8 h-8 rounded-full border-4 border-white shadow-lg relative z-10 transition-all duration-300 ${
+                        educationProgress > threshold ? 'bg-purple-500 scale-100' : 'bg-gray-300 scale-75'
+                      }`}></div>
+                      <div className={`flex-1 transition-all duration-500 ${
+                        educationProgress > threshold ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+                      }`}>
+                        <h3 className="text-2xl font-bold text-black mb-2">{edu.degree}</h3>
+                        <div className="text-base text-gray-600 mb-4">{edu.period} | {edu.institution}, {edu.location}</div>
+                        <p className="text-base text-gray-700 leading-relaxed">
+                          {edu.details}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

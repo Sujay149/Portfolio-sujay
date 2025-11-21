@@ -1,70 +1,51 @@
 import React from 'react';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github } from 'lucide-react';
 import { mockData } from '../mock';
 
-const FeaturedProject = ({ project, reverse = false }) => {
+const FeaturedProject = ({ project }) => {
   return (
-    <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-20 ${
-      reverse ? 'lg:flex-row-reverse' : ''
-    }`}>
-      {/* Image */}
-      <div className={`lg:col-span-7 ${
-        reverse ? 'lg:col-start-6' : ''
-      }`}>
-        <div className="relative border-2 border-black rounded-2xl overflow-hidden bg-white p-2">
-          <div className="rounded-xl overflow-hidden">
-            <img 
-              src={project.image} 
-              alt={project.title}
-              className="w-full h-auto"
-            />
-          </div>
+    <div className="max-w-5xl mx-auto mb-16">
+      <div className="border-4 border-black rounded-3xl overflow-hidden bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        {/* Image Section */}
+        <div className="relative overflow-hidden bg-white p-3 h-80">
+          <img 
+            src={project.image} 
+            alt={project.title}
+            className="w-full h-full object-cover rounded-lg"
+          />
+          {project.badge && (
+            <div className="absolute top-6 left-6 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-bold transform -rotate-12">
+              {project.badge}
+            </div>
+          )}
         </div>
-      </div>
-      
-      {/* Content */}
-      <div className={`lg:col-span-5 ${
-        reverse ? 'lg:col-start-1 lg:row-start-1' : ''
-      }`}>
-        <div className="space-y-4">
-          <p className="text-purple-600 font-medium">Featured Project</p>
-          <h3 className="text-3xl lg:text-4xl font-bold">
+        
+        {/* Content Section */}
+        <div className="p-8 bg-white">
+          <p className="text-pink-500 font-semibold text-sm mb-2">{project.category}</p>
+          <h3 className="text-3xl font-bold text-black mb-4">
             {project.title}
           </h3>
+          <p className="text-gray-700 text-base leading-relaxed mb-6">
+            {project.description}
+          </p>
           
-          <div className="bg-white border border-gray-200 rounded-lg p-6">
-            <p className="text-base leading-relaxed">
-              {project.description}
-            </p>
-          </div>
-          
-          <div className="flex flex-wrap gap-3">
-            {project.tags.map((tag, index) => (
-              <span 
-                key={index}
-                className="text-sm font-medium"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          
-          <div className="flex items-center gap-6 pt-2">
+          <div className="flex items-center gap-4">
             <a 
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:opacity-70 transition-opacity"
+              className="flex items-center gap-2 hover:opacity-70 transition-opacity"
             >
-              <Github size={28} />
+              <Github size={24} className="text-black" />
             </a>
             <a 
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:opacity-70 transition-opacity"
+              className="bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
             >
-              <ExternalLink size={28} />
+              Visit Project
             </a>
           </div>
         </div>
@@ -75,51 +56,48 @@ const FeaturedProject = ({ project, reverse = false }) => {
 
 const RegularProject = ({ project }) => {
   return (
-    <div className="border-2 border-black rounded-2xl overflow-hidden bg-white">
-      <div className="aspect-video overflow-hidden bg-gray-100">
+    <div className="border-4 border-black rounded-3xl overflow-hidden bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all">
+      {/* Image Section */}
+      <div className="relative overflow-hidden bg-gray-100">
         <img 
           src={project.image} 
           alt={project.title}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
         />
+        {project.badge && (
+          <div className="absolute top-3 right-3 bg-white text-black p-2 rounded-full">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+        )}
       </div>
       
-      <div className="p-6 space-y-4">
-        <div className="flex flex-wrap gap-2">
-          {project.tags.map((tag, index) => (
-            <span 
-              key={index}
-              className="text-xs font-medium"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        
-        <h3 className="text-2xl font-bold">
+      {/* Content Section */}
+      <div className="p-6 bg-white">
+        <p className="text-pink-500 font-semibold text-xs mb-2">{project.category}</p>
+        <h3 className="text-xl font-bold text-black mb-3">
           {project.title}
         </h3>
         
-        <p className="text-base leading-relaxed">
-          {project.description}
-        </p>
-        
-        <div className="flex items-center gap-4 pt-2">
+        <div className="flex items-center gap-3">
+          <a 
+            href={project.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black font-semibold text-sm hover:underline"
+          >
+            Visit
+          </a>
           <a 
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:opacity-70 transition-opacity"
           >
-            <Github size={24} />
-          </a>
-          <a 
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:opacity-70 transition-opacity"
-          >
-            <ExternalLink size={24} />
+            <Github size={20} className="text-black" />
           </a>
         </div>
       </div>
@@ -129,26 +107,34 @@ const RegularProject = ({ project }) => {
 
 const Projects = () => {
   return (
-    <div className="min-h-screen pt-0">
-      <div className="max-w-7xl mx-auto px-6 py-12">
+    <div className="min-h-screen bg-gray-50 pt-0">
+      <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Main Heading */}
-        <div className="text-center mb-16">
-          <h1 className="text-6xl lg:text-7xl font-bold">
-            Imagination Trumps Knowledge!
+        <div className="text-center mb-20">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-black leading-tight">
+            Imagination Trumps<br />Knowledge!
           </h1>
         </div>
 
-        {/* Featured Projects */}
+        {/* Featured Project */}
         <div className="mb-20">
           <FeaturedProject project={mockData.projects[0]} />
-          <FeaturedProject project={mockData.projects[1]} reverse={true} />
         </div>
 
         {/* Regular Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {mockData.projects.slice(2).map((project) => (
-            <RegularProject key={project.id} project={project} />
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          <RegularProject project={mockData.projects[1]} />
+          <RegularProject project={mockData.projects[2]} />
+        </div>
+
+        {/* Second Featured Project */}
+        <div className="mb-16">
+          <FeaturedProject project={mockData.projects[3]} />
+        </div>
+
+        {/* Bottom Project */}
+        <div className="max-w-2xl mx-auto">
+          <RegularProject project={mockData.projects[4]} />
         </div>
       </div>
     </div>
