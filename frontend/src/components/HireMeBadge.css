@@ -1,0 +1,71 @@
+.hire-me-badge {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  width: 140px;
+  height: 140px;
+  z-index: 10;
+}
+
+.badge-circle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: rotate 10s linear infinite;
+}
+
+.badge-rotating-text {
+  font-size: 10px;
+  font-weight: 500;
+  fill: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.badge-center {
+  position: relative;
+  z-index: 2;
+}
+
+.badge-hire-text {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .hire-me-badge {
+    width: 100px;
+    height: 100px;
+    bottom: 40px;
+    left: 40px;
+  }
+  
+  .badge-rotating-text {
+    font-size: 7px;
+  }
+  
+  .badge-hire-text {
+    font-size: 12px;
+  }
+}
