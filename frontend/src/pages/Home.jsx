@@ -6,16 +6,16 @@ import { mockData } from '../mock';
 
 const Home = () => {
   return (
-    <div className="min-h-screen pt-0 bg-gray-50 relative overflow-hidden">
+    <div className="min-h-screen pt-[70px] bg-gray-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Side - Watercolor Portrait */}
-          <div className="relative order-2 lg:order-1">
-            <div className="relative max-w-lg mx-auto lg:mx-0">
+          <div className="relative order-1 lg:order-1">
+            <div className="relative max-w-sm sm:max-w-md lg:max-w-lg mx-auto lg:mx-0">
               <img 
                 src="/herobg.png" 
                 alt="Developer portrait" 
-                className="w-full h-[560px] object-cover relative z-10"
+                className="w-full h-[400px] sm:h-[480px] lg:h-[560px] object-cover relative z-10"
                 style={{
                   filter: 'contrast(1.15) saturate(1.2) brightness(1.05)',
                   mixBlendMode: 'multiply'
@@ -23,37 +23,45 @@ const Home = () => {
               />
               {/* Watercolor splash effects */}
               <div className="absolute inset-0 -z-10">
-                <div className="absolute top-0 left-0 w-48 h-48 bg-purple-400 rounded-full opacity-30 blur-3xl"></div>
-                <div className="absolute top-20 right-0 w-64 h-64 bg-blue-500 rounded-full opacity-20 blur-3xl"></div>
-                <div className="absolute bottom-20 left-10 w-56 h-56 bg-orange-400 rounded-full opacity-25 blur-3xl"></div>
+                <div className="absolute top-0 left-0 w-32 sm:w-40 lg:w-48 h-32 sm:h-40 lg:h-48 bg-purple-400 rounded-full opacity-30 blur-3xl"></div>
+                <div className="absolute top-12 sm:top-16 lg:top-20 right-0 w-48 sm:w-56 lg:w-64 h-48 sm:h-56 lg:h-64 bg-blue-500 rounded-full opacity-20 blur-3xl"></div>
+                <div className="absolute bottom-12 sm:bottom-16 lg:bottom-20 left-6 sm:left-8 lg:left-10 w-40 sm:w-48 lg:w-56 h-40 sm:h-48 lg:h-56 bg-orange-400 rounded-full opacity-25 blur-3xl"></div>
               </div>
-              <HireMeBadge />
+              <div className="hidden lg:block">
+                <HireMeBadge />
+              </div>
             </div>
           </div>
 
           {/* Right Side - Content */}
-          <div className="space-y-8 order-1 lg:order-2 -ml-[32px] -mt-[37px]">
-               <h1 className="text-5xl lg:text-6xl font-bold leading-tight tracking-normal">
+          <div className="space-y-6 md:space-y-8 order-2 lg:order-2 lg:-ml-[32px] lg:-mt-[37px]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-normal">
               {mockData.profile.tagline}
             </h1>
-            <p className="text-l text-black-900 font leading-relaxed max-w-xl -mt-[14px]">
+            <p className="text-base sm:text-lg text-black-900 leading-relaxed max-w-xl lg:-mt-[14px]">
               {mockData.profile.description}
             </p>
-            <div className="flex items-center gap-6 pt-0">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 pt-0">
               <a
                 href={mockData.profile.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-black text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-gray-800 transition-all duration-200 font-semibold text-sm md:text-base shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center gap-2 bg-black text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-gray-800 transition-all duration-200 font-semibold text-sm md:text-base shadow-lg hover:shadow-xl w-full sm:w-auto"
               >
                 Resume <ExternalLink size={18} />
               </a>
               <Link
                 to="/contact"
-                className="text-black font-semibold hover:underline underline-offset-4 transition-all text-sm md:text-base"
+                className="text-black font-semibold hover:underline underline-offset-4 transition-all text-sm md:text-base text-center sm:text-left w-full sm:w-auto"
               >
                 Contact
               </Link>
+              <a
+                href="mailto:sujayss149@gmail.com"
+                className="lg:hidden inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-200 font-semibold text-sm md:text-base shadow-lg hover:shadow-xl w-full sm:w-auto"
+              >
+                Hire Me
+              </a>
             </div>
           </div>
         </div>
