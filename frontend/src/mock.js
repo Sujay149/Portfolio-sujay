@@ -3,25 +3,25 @@
 export const mockData = {
   profile: {
     name: "Code Bucks",
-    initials: "CB",
+    initials: "SB",
     title: "Full-Stack Developer",
     tagline: "Turning Vision Into Reality With Code And Design.",
     description: "As a skilled full-stack developer, I am dedicated to turning ideas into innovative web applications. Explore my latest projects and articles, showcasing my expertise in React.js and web development.",
     hireMeText: "Hire Me | Web Developer | UI/UX Designer",
-    email: "codebucks@example.com",
-    resume: "#"
+    email: "sujayss149@gmail.com",
+    resume: "Sujay_Babu_Thota_Resume.pdf"
   },
   
   socialLinks: {
     twitter: "https://twitter.com",
-    github: "https://github.com",
-    linkedin: "https://linkedin.com",
+    github: "https://github.com/Sujay149/",
+    linkedin: "https://www.linkedin.com/in/sujaybabu",
     pinterest: "https://pinterest.com",
     dribbble: "https://dribbble.com"
   },
 
   about: {
-    bio: "Hi, I'm CodeBucks, a web developer and UI/UX designer with a passion for creating beautiful, functional, and user-centered digital experiences. With 5+ years of experience in the field, I am always looking for new and innovative ways to bring my clients' visions to life.",
+    bio: "Hi, I'm Sujay Babu, a web developer and UI/UX designer with a passion for creating beautiful, functional, and user-centered digital experiences. With 5+ years of experience in the field, I am always looking for new and innovative ways to bring my clients' visions to life.",
     skills: [
       "React.js", "Next.js", "JavaScript", "TypeScript", "Node.js",
       "Express.js", "MongoDB", "PostgreSQL", "TailwindCSS", "Figma",

@@ -3,7 +3,7 @@ import './HireMeBadge.css';
 
 const HireMeBadge = () => {
   return (
-    <div className="hire-me-badge">
+    <a href="mailto:sujayss149@gmail.com" className="hire-me-badge">
       <div className="badge-circle">
         <svg viewBox="0 0 200 200" className="badge-text">
           <path
@@ -21,7 +21,7 @@ const HireMeBadge = () => {
           <span className="badge-hire-text">Hire Me</span>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 

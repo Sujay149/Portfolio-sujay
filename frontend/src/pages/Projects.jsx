@@ -129,7 +129,7 @@ const RegularProject = ({ project }) => {
 
 const Projects = () => {
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-0">
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* Main Heading */}
         <div className="text-center mb-16">

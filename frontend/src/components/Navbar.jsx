@@ -16,7 +16,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-50/80 backdrop-blur-md">
       <div className="w-full px-8 lg:px-16 xl:px-32 py-6">
         <div className="flex items-center justify-between w-full">
           {/* Left Navigation */}
@@ -68,15 +68,7 @@ const Navbar = () => {
 
           {/* Right Social Icons */}
           <div className="flex items-center gap-3 lg:gap-4">
-            <a 
-              href={mockData.socialLinks.twitter} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-[#1DA1F2] hover:opacity-70 transition-opacity"
-              aria-label="Twitter"
-            >
-              <Twitter size={22} fill="currentColor" />
-            </a>
+          
             <a 
               href={mockData.socialLinks.github} 
               target="_blank" 
@@ -95,24 +87,8 @@ const Navbar = () => {
             >
               <Linkedin size={22} fill="currentColor" />
             </a>
-            <a 
-              href={mockData.socialLinks.pinterest} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-[#E60023] hover:opacity-70 transition-opacity"
-              aria-label="Pinterest"
-            >
-              <FaPinterest size={22} />
-            </a>
-            <a 
-              href={mockData.socialLinks.dribbble} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-[#EA4C89] hover:opacity-70 transition-opacity"
-              aria-label="Dribbble"
-            >
-              <FaDribbble size={22} />
-            </a>
+          
+           
             <button 
               onClick={toggleDarkMode}
               className="text-black hover:opacity-70 transition-opacity"
