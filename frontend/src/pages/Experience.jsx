@@ -3,22 +3,31 @@ import { ExternalLink } from 'lucide-react';
 import { mockData } from '../mock';
 
 const ExperienceCard = ({ exp, index }) => {
+  // Color schemes for cards
+  const colors = [
+    { bg: 'bg-[#912f56]', text: 'text-white', badge: 'bg-white/20' }, // Berry
+    { bg: 'bg-[#f13c77]', text: 'text-[#fff8e1]', badge: 'bg-white/20' }, // Peach
+    { bg: 'bg-[#97a87a]', text: 'text-white', badge: 'bg-white/20' }, // Forest Green
+  ];
+  
+  const colorScheme = colors[index % colors.length];
+  
   return (
     <div className="border-4 border-black rounded-3xl overflow-hidden bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all">
       {/* Header Section */}
-      <div className="bg-gradient-to-r from-purple-500 to-purple-700 p-6">
+      <div className={`${colorScheme.bg} p-6`}>
         <div className="flex items-start justify-between">
           <div className="flex-1">
-            <p className="text-purple-100 font-semibold text-sm mb-2">{exp.period}</p>
-            <h3 className="text-2xl font-bold text-white mb-2">
+            <p className={`${colorScheme.text} opacity-90 font-semibold text-sm mb-2`}>{exp.period}</p>
+            <h3 className={`text-2xl font-bold ${colorScheme.text} mb-2`}>
               {exp.title}
             </h3>
-            <p className="text-purple-100 text-lg font-semibold">
+            <p className={`${colorScheme.text} opacity-90 text-lg font-semibold`}>
               @{exp.company}
             </p>
           </div>
-          <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
-            <span className="text-white text-sm font-bold">{exp.location}</span>
+          <div className={`${colorScheme.badge} backdrop-blur-sm rounded-full px-4 py-2`}>
+            <span className={`${colorScheme.text} text-sm font-bold`}>{exp.location}</span>
           </div>
         </div>
       </div>
