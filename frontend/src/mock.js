@@ -3,7 +3,7 @@
 export const mockData = {
   profile: {
     name: "Sujay Babu Thota",
-    initials: "ST",
+    initials: "Sujay",
     title: "Full-Stack Developer",
     tagline: "Turning Vision Into Reality With Code And Design.",
     description: "Highly driven Full Stack Developer with hands-on experience building production-ready web applications and AI-powered systems. Skilled in modern frameworks, scalable architectures and real-world deployments with a strong focus on problem-solving, rapid learning, and product-oriented development.",

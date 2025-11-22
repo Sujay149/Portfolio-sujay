@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-50/80 backdrop-blur-md">
-      <div className="w-full px-6 lg:px-16 xl:px-32 py-6">
+      <div className="w-full px-6 lg:px-16 xl:px-32 py-2">
         <div className="flex items-center justify-between w-full">
           {/* Left Navigation - Desktop */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
