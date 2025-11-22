@@ -102,10 +102,10 @@ const Navbar = () => {
             </a>
             <button 
               onClick={toggleDarkMode}
-              className="text-black dark:text-white hover:opacity-70 transition-opacity"
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-400 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
               aria-label="Toggle dark mode"
             >
-              {darkMode ? <Sun size={22} /> : <Moon size={22} />}
+              {darkMode ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
             </button>
           </div>
 
