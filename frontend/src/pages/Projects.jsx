@@ -110,7 +110,7 @@ const Projects = () => {
     <div className="min-h-screen bg-gray-50 pt-0">
       <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Main Heading */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-20 pt-[50px]">
           <h1 className="text-7xl lg:text-8xl font-black text-black leading-[1.02] tracking-tight">
             Imagination Trumps<br />Knowledge!
           </h1>

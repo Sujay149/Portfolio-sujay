@@ -33,7 +33,7 @@ const Contact = () => {
       <div className="max-w-4xl mx-auto px-6 py-20">
         <div className="space-y-12">
           {/* Header */}
-          <div className="text-center space-y-4">
+          <div className="text-center space-y-4 pt-[50px]">
             <h1 className="text-5xl lg:text-6xl font-bold">Get In Touch</h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Have a project in mind? Let's work together to create something amazing.

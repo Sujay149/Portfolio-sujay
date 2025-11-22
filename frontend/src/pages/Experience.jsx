@@ -59,7 +59,7 @@ const Experience = () => {
     <div className="min-h-screen pt-0 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
         {/* Main Heading */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-20 pt-[50px]">
           <h1 className="text-7xl lg:text-8xl font-black text-black leading-[1.02] tracking-tight">
             Where Vision Meets<br />Execution
           </h1>
