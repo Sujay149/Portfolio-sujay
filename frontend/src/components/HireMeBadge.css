@@ -35,6 +35,11 @@
   fill: rgb(0, 0, 0);
   text-transform: uppercase;
   letter-spacing: 3px;
+  transition: fill 0.3s ease;
+}
+
+.badge-rotating-text.dark {
+  fill: rgb(255, 255, 255);
 }
 
 .badge-center {
@@ -50,9 +55,22 @@
   transition: all 0.3s ease;
 }
 
+.badge-center.dark {
+  background: white;
+}
+
+.badge-center.dark .badge-hire-text {
+  color: black;
+}
+
 .hire-me-badge:hover .badge-center {
   background: transparent;
   border: 2px solid black;
+}
+
+.hire-me-badge:hover .badge-center.dark {
+  background: transparent;
+  border: 2px solid white;
 }
 
 .badge-hire-text {
@@ -64,6 +82,10 @@
 
 .hire-me-badge:hover .badge-hire-text {
   color: black;
+}
+
+.hire-me-badge:hover .badge-center.dark .badge-hire-text {
+  color: white;
 }
 
 @keyframes rotate {

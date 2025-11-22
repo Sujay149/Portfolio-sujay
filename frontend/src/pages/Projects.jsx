@@ -5,9 +5,9 @@ import { mockData } from '../mock';
 const FeaturedProject = ({ project }) => {
   return (
     <div className="max-w-5xl mx-auto mb-16">
-      <div className="border-4 border-black rounded-3xl overflow-hidden bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+      <div className="border-4 border-black dark:border-white rounded-3xl overflow-hidden bg-white dark:bg-gray-800 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] transition-colors">
         {/* Image Section */}
-        <div className="relative overflow-hidden bg-white p-3 h-80">
+        <div className="relative overflow-hidden bg-white dark:bg-gray-700 p-3 h-80 transition-colors">
           <img 
             src={project.image} 
             alt={project.title}
@@ -21,12 +21,12 @@ const FeaturedProject = ({ project }) => {
         </div>
         
         {/* Content Section */}
-        <div className="p-8 bg-white">
-          <p className="text-pink-500 font-semibold text-sm mb-2">{project.category}</p>
-          <h3 className="text-3xl font-bold text-black mb-4">
+        <div className="p-8 bg-white dark:bg-gray-800 transition-colors">
+          <p className="text-pink-500 dark:text-pink-400 font-semibold text-sm mb-2 transition-colors">{project.category}</p>
+          <h3 className="text-3xl font-bold text-black dark:text-white mb-4 transition-colors">
             {project.title}
           </h3>
-          <p className="text-gray-700 text-base leading-relaxed mb-6">
+          <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed mb-6 transition-colors">
             {project.description}
           </p>
           
@@ -37,13 +37,13 @@ const FeaturedProject = ({ project }) => {
               rel="noopener noreferrer"
               className="flex items-center gap-2 hover:opacity-70 transition-opacity"
             >
-              <Github size={24} className="text-black" />
+              <Github size={24} className="text-black dark:text-white transition-colors" />
             </a>
             <a 
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+              className="bg-black dark:bg-white text-white dark:text-black px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
             >
               Visit Project
             </a>
@@ -56,7 +56,7 @@ const FeaturedProject = ({ project }) => {
 
 const RegularProject = ({ project }) => {
   return (
-    <div className="border-4 border-black rounded-3xl overflow-hidden bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all">
+    <div className="border-4 border-black dark:border-white rounded-3xl overflow-hidden bg-white dark:bg-gray-800 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] transition-all">
       {/* Image Section */}
       <div className="relative overflow-hidden bg-gray-100">
         <img 
@@ -76,9 +76,9 @@ const RegularProject = ({ project }) => {
       </div>
       
       {/* Content Section */}
-      <div className="p-6 bg-white">
-        <p className="text-pink-500 font-semibold text-xs mb-2">{project.category}</p>
-        <h3 className="text-xl font-bold text-black mb-3">
+      <div className="p-6 bg-white dark:bg-gray-800 transition-colors">
+        <p className="text-pink-500 dark:text-pink-400 font-semibold text-xs mb-2 transition-colors">{project.category}</p>
+        <h3 className="text-xl font-bold text-black dark:text-white mb-3 transition-colors">
           {project.title}
         </h3>
         
@@ -87,7 +87,7 @@ const RegularProject = ({ project }) => {
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-black font-semibold text-sm hover:underline"
+            className="text-black dark:text-white font-semibold text-sm hover:underline transition-colors"
           >
             Visit
           </a>
@@ -97,7 +97,7 @@ const RegularProject = ({ project }) => {
             rel="noopener noreferrer"
             className="hover:opacity-70 transition-opacity"
           >
-            <Github size={20} className="text-black" />
+            <Github size={20} className="text-black dark:text-white transition-colors" />
           </a>
         </div>
       </div>
@@ -107,11 +107,11 @@ const RegularProject = ({ project }) => {
 
 const Projects = () => {
   return (
-    <div className="min-h-screen bg-gray-50 pt-0">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-0 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Main Heading */}
         <div className="text-center mb-20 pt-[50px]">
-          <h1 className="text-7xl lg:text-8xl font-black text-black leading-[1.02] tracking-tight">
+          <h1 className="text-7xl lg:text-8xl font-black text-black dark:text-white leading-[1.02] tracking-tight transition-colors">
             Imagination Trumps<br />Knowledge!
           </h1>
         </div>

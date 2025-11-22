@@ -3,17 +3,20 @@ import { Link } from 'react-router-dom';
 import { ExternalLink } from 'lucide-react';
 import HireMeBadge from '../components/HireMeBadge';
 import { mockData } from '../mock';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Home = () => {
+  const { darkMode } = useTheme();
+  
   return (
-    <div className="h-screen pt-[70px] bg-gray-50 relative overflow-hidden">
+    <div className="h-screen pt-[70px] bg-gray-50 dark:bg-transparent relative overflow-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4 lg:py-8 h-full flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-center">
           {/* Left Side - Watercolor Portrait */}
           <div className="relative order-1 lg:order-1">
   <div className="relative max-w-sm sm:max-w-md lg:max-w-md mx-auto lg:mx-0">
    <img 
-  src="/herobg.png"
+  src={darkMode ? "/herodark.png" : "/herobg.png"}
   alt="Developer portrait"
   className="
     w-full
@@ -21,7 +24,9 @@ const Home = () => {
     object-contain
     relative z-10
   "
-  style={{
+  style={darkMode ? {
+    filter: 'contrast(1.1) saturate(1.1) brightness(1.15)',
+  } : {
     filter: 'contrast(1.15) saturate(1.2) brightness(1.05)',
     mixBlendMode: 'multiply'
   }}
@@ -44,10 +49,10 @@ const Home = () => {
 
           {/* Right Side - Content */}
           <div className="space-y-6 md:space-y-8 order-2 lg:order-2">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight text-black dark:text-white transition-colors">
               {mockData.profile.tagline}
             </h1>
-            <p className="text-base sm:text-lg text-gray-700 leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl transition-colors">
               {mockData.profile.description}
             </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 pt-0">
@@ -55,13 +60,13 @@ const Home = () => {
                 href={mockData.profile.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-black text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-gray-800 transition-all duration-200 font-semibold text-sm md:text-base shadow-lg hover:shadow-xl w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 bg-black dark:bg-white text-white dark:text-black px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-200 font-semibold text-sm md:text-base shadow-lg hover:shadow-xl w-full sm:w-auto"
               >
                 Resume <ExternalLink size={18} />
               </a>
               <Link
                 to="/contact"
-                className="text-black font-semibold hover:underline underline-offset-4 transition-all text-sm md:text-base text-center sm:text-left w-full sm:w-auto"
+                className="text-black dark:text-white font-semibold hover:underline underline-offset-4 transition-all text-sm md:text-base text-center sm:text-left w-full sm:w-auto"
               >
                 Contact
               </Link>

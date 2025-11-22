@@ -13,7 +13,7 @@ const ExperienceCard = ({ exp, index }) => {
   const colorScheme = colors[index % colors.length];
   
   return (
-    <div className="border-4 border-black rounded-3xl overflow-hidden bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all">
+    <div className="border-4 border-black dark:border-white rounded-3xl overflow-hidden bg-white dark:bg-gray-800 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] transition-all">
       {/* Header Section */}
       <div className={`${colorScheme.bg} p-6`}>
         <div className="flex items-start justify-between">
@@ -33,8 +33,8 @@ const ExperienceCard = ({ exp, index }) => {
       </div>
       
       {/* Content Section */}
-      <div className="p-6 bg-white">
-        <p className="text-gray-700 text-base leading-relaxed mb-6">
+      <div className="p-6 bg-white dark:bg-gray-800 transition-colors">
+        <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed mb-6 transition-colors">
           {exp.description}
         </p>
         
@@ -43,7 +43,7 @@ const ExperienceCard = ({ exp, index }) => {
             href={exp.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+            className="flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
           >
             <ExternalLink size={18} />
             <span>View Project</span>
@@ -56,11 +56,11 @@ const ExperienceCard = ({ exp, index }) => {
 
 const Experience = () => {
   return (
-    <div className="min-h-screen pt-0 bg-gray-50">
+    <div className="min-h-screen pt-0 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
         {/* Main Heading */}
         <div className="text-center mb-20 pt-[50px]">
-          <h1 className="text-7xl lg:text-8xl font-black text-black leading-[1.02] tracking-tight">
+          <h1 className="text-7xl lg:text-8xl font-black text-black dark:text-white leading-[1.02] tracking-tight transition-colors">
             Where Vision Meets<br />Execution
           </h1>
         </div>
