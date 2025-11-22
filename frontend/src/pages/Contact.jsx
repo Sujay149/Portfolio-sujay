@@ -29,7 +29,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen pt-0 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen pt-0 bg-gray-50 dark:bg-black transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-6 py-20">
         <div className="space-y-12">
           {/* Header */}

@@ -1,5 +1,56 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { mockData } from '../mock';
+import { motion } from 'framer-motion';
+import { CanvasRevealEffect } from '../components/ui/canvas-reveal-effect';
+
+const AceternityIcon = ({ order }) => {
+  return (
+    <div className="relative w-16 h-16 flex items-center justify-center">
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 to-cyan-500 rounded-full blur-xl opacity-60 animate-pulse"></div>
+      <div className="relative bg-gradient-to-br from-purple-600 to-cyan-600 dark:from-purple-400 dark:to-cyan-400 rounded-full w-14 h-14 flex items-center justify-center border-2 border-white dark:border-black shadow-lg">
+        <span className="text-white dark:text-black font-extrabold text-xs tracking-wide">{order}</span>
+      </div>
+    </div>
+  );
+};
+
+const Card = ({ title, icon, children, des }) => {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="border border-black/[0.2] dark:border-white/[0.2] group/canvas-card flex items-center justify-center max-w-sm w-full mx-auto p-4 relative h-[30rem] rounded-3xl bg-white dark:bg-black"
+    >
+      <div className="absolute h-10 w-10 top-3 left-3">{icon}</div>
+      <AnimatePresence>
+        {hovered && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="h-full w-full absolute inset-0"
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="relative z-20">
+        <div className="text-center group-hover/canvas-card:-translate-y-4 group-hover/canvas-card:opacity-0 transition duration-200 w-full mx-auto flex items-center justify-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+          <h2 className="text-black dark:text-white text-2xl md:text-3xl font-bold px-4">{title}</h2>
+        </div>
+        <p className="text-base md:text-lg opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-white group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200 text-center px-6 leading-relaxed font-light">
+          {des}
+        </p>
+      </div>
+    </div>
+  );
+};
+
+const AnimatePresence = ({ children }) => {
+  return <>{children}</>;
+};
 
 const About = () => {
   const [educationProgress, setEducationProgress] = useState(0);
@@ -28,7 +79,7 @@ const About = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   return (
-    <div className="min-h-screen pt-0 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen pt-0 bg-gray-50 dark:bg-black transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
         {/* Main Heading */}
         <div className="text-center mb-20 pt-[50px]">
@@ -41,25 +92,29 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-32">
           {/* Left - Biography */}
           <div className="lg:col-span-1 space-y-4">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-400 transition-colors">BIOGRAPHY</h2>
-            <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 transition-colors">
-              Hi, I'm <strong className="text-black dark:text-white">Sujay Babu Thota</strong>, a Full Stack Developer with hands-on experience building production-ready web applications and AI-powered systems. Currently pursuing B.Tech in Computer Science and Design at SRKR Engineering College, I specialize in modern frameworks and scalable architectures.
-            </p>
-            <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 transition-colors">
-              I believe that technology is about more than just code – it's about solving real-world problems and creating impactful, user-centered solutions that make a difference in people's lives.
-            </p>
-            <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 transition-colors">
-              Whether I'm building AI-powered healthcare assistants or full-stack e-commerce platforms, I bring my commitment to excellence, innovation, and product-oriented development to every project. I look forward to bringing my skills and passion to your next project.
-            </p>
-          </div>
+  <h2 className="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-400 transition-colors">
+    BIOGRAPHY
+  </h2>
 
-          {/* Center - Profile Image */}
+  <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 transition-colors">
+    Hi, I'm <strong className="text-black dark:text-white">Sujay Babu Thota</strong>, a Full Stack Developer passionate about crafting modern, scalable, and high-performance digital experiences. I’m currently pursuing a B.Tech in Computer Science and Design at SRKR Engineering College, where I focus on building clean, efficient, and production-ready applications.
+  </p>
+
+  <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 transition-colors">
+    For me, technology is more than just writing code — it’s about solving real problems with thoughtful design, smart systems, and user-centered thinking. I love transforming ideas into reliable and meaningful products that people enjoy using.
+  </p>
+
+  <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 transition-colors">
+    Whether it's developing AI-powered healthcare tools, intuitive dashboards, or full-stack platforms, I bring creativity, precision, and a product-first mindset to every project. I'm excited to continue growing and contributing to impactful software that makes a difference.
+  </p>
+</div>
+  {/* Center - Profile Image */}
           <div className="lg:col-span-1 flex justify-center">
             <div className="relative">
               <div className="relative border-6 border-black dark:border-white rounded-3xl p-4 bg-white dark:bg-gray-800 shadow-lg transition-colors">
                 <div className="w-72 h-[420px] rounded-2xl overflow-hidden bg-gray-100">
                   <img 
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop" 
+                    src="sujay.jpg" 
                     alt="Profile" 
                     className="w-full h-full object-cover"
                   />
@@ -90,65 +145,79 @@ const About = () => {
         {/* Skills Section */}
         <div className="mb-32">
           <h2 className="text-center text-5xl font-bold text-black dark:text-white mb-16 transition-colors">Skills</h2>
-          <div className="flex justify-center">
-            <div className="relative w-full max-w-4xl aspect-[4/3]">
-              {/* Concentric circles */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="absolute w-full h-full border border-gray-300 dark:border-gray-600 rounded-full transition-colors"></div>
-                <div className="absolute w-[85%] h-[85%] border border-gray-300 dark:border-gray-600 rounded-full transition-colors"></div>
-                <div className="absolute w-[70%] h-[70%] border border-gray-300 dark:border-gray-600 rounded-full transition-colors"></div>
-                <div className="absolute w-[55%] h-[55%] border border-gray-300 dark:border-gray-600 rounded-full transition-colors"></div>
-                <div className="absolute w-[40%] h-[40%] border border-gray-300 dark:border-gray-600 rounded-full transition-colors"></div>
-                
-                {/* Center badge */}
-                <div className="relative z-10 bg-black dark:bg-white rounded-full px-6 py-3 transition-colors">
-                  <span className="text-sm font-bold text-white">Web</span>
-                </div>
-                
-                {/* Skill badges positioned around circles */}
-                <div className="absolute top-[5%] left-1/2 transform -translate-x-1/2 bg-black rounded-full px-6 py-3">
-                  <span className="text-sm font-bold text-white">Figma</span>
-                </div>
-                
-                <div className="absolute top-[20%] left-[15%] bg-black rounded-full px-6 py-3">
-                  <span className="text-sm font-bold text-white">NextJS</span>
-                </div>
-                
-                <div className="absolute top-[20%] right-[15%] bg-black rounded-full px-6 py-3">
-                  <span className="text-sm font-bold text-white">GatsbyJS</span>
-                </div>
-                
-                <div className="absolute top-[35%] left-[25%] bg-black rounded-full px-6 py-3">
-                  <span className="text-sm font-bold text-white">CSS</span>
-                </div>
-                
-                <div className="absolute left-[5%] top-1/2 transform -translate-y-1/2 bg-black rounded-full px-6 py-3">
-                  <span className="text-sm font-bold text-white">Github</span>
-                </div>
-                
-                <div className="absolute right-[5%] top-1/2 transform -translate-y-1/2 bg-black rounded-full px-6 py-3">
-                  <span className="text-sm font-bold text-white">Web Design</span>
-                </div>
-                
-                <div className="absolute bottom-[35%] left-[25%] bg-black rounded-full px-6 py-3">
-                  <span className="text-sm font-bold text-white">HTML</span>
-                </div>
-                
-                <div className="absolute bottom-[35%] right-[25%] bg-black rounded-full px-6 py-3">
-                  <span className="text-sm font-bold text-white">JavaScript</span>
-                </div>
-                
-                <div className="absolute bottom-[20%] left-1/2 transform -translate-x-1/2 bg-black dark:bg-white rounded-full px-6 py-3 transition-colors">
-                  <span className="text-sm font-bold text-white dark:text-black transition-colors">ReactJS</span>
-                </div>
-                
-                <div className="absolute bottom-[5%] left-[20%] bg-black dark:bg-white rounded-full px-6 py-3 transition-colors">
-                  <span className="text-sm font-bold text-white dark:text-black transition-colors">Firebase</span>
-                </div>
-                
-                <div className="absolute bottom-[5%] right-[20%] bg-black dark:bg-white rounded-full px-6 py-3 transition-colors">
-                  <span className="text-sm font-bold text-white dark:text-black transition-colors">Tailwind CSS</span>
-                </div>
+          <div className="max-w-6xl mx-auto space-y-8">
+            {/* Languages */}
+            <div className="group">
+              <div className="flex items-center gap-3 mb-4">
+                <h3 className="text-2xl font-bold text-black dark:text-white transition-colors">Languages</h3>
+                <div className="flex-1 h-px bg-gradient-to-r from-purple-500 to-transparent dark:from-purple-400"></div>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {['JavaScript', 'Python', 'PHP', 'TypeScript', 'Java'].map((skill) => (
+                  <span key={skill} className="px-5 py-2.5 bg-white dark:bg-gray-800 border-2 border-black dark:border-white rounded-full text-sm font-semibold text-black dark:text-white transition-all hover:scale-105 hover:shadow-lg hover:bg-purple-50 dark:hover:bg-purple-900/30">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Frontend */}
+            <div className="group">
+              <div className="flex items-center gap-3 mb-4">
+                <h3 className="text-2xl font-bold text-black dark:text-white transition-colors">Frontend</h3>
+                <div className="flex-1 h-px bg-gradient-to-r from-cyan-500 to-transparent dark:from-cyan-400"></div>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {['React.js', 'Next.js', 'HTML5', 'CSS3', 'Tailwind', 'Bootstrap', 'Material UI'].map((skill) => (
+                  <span key={skill} className="px-5 py-2.5 bg-white dark:bg-gray-800 border-2 border-black dark:border-white rounded-full text-sm font-semibold text-black dark:text-white transition-all hover:scale-105 hover:shadow-lg hover:bg-cyan-50 dark:hover:bg-cyan-900/30">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Backend/DB */}
+            <div className="group">
+              <div className="flex items-center gap-3 mb-4">
+                <h3 className="text-2xl font-bold text-black dark:text-white transition-colors">Backend/DB</h3>
+                <div className="flex-1 h-px bg-gradient-to-r from-emerald-500 to-transparent dark:from-emerald-400"></div>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {['Node.js', 'Express.js', 'PHP', 'MongoDB', 'MySQL', 'Firebase', 'Supabase'].map((skill) => (
+                  <span key={skill} className="px-5 py-2.5 bg-white dark:bg-gray-800 border-2 border-black dark:border-white rounded-full text-sm font-semibold text-black dark:text-white transition-all hover:scale-105 hover:shadow-lg hover:bg-emerald-50 dark:hover:bg-emerald-900/30">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Tools */}
+            <div className="group">
+              <div className="flex items-center gap-3 mb-4">
+                <h3 className="text-2xl font-bold text-black dark:text-white transition-colors">Tools</h3>
+                <div className="flex-1 h-px bg-gradient-to-r from-pink-500 to-transparent dark:from-pink-400"></div>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {['Git', 'GitHub', 'Vercel', 'Netlify', 'Render', 'Postman', 'Figma', 'CI/CD'].map((skill) => (
+                  <span key={skill} className="px-5 py-2.5 bg-white dark:bg-gray-800 border-2 border-black dark:border-white rounded-full text-sm font-semibold text-black dark:text-white transition-all hover:scale-105 hover:shadow-lg hover:bg-pink-50 dark:hover:bg-pink-900/30">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* AI/Automation */}
+            <div className="group">
+              <div className="flex items-center gap-3 mb-4">
+                <h3 className="text-2xl font-bold text-black dark:text-white transition-colors">AI/Automation</h3>
+                <div className="flex-1 h-px bg-gradient-to-r from-orange-500 to-transparent dark:from-orange-400"></div>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {['Machine Learning', 'Prompt Engineering', 'N8N', 'AI APIs'].map((skill) => (
+                  <span key={skill} className="px-5 py-2.5 bg-white dark:bg-gray-800 border-2 border-black dark:border-white rounded-full text-sm font-semibold text-black dark:text-white transition-all hover:scale-105 hover:shadow-lg hover:bg-orange-50 dark:hover:bg-orange-900/30">
+                    {skill}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
@@ -191,6 +260,91 @@ const About = () => {
             </div>
           </div>
         </div>
+
+        {/* My Approach Section */}
+        <section className="w-full py-16">
+          {/* Revolutionary Section Title */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
+              className="relative inline-block"
+            >
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-black via-purple-600 to-cyan-600 dark:from-white dark:via-purple-400 dark:to-cyan-400 mb-6 relative">
+                MY APPROACH
+                <motion.div
+                  className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-purple-600/20 to-cyan-600/20 rounded-3xl blur-xl sm:blur-2xl"
+                  animate={{ 
+                    scale: [1, 1.1, 1],
+                    opacity: [0.5, 0.8, 0.5]
+                  }}
+                  transition={{ 
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              </h2>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="relative"
+            >
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-light tracking-wide max-w-4xl mx-auto leading-relaxed">
+                From Concept to Deployment:{" "}
+                <span className="bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent font-semibold">My Three-Phase Development Process</span>
+              </p>
+            </motion.div>
+          </motion.div>
+
+          <div className="my-16 flex flex-col lg:flex-row items-center justify-center w-full gap-8">
+            <Card
+              title="Planning & Strategy"
+              icon={<AceternityIcon order="Phase 1" />}
+              des="I begin by deeply understanding project requirements and user needs. Using tools like Figma and Canva, I craft detailed wireframes, design systems, and interactive prototypes. This phase ensures a solid foundation with clear objectives, scalable architecture, and an intuitive user experience blueprint."
+            >
+              <CanvasRevealEffect
+                animationSpeed={5.1}
+                containerClassName="bg-emerald-900 rounded-3xl overflow-hidden"
+              />
+            </Card>
+            <Card
+              title="Development & Iteration"
+              icon={<AceternityIcon order="Phase 2" />}
+              des="With designs approved, I dive into coding with best practices and clean architecture. I maintain comprehensive version control using Git, documenting every significant update with detailed commit messages. Regular progress updates, code reviews, and iterative improvements ensure the project stays on track and meets quality standards."
+            >
+              <CanvasRevealEffect
+                animationSpeed={3}
+                containerClassName="bg-pink-900 rounded-3xl overflow-hidden"
+                colors={[
+                  [255, 166, 158],
+                  [221, 255, 247],
+                ]}
+                dotSize={2}
+              />
+            </Card>
+            <Card
+              title="Deployment & Launch"
+              icon={<AceternityIcon order="Phase 3" />}
+              des="The final phase focuses on optimization and deployment. I build production-ready versions with performance tuning, SEO optimization, and comprehensive testing. Leveraging platforms like Vercel, Netlify, or AWS, I ensure seamless deployment with CI/CD pipelines, monitoring, and post-launch support for a successful product release."
+            >
+              <CanvasRevealEffect
+                animationSpeed={3}
+                containerClassName="bg-sky-600 rounded-3xl overflow-hidden"
+                colors={[[125, 211, 252]]}
+              />
+            </Card>
+          </div>
+        </section>
       </div>
     </div>
   );

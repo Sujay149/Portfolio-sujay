@@ -56,7 +56,7 @@ const ExperienceCard = ({ exp, index }) => {
 
 const Experience = () => {
   return (
-    <div className="min-h-screen pt-0 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen pt-0 bg-gray-50 dark:bg-black transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
         {/* Main Heading */}
         <div className="text-center mb-20 pt-[50px]">

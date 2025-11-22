@@ -4,7 +4,7 @@ import { Heart } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 py-8 transition-colors duration-300">
+    <footer className="bg-gray-50 dark:bg-black border-t border-gray-200 dark:border-gray-700 py-8 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between">
           <p className="text-gray-600 dark:text-gray-400 text-sm transition-colors">

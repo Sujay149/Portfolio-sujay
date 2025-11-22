@@ -34,30 +34,6 @@ export const mockData = {
       { value: "2+", label: "Years Experience" }
     ],
     experience: [
-      {
-        title: "Freelance Web Developer",
-        company: "WonderKids School Platform",
-        location: "Remote",
-        period: "Oct 2024 – Dec 2024",
-        description: "Built and deployed a school management platform actively used by teachers and students. Designed interactive dashboards and improved UI/UX for streamlined administrative workflows. Implemented secure authentication and role-based access control for data privacy and compliance.",
-        url: "https://wonderkids.great-site.net/"
-      },
-      {
-        title: "Full Stack Developer at ASVIX",
-        company: "MediBot - AI Health Companion",
-        location: "Remote",
-        period: "Jun 2025 – Sep 2025",
-        description: "Developed AI-based healthcare assistant with medication guidance, reminders, and chat-based support. Built using TypeScript, Next.js, Tailwind, Firebase with AI/LLM integration. Implemented authentication, role-based access, real-time chat, and reminder systems.",
-        url: "https://medibot-ai.com"
-      },
-      {
-        title: "Full Stack Developer",
-        company: "Akepati Mart - E-commerce Platform",
-        location: "Remote",
-        period: "Sep 2025 – Oct 2025",
-        description: "Built full-stack e-commerce application with payments, order analytics and delivery workflow. Integrated JWT authentication, OTP verification, Razorpay payment processing, and admin dashboard with order analytics and delivery tracking.",
-        url: "https://akepatimart.com/"
-      }
     ],
     education: [
       {
@@ -80,19 +56,6 @@ export const mockData = {
 projects: [
   {
     id: 1,
-    title: "MediBot – AI Powered Health Companion",
-    category: "Featured Project",
-    description:
-      "AI-based healthcare assistant with medication guidance, reminders, and chat-based support. Features prescription interpretation, symptom triage, safe healthcare guidance with real-time chat and intelligent reminder systems powered by advanced LLM technology.",
-    image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=500&fit=crop&q=80",
-    tags: ["TypeScript", "Next.js", "Tailwind", "Firebase", "AI/LLM"],
-    badge: "AI-Powered",
-    github: "https://github.com/Sujay149",
-    demo: "https://medibot-ai.com",
-  },
-  {
-    id: 2,
     title: "NeuroHub – Neurodiversity Support Platform",
     category: "Web Application",
     description:
@@ -105,20 +68,7 @@ projects: [
     demo: "https://nuerohub.vercel.app/",
   },
   {
-    id: 3,
-    title: "Akepati Mart – E-commerce Platform",
-    category: "E-Commerce",
-    description:
-      "Full-stack e-commerce application with integrated payments, order analytics and delivery workflow. Features JWT authentication, OTP verification, Razorpay payment gateway, admin dashboard with comprehensive order analytics and real-time delivery tracking.",
-    image:
-      "https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=500&fit=crop&q=80",
-    tags: ["React.js", "Node.js", "Supabase", "Tailwind", "Razorpay"],
-    badge: null,
-    github: "https://github.com/Sujay149",
-    demo: "https://akepatimart.com/",
-  },
-  {
-    id: 4,
+    id: 2,
     title: "Rofero – Full Stack E-Commerce Platform",
     category: "E-Commerce Platform",
     description:
@@ -136,20 +86,7 @@ projects: [
     badge: null,
     github: "https://github.com/Sujay149",
     demo: "https://rofero.vercel.app",
-  },
-  {
-    id: 5,
-    title: "WonderKids School Platform",
-    category: "School Management",
-    description:
-      "Comprehensive school management platform enabling seamless student-teacher information access and workflow management. Features interactive dashboards, secure authentication, and role-based access control ensuring data privacy and regulatory compliance.",
-    image:
-      "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&h=500&fit=crop&q=80",
-    tags: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-    badge: null,
-    github: "https://github.com/Sujay149",
-    demo: "https://wonderkids.great-site.net/",
-  },
+  }
 ]
 
 

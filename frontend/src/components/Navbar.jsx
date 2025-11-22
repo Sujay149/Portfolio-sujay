@@ -21,7 +21,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-md transition-colors duration-300">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-50/80 dark:bg-black/80 backdrop-blur-md transition-colors duration-300">
       <div className="w-full px-6 lg:px-16 xl:px-32 py-2">
         <div className="flex items-center justify-between w-full">
           {/* Left Navigation - Desktop */}
@@ -75,8 +75,12 @@ const Navbar = () => {
 
           {/* Center Logo */}
           <Link to="/" className="absolute left-1/2 transform -translate-x-1/2 md:relative md:left-0 md:transform-none">
-            <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-black dark:bg-white flex items-center justify-center text-white dark:text-black font-bold text-base md:text-lg hover:scale-110 transition-transform">
-              {mockData.profile.initials}
+            <div className="w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+              <img 
+                src={darkMode ? "/middlelight.png" : "/middledark.png"}
+                alt="Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
           </Link>
 

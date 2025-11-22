@@ -107,7 +107,7 @@ const RegularProject = ({ project }) => {
 
 const Projects = () => {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-0 transition-colors duration-300">
+    <div className="min-h-screen bg-gray-50 dark:bg-black pt-0 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Main Heading */}
         <div className="text-center mb-20 pt-[50px]">
@@ -121,20 +121,9 @@ const Projects = () => {
           <FeaturedProject project={mockData.projects[0]} />
         </div>
 
-        {/* Regular Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          <RegularProject project={mockData.projects[1]} />
-          <RegularProject project={mockData.projects[2]} />
-        </div>
-
         {/* Second Featured Project */}
         <div className="mb-16">
-          <FeaturedProject project={mockData.projects[3]} />
-        </div>
-
-        {/* Bottom Project */}
-        <div className="max-w-2xl mx-auto">
-          <RegularProject project={mockData.projects[4]} />
+          <FeaturedProject project={mockData.projects[1]} />
         </div>
       </div>
     </div>
