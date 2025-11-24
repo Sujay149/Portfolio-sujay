@@ -1,19 +1,19 @@
+"use client";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { useMemo, useRef } from "react";
 import * as THREE from "three";
-
-const cn = (...classes) => classes.filter(Boolean).join(' ');
+import { cn } from "../../lib/utils";
 
 export const CanvasRevealEffect = ({
   animationSpeed = 0.4,
   opacities = [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1],
   colors = [[0, 255, 255]],
-  containerClassName = '',
-  dotSize = 3,
+  containerClassName,
+  dotSize,
   showGradient = true,
 }) => {
   return (
-    <div className={cn("h-full relative bg-white dark:bg-black w-full", containerClassName)}>
+    <div className={cn("h-full relative bg-white w-full", containerClassName)}>
       <div className="h-full w-full">
         <DotMatrix
           colors={colors ?? [[0, 255, 255]]}
@@ -259,7 +259,7 @@ const ShaderMaterial = ({
 
 const Shader = ({ source, uniforms, maxFps = 60 }) => {
   return (
-    <Canvas className="absolute inset-0 h-full w-full">
+    <Canvas className="absolute inset-0  h-full w-full">
       <ShaderMaterial source={source} uniforms={uniforms} maxFps={maxFps} />
     </Canvas>
   );
