@@ -9,12 +9,12 @@ const Home = () => {
   const { darkMode } = useTheme();
   
   return (
-    <div className="h-screen pt-[70px] bg-gray-50 dark:bg-transparent relative overflow-hidden transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4 lg:py-8 h-full flex items-center">
+    <div className="min-h-screen lg:h-screen pt-[70px] bg-gray-50 dark:bg-transparent relative overflow-hidden transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4 lg:py-8 min-h-full lg:h-full flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-center">
           {/* Left Side - Watercolor Portrait */}
           <div className="relative order-1 lg:order-1">
-  <div className="relative max-w-sm sm:max-w-md lg:max-w-md mx-auto lg:mx-0">
+  <div className="relative max-w-sm sm:max-w-md lg:max-w-md mx-auto lg:mx-0 mt-10 lg:mt-0">
    <img 
   src={darkMode ? "/herodark.png" : "/herobg.png"}
   alt="Developer portrait"

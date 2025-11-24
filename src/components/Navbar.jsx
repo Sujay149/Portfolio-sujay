@@ -138,12 +138,17 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden fixed inset-0 top-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ease-in-out ${
-        mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-      }`} onClick={closeMobileMenu}>
-        <div className="flex flex-col items-center justify-center h-screen gap-8 px-6" onClick={(e) => e.stopPropagation()}>
-          {/* Mobile Navigation Links Container */}
-          <div className="bg-white dark:bg-gray-800 rounded-3xl border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] p-8 flex flex-col gap-6 min-w-[280px]">
+      {mobileMenuOpen && (
+        <div 
+          className="md:hidden fixed inset-0 top-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ease-in-out z-40"
+          onClick={closeMobileMenu}
+        >
+          <div className="flex flex-col items-center justify-center h-screen gap-8 px-6">
+            {/* Mobile Navigation Links Container */}
+            <div 
+              className="bg-white dark:bg-gray-800 rounded-3xl border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] p-8 flex flex-col gap-6 min-w-[280px]"
+              onClick={(e) => e.stopPropagation()}
+            >
             <Link 
               to="/" 
               onClick={closeMobileMenu}
@@ -193,7 +198,8 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-      </div>
+        </div>
+      )}
     </nav>
   );
 };
