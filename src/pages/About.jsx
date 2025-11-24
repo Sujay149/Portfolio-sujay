@@ -136,7 +136,7 @@ const About = () => {
             </div>
             
             <div className="text-right">
-              <div className="text-7xl lg:text-8xl font-black text-black dark:text-white transition-colors">2+</div>
+              <div className="text-7xl lg:text-8xl font-black text-black dark:text-white transition-colors">1+</div>
               <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mt-1 transition-colors">Years Experience</div>
             </div>
           </div>

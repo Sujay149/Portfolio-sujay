@@ -30,10 +30,62 @@ export const mockData = {
     ],
     stats: [
       { value: "10+", label: "Projects Completed" },
-      { value: "3+", label: "Client Projects" },
-      { value: "2+", label: "Years Experience" }
+      { value: "4+", label: "Client Projects" },
+      { value: "1+", label: "Years Experience" }
     ],
     experience: [
+      {
+        id: 1,
+        title: "Fullstack Developer and Prompt Engineering Intern at ASVIX",
+        company: "MediBot – AI Powered Health Companion",
+        period: "Jun 2025 – Sep 2025",
+        description: "AI-based healthcare assistant with medication guidance, reminders, and chat-based support.",
+        technologies: ["TypeScript", "Next.js", "Tailwind", "Firebase", "AI/LLM"],
+        achievements: [
+          "AI-powered system development for prescription interpretation, symptom triage, and safe healthcare guidance.",
+          "Skilled in modern web frameworks using TypeScript, Next.js, Tailwind CSS, and Firebase for scalable architectures.",
+          "Real-world deployment implementing authentication, role-based access, real-time chat, and reminder systems.",
+          "Strong foundation in applied LLM/NLP for medical-assistant conversations, knowledge retrieval, and responses."
+        ],
+        links: {
+          live: "https://medibot-ai.com",
+          github: "https://github.com/Sujay149"
+        }
+      },
+      {
+        id: 2,
+        title: "Akepati Mart – Full Stack E-commerce Platform",
+        company: "Freelance Project",
+        period: "Sep 2025 – Oct 2025",
+        description: "E-commerce application with payments, order analytics and delivery workflow.",
+        technologies: ["React.js", "Node.js", "Supabase", "Tailwind", "Razorpay"],
+        achievements: [
+          "Integrated JWT authentication, search features, OTP verification, and Razorpay payment processing.",
+          "Built an admin dashboard with order analytics, delivery tracking, and status management.",
+          "Designed geo-based delivery workflow improving assignment accuracy and turnaround efficiency."
+        ],
+        links: {
+          live: "https://akepatimart.com/",
+          github: "https://github.com/Sujay149"
+        }
+      },
+      {
+        id: 3,
+        title: "Freelance Web Developer — WonderKids",
+        company: "Freelance Project",
+        period: "Oct 2024 – Dec 2024",
+        description: "School platform enabling student–teacher information access and workflow management.",
+        technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+        achievements: [
+          "Built and deployed a school management platform actively used by teachers and students.",
+          "Designed interactive dashboards and improved UI/UX for streamlined administrative workflows.",
+          "Implemented secure authentication and role-based access control for data privacy and compliance."
+        ],
+        links: {
+          live: "https://wonderkids.great-site.net/",
+          github: "https://github.com/Sujay149"
+        }
+      }
     ],
     education: [
       {

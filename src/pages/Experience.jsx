@@ -23,24 +23,30 @@ const ExperienceCard = ({ exp, index }) => {
               {exp.title}
             </h3>
             <p className={`${colorScheme.text} opacity-90 text-lg font-semibold`}>
-              @{exp.company}
+              {exp.company}
             </p>
-          </div>
-          <div className={`${colorScheme.badge} backdrop-blur-sm rounded-full px-4 py-2`}>
-            <span className={`${colorScheme.text} text-sm font-bold`}>{exp.location}</span>
           </div>
         </div>
       </div>
       
       {/* Content Section */}
       <div className="p-6 bg-white dark:bg-gray-800 transition-colors">
-        <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed mb-6 transition-colors">
+        <p className="text-gray-700 dark:text-gray-300 text-base leading-relaxed mb-4 transition-colors">
           {exp.description}
         </p>
         
+        {/* Technologies */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {exp.technologies.map((tech, idx) => (
+            <span key={idx} className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full text-sm font-medium transition-colors">
+              {tech}
+            </span>
+          ))}
+        </div>
+        
         <div className="flex items-center gap-3">
           <a 
-            href={exp.url}
+            href={exp.links.live}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
