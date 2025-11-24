@@ -116,7 +116,7 @@ projects: [
       "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=500&fit=crop&q=80",
     tags: ["Next.js", "Tailwind", "Firebase"],
     badge: null,
-    github: "https://github.com/Sujay149",
+    github: "https://github.com/Sujay149/NUEROHUB",
     demo: "https://nuerohub.vercel.app/",
   },
   {
@@ -136,8 +136,47 @@ projects: [
       "Nodemailer",
     ],
     badge: null,
-    github: "https://github.com/Sujay149",
+    github: "https://github.com/Sujay149/Rofero",
     demo: "https://rofero.vercel.app",
+  },
+  {
+    id: 3,
+    title: "CraveFinder",
+    category: "Food Discovery App",
+    description:
+      "A modern food discovery app to explore restaurants, cafes, and local eateries with a clean UI and seamless browsing experience.",
+    image:
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=500&fit=crop&q=80",
+    tags: ["TypeScript", "React", "Node.js"],
+    badge: null,
+    github: "https://github.com/Sujay149",
+    demo: "https://crave-finder.vercel.app/",
+  },
+  {
+    id: 4,
+    title: "ReDestiny",
+    category: "Interactive Design",
+    description:
+      "A creative project showcasing interactive design and engaging user experiences with a focus on UI aesthetics and responsive layouts.",
+    image:
+      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&h=500&fit=crop&q=80",
+    tags: ["React.js", "Tailwind CSS", "Bootstrap", "Material UI", "MongoDB", "Node.js"],
+    badge: null,
+    github: "https://github.com/Sujay149",
+    demo: "#",
+  },
+  {
+    id: 5,
+    title: "Research & Startup Management System",
+    category: "Enterprise Platform",
+    description:
+      "A comprehensive platform for managing research, IPR, innovation projects, and startups in Gujarat, developed for Smart India Hackathon.",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop&q=80",
+    tags: ["React.js", "Tailwind CSS", "Bootstrap", "Material UI", "MongoDB", "Node.js"],
+    badge: "Hackathon",
+    github: "https://github.com/Sujay149",
+    demo: "https://innovationgujarat.vercel.app/",
   }
 ]
 

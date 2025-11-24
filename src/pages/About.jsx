@@ -334,6 +334,19 @@ const About = () => {
                 <span className="bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent font-semibold">My Three-Phase Development Process</span>
               </p>
             </motion.div>
+
+            {/* Hint for users */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="mt-6"
+            >
+              <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 text-center flex items-center justify-center gap-2">
+                <span className="hidden lg:inline">💡 Hover over cards to reveal details</span>
+                <span className="lg:hidden">💡 Scroll through cards to reveal details</span>
+              </p>
+            </motion.div>
           </motion.div>
 
           <div className="my-16 flex flex-col lg:flex-row items-center justify-center w-full gap-8">
