@@ -34,10 +34,27 @@ export const mockData = {
       { value: "1+", label: "Years Experience" }
     ],
     experience: [
-      {
+       {
         id: 1,
-        title: "Fullstack Developer and Prompt Engineering Intern at ASVIX",
-        company: "MediBot – AI Powered Health Companion",
+        title: "Fullstack Developer  Intern ",
+        company: "Brandverse Technologies India Pvt. Ltd.",
+        period: "Sep 2025 – Oct 2025",
+        description: "E-commerce application with payments, order analytics and delivery workflow.",
+        technologies: ["React.js", "Node.js", "Supabase", "Tailwind", "Razorpay"],
+        achievements: [
+          "Integrated JWT authentication, search features, OTP verification, and Razorpay payment processing.",
+          "Built an admin dashboard with order analytics, delivery tracking, and status management.",
+          "Designed geo-based delivery workflow improving assignment accuracy and turnaround efficiency."
+        ],
+        links: {
+          live: "https://brandversetech.com/",
+          github: "https://github.com/Sujay149"
+        }
+      },
+      {
+        id: 2,
+        title: "Fullstack Developer and Prompt Engineering Intern ",
+        company: "Asvix",
         period: "Jun 2025 – Sep 2025",
         description: "AI-based healthcare assistant with medication guidance, reminders, and chat-based support.",
         technologies: ["TypeScript", "Next.js", "Tailwind", "Firebase", "AI/LLM"],
@@ -52,23 +69,7 @@ export const mockData = {
           github: "https://github.com/Sujay149"
         }
       },
-      {
-        id: 2,
-        title: "Akepati Mart – Full Stack E-commerce Platform",
-        company: "Freelance Project",
-        period: "Sep 2025 – Oct 2025",
-        description: "E-commerce application with payments, order analytics and delivery workflow.",
-        technologies: ["React.js", "Node.js", "Supabase", "Tailwind", "Razorpay"],
-        achievements: [
-          "Integrated JWT authentication, search features, OTP verification, and Razorpay payment processing.",
-          "Built an admin dashboard with order analytics, delivery tracking, and status management.",
-          "Designed geo-based delivery workflow improving assignment accuracy and turnaround efficiency."
-        ],
-        links: {
-          live: "https://akepatimart.com/",
-          github: "https://github.com/Sujay149"
-        }
-      },
+     
       {
         id: 3,
         title: "Freelance Web Developer — WonderKids",
@@ -113,7 +114,7 @@ projects: [
     description:
       "Support system for ADHD, autism, and dyslexia-based learning. Designed cognitive-friendly UI to reduce overload, created personalized learning and focus modules, and enabled secure real-time content flow using Firebase.",
     image:
-      "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=500&fit=crop&q=80",
+      "/projects/nuerohub.png",
     tags: ["Next.js", "Tailwind", "Firebase"],
     badge: null,
     github: "https://github.com/Sujay149/NUEROHUB",
@@ -126,7 +127,7 @@ projects: [
     description:
       "Complete end-to-end e-commerce application with authentication, cart, orders, wishlist, email notifications, and Razorpay payments. Includes secure role-based access, automated email reminders with Nodemailer, and optimized responsive UI.",
     image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=500&fit=crop&q=80",
+      "/projects/rofero.png",
     tags: [
       "Next.js",
       "Node.js",
