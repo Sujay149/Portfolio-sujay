@@ -62,6 +62,15 @@ const Navbar = () => {
               Experience
               {isActive('/experience') && <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-black dark:bg-white"></span>}
             </Link>
+            <Link 
+              to="/contact" 
+              className={`text-base font-medium transition-colors hover:text-black dark:hover:text-white relative ${
+                isActive('/contact') ? 'text-black dark:text-white' : 'text-gray-700 dark:text-gray-300'
+              }`}
+            >
+              Contact
+              {isActive('/contact') && <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-black dark:bg-white"></span>}
+            </Link>
           </div>
 
           {/* Hamburger Menu - Mobile */}

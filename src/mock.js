@@ -111,6 +111,7 @@ projects: [
     id: 1,
     title: "NeuroHub – Neurodiversity Support Platform",
     category: "Web Application",
+    type: "fullstack",
     description:
       "Support system for ADHD, autism, and dyslexia-based learning. Designed cognitive-friendly UI to reduce overload, created personalized learning and focus modules, and enabled secure real-time content flow using Firebase.",
     image:
@@ -124,6 +125,7 @@ projects: [
     id: 2,
     title: "Rofero – Full Stack E-Commerce Platform",
     category: "E-Commerce Platform",
+    type: "fullstack",
     description:
       "Complete end-to-end e-commerce application with authentication, cart, orders, wishlist, email notifications, and Razorpay payments. Includes secure role-based access, automated email reminders with Nodemailer, and optimized responsive UI.",
     image:
@@ -143,6 +145,7 @@ projects: [
   {
     id: 3,
     title: "CraveFinder",
+    type: "frontend",
     category: "Food Discovery App",
     description:
       "A modern food discovery app to explore restaurants, cafes, and local eateries with a clean UI and seamless browsing experience.",
@@ -156,6 +159,7 @@ projects: [
   {
     id: 4,
     title: "ReDestiny",
+    type: "fullstack",
     category: "Interactive Design",
     description:
       "A creative project showcasing interactive design and engaging user experiences with a focus on UI aesthetics and responsive layouts.",
@@ -169,6 +173,7 @@ projects: [
   {
     id: 5,
     title: "Research & Startup Management System",
+    type: "fullstack",
     category: "Enterprise Platform",
     description:
       "A comprehensive platform for managing research, IPR, innovation projects, and startups in Gujarat, developed for Smart India Hackathon.",
@@ -178,7 +183,23 @@ projects: [
     badge: "Hackathon",
     github: "https://github.com/Sujay149",
     demo: "https://innovationgujarat.vercel.app/",
-  }
+  },
+  {
+  id: 6,
+  title: "CodeDale – Tech Agency Website",
+      type: "frontend",
+
+  category: "Web Application",
+  description:
+    "Corporate site for a technology solutions agency showcasing services, achievements, client testimonials, and case studies. Designed a professional responsive layout with clear navigation, featured client social proof, and conversion-oriented calls to action to drive engagement and inquiries.",
+  image:
+    "/projects/codedale.png",
+  tags: ["Next.js", "React", "Vercel"],
+  badge: null,
+  github: "https://github.com/Sujay149/codedale-task",
+  demo: "https://code-dale.vercel.app/",
+}
+
 ]
 
 
