@@ -47,7 +47,7 @@ export const mockData = {
           "Designed geo-based delivery workflow improving assignment accuracy and turnaround efficiency."
         ],
         links: {
-          live: "https://brandversetech.com/",
+          live: "https://akepatimart.com/",
           github: "https://github.com/Sujay149"
         }
       },
