@@ -33,6 +33,40 @@ export const mockData = {
       { value: "4+", label: "Client Projects" },
       { value: "1+", label: "Years Experience" }
     ],
+    achievements: [
+      {
+        id: 1,
+        title: "10+ Projects Delivered",
+        description: "Successfully delivered production-ready applications across various domains",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop&q=80",
+        bgColor: "bg-gradient-to-br from-orange-50 to-purple-50 dark:from-orange-900/20 dark:to-purple-900/20",
+      },
+      {
+        id: 2,
+        title: "1+ Years of Experience as Intern",
+        description: "Bringing hands-on expertise in modern web technologies and AI systems",
+        image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop&q=80",
+        bgColor: "bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700",
+      },
+      {
+        id: 3,
+        title: "Full Stack Expertise",
+        description: "Proficient in building scalable applications from frontend to backend and deployment",
+        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop&q=80",
+        bgColor: "bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20",
+      },,
+     {
+  id: 4,
+  title: "GDG On Campus Hackathon – Top 3",
+  description:
+    "Secured a Top 3 position among 50+ competing teams at the GDG On Campus Hackathon by delivering a high-impact, production-ready solution with strong technical execution and real-world applicability.",
+  image:
+    "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop&q=80",
+  bgColor:
+    "bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20",
+},
+
+    ],
     experience: [
        {
         id: 1,

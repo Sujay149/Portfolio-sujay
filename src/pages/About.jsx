@@ -167,7 +167,7 @@ const About = () => {
             
             <div className="text-center lg:text-right">
               <div className="text-4xl sm:text-5xl lg:text-8xl font-black text-black dark:text-white transition-colors">1+</div>
-              <div className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 mt-1 transition-colors">Years Experience</div>
+              <div className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 mt-1 transition-colors">Years Experience </div>
             </div>
           </div>
         </div>
@@ -306,7 +306,8 @@ const About = () => {
               transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
               className="relative inline-block"
             >
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-black via-purple-600 to-cyan-600 dark:from-white dark:via-purple-400 dark:to-cyan-400 mb-6 relative">
+              <h2                 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 transition-colors"
+              >
                 MY APPROACH
                 <motion.div
                   className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-purple-600/20 to-cyan-600/20 rounded-3xl blur-xl sm:blur-2xl"
@@ -395,6 +396,68 @@ const About = () => {
                 colors={[[125, 211, 252]]}
               />
             </Card>
+          </div>
+        </section>
+
+        {/* Achievements Section */}
+        <section id="achievements" className="py-20 relative overflow-hidden">
+          <div className="mx-auto max-w-5xl px-6">
+            {/* Header */}
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true }}
+                className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 transition-colors"
+              >
+                My Achievements
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="text-gray-600 dark:text-gray-400 text-lg transition-colors"
+              >
+                Curious about what I've accomplished? Let my track record speak for itself.
+              </motion.p>
+            </div>
+
+            {/* Dashed separator */}
+            <div className="mb-16 border-t border-dashed border-gray-300 dark:border-gray-700" />
+
+            {/* Achievements Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {mockData.about.achievements.map((achievement, index) => (
+                <motion.div
+                  key={achievement.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: index * 0.15 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.02 }}
+                  className={`rounded-3xl p-8 transition-all duration-300 ${achievement.bgColor}`}
+                >
+                  {/* Image Container */}
+                  <div className="mb-6 w-full aspect-video relative rounded-2xl overflow-hidden">
+                    <img
+                      src={achievement.image}
+                      alt={achievement.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 transition-colors">
+                    {achievement.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed transition-colors">
+                    {achievement.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
       </div>
