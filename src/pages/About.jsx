@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+﻿import React, { useEffect, useRef, useState } from 'react';
 import { mockData } from '../mock';
 import { motion } from 'framer-motion';
 import { CanvasRevealEffect } from '../components/ui/canvas-reveal-effect';
@@ -119,60 +119,101 @@ const About = () => {
         </div>
 
         {/* Biography and Image Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-32">
-          {/* Left - Biography */}
-          <div className="lg:col-span-1 space-y-4">
-  <h2 className="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-400 transition-colors">
-    BIOGRAPHY
-  </h2>
-
-  <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 transition-colors">
-    Hi, I'm <strong className="text-black dark:text-white">Sujay Babu Thota</strong>, a Full Stack Developer passionate about crafting modern, scalable, and high-performance digital experiences. I’m currently pursuing a B.Tech in Computer Science and Design at SRKR Engineering College, where I focus on building clean, efficient, and production-ready applications.
-  </p>
-
-  <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 transition-colors">
-    For me, technology is more than just writing code — it’s about solving real problems with thoughtful design, smart systems, and user-centered thinking. I love transforming ideas into reliable and meaningful products that people enjoy using.
-  </p>
-
-  <p className="text-sm leading-relaxed text-gray-700 dark:text-gray-300 transition-colors">
-    Whether it's developing AI-powered healthcare tools, intuitive dashboards, or full-stack platforms, I bring creativity, precision, and a product-first mindset to every project. I'm excited to continue growing and contributing to impactful software that makes a difference.
-  </p>
-</div>
-  {/* Center - Profile Image */}
-          <div className="lg:col-span-1 flex justify-center">
-            <div className="relative">
-              <div className="relative border-6 border-black dark:border-white rounded-3xl p-4 bg-white dark:bg-gray-800 shadow-lg transition-colors">
-                <div className="w-72 h-[420px] rounded-2xl overflow-hidden bg-gray-100">
-                  <img 
-                    src="sujay.jpg" 
-                    alt="Profile" 
-                    className="w-full h-full object-cover"
-                  />
+        <div className="mb-32">
+          {/* Profile Image and Stats Row */}
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12 mb-16">
+            {/* Profile Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-cyan-600 dark:from-purple-400 dark:to-cyan-400 rounded-3xl blur-2xl opacity-30 animate-pulse"></div>
+                <div className="relative border-4 border-black dark:border-white rounded-3xl p-3 bg-white dark:bg-gray-800 shadow-2xl transition-colors">
+                  <div className="w-80 h-96 rounded-2xl overflow-hidden bg-gray-100">
+                    <img 
+                      src="sujay.jpg" 
+                      alt="Profile" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
               </div>
+            </motion.div>
+
+            {/* Stats Column */}
+            <div className="flex flex-col gap-8">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="text-center lg:text-left"
+              >
+                <div className="text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-cyan-600 dark:from-purple-400 dark:to-cyan-400">10+</div>
+                <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mt-2 tracking-wide transition-colors">PROJECTS COMPLETED</div>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-center lg:text-left"
+              >
+                <div className="text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-orange-600 dark:from-pink-400 dark:to-orange-400">3+</div>
+                <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mt-2 tracking-wide transition-colors">CLIENT PROJECTS</div>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="text-center lg:text-left"
+              >
+                <div className="text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400">1+</div>
+                <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mt-2 tracking-wide transition-colors">YEARS EXPERIENCE</div>
+              </motion.div>
             </div>
           </div>
 
-          {/* Right - Stats */}
-          <div className="lg:col-span-1 flex flex-row lg:flex-col justify-center items-center lg:items-end gap-6 lg:gap-0 lg:space-y-8">
-            <div className="text-center lg:text-right">
-              <div className="text-4xl sm:text-5xl lg:text-8xl font-black text-black dark:text-white transition-colors">10+</div>
-              <div className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 mt-1 transition-colors">Projects Completed</div>
+          {/* Biography Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 lg:p-12 border-2 border-gray-200 dark:border-gray-700 shadow-xl transition-colors">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-1 bg-gradient-to-r from-purple-600 to-cyan-600 dark:from-purple-400 dark:to-cyan-400 rounded-full"></div>
+                <h2 className="text-sm font-bold uppercase tracking-widest text-gray-600 dark:text-gray-400 transition-colors">
+                  BIOGRAPHY
+                </h2>
+              </div>
+
+              <div className="space-y-5 text-base leading-relaxed text-gray-700 dark:text-gray-300 transition-colors">
+                <p>
+                  Hi, I'm <strong className="text-black dark:text-white font-bold">Sujay Babu Thota</strong>, a Full Stack Developer passionate about crafting modern, scalable, and high-performance digital experiences. I'm currently pursuing a B.Tech in Computer Science and Design at SRKR Engineering College, where I focus on building clean, efficient, and production-ready applications.
+                </p>
+
+                <p>
+                  For me, technology is more than just writing code â€” it's about solving real problems with thoughtful design, smart systems, and user-centered thinking. I love transforming ideas into reliable and meaningful products that people enjoy using.
+                </p>
+
+                <p>
+                  Whether it's developing AI-powered healthcare tools, intuitive dashboards, or full-stack platforms, I bring creativity, precision, and a product-first mindset to every project. I'm excited to continue growing and contributing to impactful software that makes a difference.
+                </p>
+              </div>
             </div>
-            
-            <div className="text-center lg:text-right">
-              <div className="text-4xl sm:text-5xl lg:text-8xl font-black text-black dark:text-white transition-colors">3+</div>
-              <div className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 mt-1 transition-colors">Client Projects</div>
-            </div>
-            
-            <div className="text-center lg:text-right">
-              <div className="text-4xl sm:text-5xl lg:text-8xl font-black text-black dark:text-white transition-colors">1+</div>
-              <div className="text-xs sm:text-sm font-medium text-gray-600 dark:text-gray-400 mt-1 transition-colors">Years Experience </div>
-            </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Skills Section */}
         <div className="mb-32">
           <h2 className="text-center text-5xl font-bold text-black dark:text-white mb-16 transition-colors">Skills</h2>
           <div className="max-w-6xl mx-auto space-y-8">
@@ -306,8 +347,7 @@ const About = () => {
               transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
               className="relative inline-block"
             >
-              <h2                 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 transition-colors"
-              >
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-black via-purple-600 to-cyan-600 dark:from-white dark:via-purple-400 dark:to-cyan-400 mb-6 relative">
                 MY APPROACH
                 <motion.div
                   className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-purple-600/20 to-cyan-600/20 rounded-3xl blur-xl sm:blur-2xl"
@@ -344,8 +384,8 @@ const About = () => {
               className="mt-6"
             >
               <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 text-center flex items-center justify-center gap-2">
-                <span className="hidden lg:inline">💡 Hover over cards to reveal details</span>
-                <span className="lg:hidden">💡 Scroll through cards to reveal details</span>
+                <span className="hidden lg:inline">ðŸ’¡ Hover over cards to reveal details</span>
+                <span className="lg:hidden">ðŸ’¡ Scroll through cards to reveal details</span>
               </p>
             </motion.div>
           </motion.div>
