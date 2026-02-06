@@ -178,6 +178,34 @@ projects: [
   },
   {
     id: 3,
+    title: "UIBlocks – Component Library & Gallery",
+    category: "Component Library",
+    type: "fullstack",
+    description:
+      "Modern interactive component library with live previews, search, filtering, and admin panel. Browse, create, edit, and share beautiful UI components with real-time rendering.",
+    image:
+      "/projects/uiblocks.png",
+    tags: ["React", "TypeScript", "shadcn/ui", "Tailwind", "Node.js", "Express", "PostgreSQL"],
+    badge: "In Progress",
+    github: "https://github.com/Sujay149/UIBlocks",
+    demo: "https://ui-blocks-rho.vercel.app/",
+  },
+  {
+    id: 4,
+    title: "Slooze – Food Ordering System",
+    type: "frontend",
+    category: "Food Ordering Platform",
+    description:
+      "Enterprise-grade food ordering platform with Role-Based Access Control, JWT authentication, and multi-tenant data isolation. Features admin, manager, and member roles with country-based data segregation.",
+    image:
+      "/projects/slooze.png",
+    tags: ["NestJS", "Next.js", "TypeScript", "JWT", "Passport.js", "Tailwind"],
+    badge: null,
+    github: "https://github.com/Sujay149/slooze-food-ordering-system",
+    demo: "https://slooze-food-ordering-system.vercel.app/",
+  },
+  {
+    id: 5,
     title: "Research & Startup Management System",
     type: "fullstack",
     category: "Enterprise Platform",
@@ -191,7 +219,7 @@ projects: [
     demo: "https://innovationgujarat.vercel.app/",
   },
   {
-    id: 4,
+    id: 6,
     title: "CodeDale – Tech Agency Website",
     type: "frontend",
     category: "Web Application",
@@ -205,7 +233,7 @@ projects: [
     demo: "https://code-dale.vercel.app/",
   },
   {
-    id: 5,
+    id: 7,
     title: "CraveFinder",
     type: "frontend",
     category: "Food Discovery App",
