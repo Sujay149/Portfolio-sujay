@@ -11,7 +11,7 @@ const Footer = () => {
             2025 © All Rights Reserved.
           </p>
           <p className="text-gray-600 dark:text-gray-400 text-sm flex items-center gap-2 transition-colors">
-            Built with <Heart size={16} fill="#E60023" stroke="#E60023" /> by <a href="https://github.com" className="underline hover:text-black dark:hover:text-white transition-colors">Sujay Babu</a>
+            Built with <Heart size={16} fill="#E60023" stroke="#E60023" /> by <a href="https://github.com/Sujay149" className="underline hover:text-black dark:hover:text-white transition-colors">Sujay Babu</a>
           </p>
           <Link to="/contact" className="text-gray-600 dark:text-gray-400 text-sm underline hover:text-black dark:hover:text-white transition-colors">
             Say Hello
