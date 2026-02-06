@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      width: 1200px;
+      height: 630px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000000;
+      font-family: 'Inter', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Mesh gradient background */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(236, 72, 153, 0.2) 0%, transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.2) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 40%);
+      filter: blur(60px);
+      opacity: 0.8;
+    }
+    
+    /* Grid pattern overlay */
+    body::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      opacity: 0.5;
+    }
+    
+    .container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 70px;
+      padding: 0 80px;
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    
+    .left-section {
+      flex: 1;
+      max-width: 580px;
+    }
+    
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      color: #ec4899;
+      padding: 10px 22px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 28px;
+      letter-spacing: 0.3px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 20px rgba(236, 72, 153, 0.15);
+    }
+    
+    .badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ec4899;
+      box-shadow: 0 0 10px #ec4899;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    
+    h1 {
+      font-size: 72px;
+      font-weight: 900;
+      margin-bottom: 18px;
+      line-height: 1.05;
+      background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      text-shadow: 0 0 80px rgba(255, 255, 255, 0.1);
+    }
+    
+    h2 {
+      font-size: 38px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #6366f1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 32px;
+      letter-spacing: -0.01em;
+    }
+    
+    .description {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      font-weight: 500;
+    }
+    
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .tech-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+      padding: 11px 20px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .image-container {
+      position: relative;
+      width: 360px;
+      height: 360px;
+      flex-shrink: 0;
+    }
+    
+    /* Decorative circles */
+    .image-container::before,
+    .image-container::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      z-index: -1;
+    }
+    
+    .image-container::before {
+      width: 380px;
+      height: 380px;
+      top: -10px;
+      left: -10px;
+      background: linear-gradient(135deg, #ec4899, #8b5cf6);
+      opacity: 0.15;
+      filter: blur(30px);
+      animation: rotate-circle 20s linear infinite;
+    }
+    
+    .image-container::after {
+      width: 400px;
+      height: 400px;
+      top: -20px;
+      left: -20px;
+      background: linear-gradient(225deg, #6366f1, #8b5cf6);
+      opacity: 0.1;
+      filter: blur(40px);
+      animation: rotate-circle 25s linear infinite reverse;
+    }
+    
+    @keyframes rotate-circle {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .image-wrapper {
+      width: 100%;
+      height: 100%;
+      border-radius: 32px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+      box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(236, 72, 153, 0.2);
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Glowing border effect */
+    .image-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      background: linear-gradient(135deg, #ec4899, #8b5cf6, #6366f1);
+      border-radius: 32px;
+      z-index: -1;
+      filter: blur(15px);
+      opacity: 0.5;
+    }
+    
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(1.05) contrast(1.05);
+    }
+    
+    .footer {
+      position: absolute;
+      bottom: 50px;
+      left: 80px;
+      right: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 28px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      backdrop-filter: blur(20px);
+    }
+    
+    .website {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 17px;
+      font-weight: 600;
+    }
+    
+    .website::before {
+      content: '🌐';
+      font-size: 20px;
+    }
+    
+    .stats {
+      display: flex;
+      gap: 28px;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 600;
+    }
+    
+    .stats span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .stats .highlight {
+      color: #ec4899;
+      font-weight: 700;
+    }
+    
+    /* Top corner badge */
+    .corner-badge {
+      position: absolute;
+      top: 40px;
+      right: 80px;
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      padding: 12px 24px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="corner-badge">PORTFOLIO 2026</div>
+  
+  <div class="container">
+    <div class="left-section">
+      <div class="badge">Available for Work</div>
+      <h1>Sujay Babu Thota</h1>
+      <h2>Full Stack Developer</h2>
+      <p class="description">Building exceptional digital experiences with modern technologies and innovative solutions</p>
+      
+      <div class="tech-stack">
+        <div class="tech-item">React</div>
+        <div class="tech-item">Next.js</div>
+        <div class="tech-item">Node.js</div>
+        <div class="tech-item">TypeScript</div>
+        <div class="tech-item">AI/ML</div>
+      </div>
+    </div>
+    
+    <div class="image-container">
+      <div class="image-wrapper">
+        <img src="../public/sujay.jpg" alt="Sujay Babu Thota" class="profile-img">
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <div class="website">sujaybabu.vercel.app</div>
+    <div class="stats">
+      <span><span class="highlight">10+</span> Projects</span>
+      <span>•</span>
+      <span><span class="highlight">1+</span> Years Experience</span>
+    </div>
+  </div>
+</body>
+</html>
