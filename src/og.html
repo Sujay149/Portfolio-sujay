@@ -131,6 +131,40 @@
       font-weight: 500;
     }
     
+    .cta-section {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(236, 72, 153, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .cta-button::after {
+      content: '→';
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+    
+    .cta-text {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 15px;
+      font-weight: 600;
+    }
+    
     .tech-stack {
       display: flex;
       flex-wrap: wrap;
@@ -302,6 +336,11 @@
       <h1>Sujay Babu Thota</h1>
       <h2>Full Stack Developer</h2>
       <p class="description">Building exceptional digital experiences with modern technologies and innovative solutions</p>
+      
+      <div class="cta-section">
+        <div class="cta-button">View My Work</div>
+        <div class="cta-text">10+ Live Projects</div>
+      </div>
       
       <div class="tech-stack">
         <div class="tech-item">React</div>
