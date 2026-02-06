@@ -40,17 +40,17 @@ const FeaturedProject = ({ project, index }) => {
       {/* Content positioned at bottom */}
       <div className="absolute inset-x-8 bottom-8">
         {/* Title */}
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3 transition-colors">
+        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 transition-colors line-clamp-2">
           {project.title}
         </h3>
 
         {/* Description */}
-        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4 line-clamp-3 transition-colors">
+        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4 line-clamp-2 transition-colors">
           {project.description}
         </p>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 mt-2">
           <a 
             href={project.github}
             target="_blank"
@@ -126,64 +126,13 @@ const RegularProject = ({ project }) => {
   );
 };
 
-const ProjectRow = ({ projects, title, delay = 0, enableAutoScroll = true }) => {
+const ProjectRow = ({ projects, title, delay = 0 }) => {
   const scrollRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
-
-  useEffect(() => {
-    if (!enableAutoScroll) return;
-
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    let scrollInterval;
-    let isPaused = false;
-
-    const startAutoScroll = () => {
-      scrollInterval = setInterval(() => {
-        if (!isPaused && scrollContainer) {
-          scrollContainer.scrollLeft += 1;
-          
-          // Calculate the halfway point (since we duplicated the content)
-          const halfWidth = scrollContainer.scrollWidth / 2;
-          
-          // Reset to start when reaching halfway (seamless loop)
-          if (scrollContainer.scrollLeft >= halfWidth) {
-            scrollContainer.scrollLeft = 0;
-          }
-        }
-      }, 30);
-    };
-
-    // Start auto-scroll after a delay
-    const timeout = setTimeout(startAutoScroll, 1000);
-
-    // Pause on hover
-    const handleMouseEnter = () => {
-      isPaused = true;
-    };
-
-    const handleMouseLeave = () => {
-      isPaused = false;
-    };
-
-    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
-    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      clearTimeout(timeout);
-      clearInterval(scrollInterval);
-      scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
-      scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, [enableAutoScroll]);
-
-  // Duplicate projects for seamless looping only if auto-scroll is enabled
-  const duplicatedProjects = enableAutoScroll ? [...projects, ...projects] : projects;
 
   return (
     <div className="mb-16">
@@ -204,8 +153,8 @@ const ProjectRow = ({ projects, title, delay = 0, enableAutoScroll = true }) => 
           WebkitOverflowScrolling: 'touch'
         }}
       >
-        {duplicatedProjects.map((project, index) => (
-          <FeaturedProject key={`${project.id}-${index}`} project={project} index={index} />
+        {projects.map((project, index) => (
+          <FeaturedProject key={project.id} project={project} index={index} />
         ))}
       </div>
     </div>
@@ -258,7 +207,6 @@ const Projects = () => {
             projects={frontendProjects} 
             title="Frontend Projects" 
             delay={200}
-            enableAutoScroll={false}
           />
         )}
       </div>

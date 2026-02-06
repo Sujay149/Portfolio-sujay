@@ -147,7 +147,7 @@ projects: [
     category: "Web Application",
     type: "fullstack",
     description:
-      "Support system for ADHD, autism, and dyslexia-based learning. Designed cognitive-friendly UI to reduce overload, created personalized learning and focus modules, and enabled secure real-time content flow using Firebase.",
+      "A comprehensive support platform designed for individuals with ADHD, autism, and dyslexia. Features personalized learning modules and cognitive-friendly UI for enhanced accessibility.",
     image:
       "/projects/nuerohub.png",
     tags: ["Next.js", "Tailwind", "Firebase"],
@@ -161,7 +161,7 @@ projects: [
     category: "E-Commerce Platform",
     type: "fullstack",
     description:
-      "Complete end-to-end e-commerce application with authentication, cart, orders, wishlist, email notifications, and Razorpay payments. Includes secure role-based access, automated email reminders with Nodemailer, and optimized responsive UI.",
+      "Complete e-commerce solution with secure authentication, shopping cart, order management, wishlist, and integrated Razorpay payments with automated email notifications.",
     image:
       "/projects/rofero.png",
     tags: [
@@ -174,43 +174,15 @@ projects: [
     ],
     badge: null,
     github: "https://github.com/Sujay149/Rofero",
-    demo: "https://rofero.vercel.app",
+    demo: "https://clothingbrand-nu.vercel.app/",
   },
   {
     id: 3,
-    title: "CraveFinder",
-    type: "frontend",
-    category: "Food Discovery App",
-    description:
-      "A modern food discovery app to explore restaurants, cafes, and local eateries with a clean UI and seamless browsing experience.",
-    image:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=500&fit=crop&q=80",
-    tags: ["TypeScript", "React", "Node.js"],
-    badge: null,
-    github: "https://github.com/Sujay149",
-    demo: "https://crave-finder.vercel.app/",
-  },
-  {
-    id: 4,
-    title: "ReDestiny",
-    type: "fullstack",
-    category: "Interactive Design",
-    description:
-      "A creative project showcasing interactive design and engaging user experiences with a focus on UI aesthetics and responsive layouts.",
-    image:
-      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&h=500&fit=crop&q=80",
-    tags: ["React.js", "Tailwind CSS", "Bootstrap", "Material UI", "MongoDB", "Node.js"],
-    badge: null,
-    github: "https://github.com/Sujay149",
-    demo: "#",
-  },
-  {
-    id: 5,
     title: "Research & Startup Management System",
     type: "fullstack",
     category: "Enterprise Platform",
     description:
-      "A comprehensive platform for managing research, IPR, innovation projects, and startups in Gujarat, developed for Smart India Hackathon.",
+      "Enterprise platform for managing research projects, intellectual property rights, innovation initiatives, and startup ecosystems across Gujarat. Built for Smart India Hackathon.",
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop&q=80",
     tags: ["React.js", "Tailwind CSS", "Bootstrap", "Material UI", "MongoDB", "Node.js"],
@@ -219,21 +191,33 @@ projects: [
     demo: "https://innovationgujarat.vercel.app/",
   },
   {
-  id: 6,
-  title: "CodeDale – Tech Agency Website",
-      type: "frontend",
-
-  category: "Web Application",
-  description:
-    "Corporate site for a technology solutions agency showcasing services, achievements, client testimonials, and case studies. Designed a professional responsive layout with clear navigation, featured client social proof, and conversion-oriented calls to action to drive engagement and inquiries.",
-  image:
-    "/projects/codedale.png",
-  tags: ["Next.js", "React", "Vercel"],
-  badge: null,
-  github: "https://github.com/Sujay149/codedale-task",
-  demo: "https://code-dale.vercel.app/",
-}
-
+    id: 4,
+    title: "CodeDale – Tech Agency Website",
+    type: "frontend",
+    category: "Web Application",
+    description:
+      "Professional corporate website showcasing technology solutions, services, client testimonials, and case studies with conversion-focused design.",
+    image:
+      "/projects/codedale.png",
+    tags: ["Next.js", "React", "Vercel"],
+    badge: null,
+    github: "https://github.com/Sujay149/codedale-task",
+    demo: "https://code-dale.vercel.app/",
+  },
+  {
+    id: 5,
+    title: "CraveFinder",
+    type: "frontend",
+    category: "Food Discovery App",
+    description:
+      "Modern food discovery platform to explore restaurants, cafes, and local eateries with intuitive navigation and seamless browsing experience.",
+    image:
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=500&fit=crop&q=80",
+    tags: ["TypeScript", "React", "Node.js"],
+    badge: null,
+    github: "https://github.com/Sujay149",
+    demo: "https://crave-finder.vercel.app/",
+  }
 ]
 
 
