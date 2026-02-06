@@ -130,18 +130,11 @@ const About = () => {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-cyan-600 dark:from-purple-400 dark:to-cyan-400 rounded-3xl blur-2xl opacity-30 animate-pulse"></div>
-                <div className="relative border-4 border-black dark:border-white rounded-3xl p-3 bg-white dark:bg-gray-800 shadow-2xl transition-colors">
-                  <div className="w-80 h-96 rounded-2xl overflow-hidden bg-gray-100">
-                    <img 
-                      src="sujay.jpg" 
-                      alt="Profile" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
+              <img 
+                src="sujay.jpg" 
+                alt="Profile" 
+                className="w-80 h-96 object-cover"
+              />
             </motion.div>
 
             {/* Stats Column */}
