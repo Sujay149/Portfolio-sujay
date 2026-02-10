@@ -43,7 +43,7 @@ export const mockData = {
       },
       {
         id: 2,
-        title: "1+ Years of Experience as Intern",
+        title: "1+ Years of Experience as Intern & Freelancer",
         description: "Bringing hands-on expertise in modern web technologies and AI systems",
         image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop&q=80",
         bgColor: "bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700",
@@ -143,6 +143,20 @@ export const mockData = {
 projects: [
   {
     id: 1,
+    title: "Prompt2Code",
+    category: "VS Code Extension",
+    type: "fullstack",
+    description:
+      "Prompt-driven code generation and inline completions inside VS Code.",
+    image:
+      "/projects/Prompt2Code.png",
+    tags: ["Typescript", "Node.Js", "Html","Css"],
+    badge: null,
+    github: "https://github.com/Sujay149/Prompt2Code.git",
+    demo: "https://marketplace.visualstudio.com/items?itemName=SujayBabuThota.prompt2code",
+  },
+   {
+    id: 2,
     title: "NeuroHub – Neurodiversity Support Platform",
     category: "Web Application",
     type: "fullstack",
@@ -156,7 +170,7 @@ projects: [
     demo: "https://nuerohub.vercel.app/",
   },
   {
-    id: 2,
+    id: 3,
     title: "Rofero – Full Stack E-Commerce Platform",
     category: "E-Commerce Platform",
     type: "fullstack",
@@ -177,7 +191,7 @@ projects: [
     demo: "https://clothingbrand-nu.vercel.app/",
   },
   {
-    id: 3,
+    id: 4,
     title: "UIBlocks – Component Library & Gallery",
     category: "Component Library",
     type: "fullstack",
@@ -191,7 +205,7 @@ projects: [
     demo: "https://ui-blocks-rho.vercel.app/",
   },
   {
-    id: 4,
+    id: 5,
     title: "Slooze – Food Ordering System",
     type: "frontend",
     category: "Food Ordering Platform",
@@ -205,7 +219,7 @@ projects: [
     demo: "https://slooze-food-ordering-system.vercel.app/",
   },
   {
-    id: 5,
+    id: 6,
     title: "Research & Startup Management System",
     type: "fullstack",
     category: "Enterprise Platform",
@@ -219,7 +233,7 @@ projects: [
     demo: "https://innovationgujarat.vercel.app/",
   },
   {
-    id: 6,
+    id: 7,
     title: "CodeDale – Tech Agency Website",
     type: "frontend",
     category: "Web Application",
@@ -233,7 +247,7 @@ projects: [
     demo: "https://code-dale.vercel.app/",
   },
   {
-    id: 7,
+    id: 8,
     title: "CraveFinder",
     type: "frontend",
     category: "Food Discovery App",
