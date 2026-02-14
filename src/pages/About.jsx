@@ -124,17 +124,95 @@ const About = () => {
           <div className="flex flex-col lg:flex-row items-center justify-center gap-12 mb-16">
             {/* Profile Image */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="relative"
+              className="relative group"
             >
-              <img 
-                src="Sujay.jpeg" 
-                alt="Profile" 
-                className="w-80 h-96 object-cover"
-              />
+              {/* Stacked shadow cards for 3D depth */}
+              <div className="relative transform-gpu group-hover:translate-y-[-4px] transition-all duration-500 ease-out">
+                {/* Layer 4 - Deepest shadow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/30 to-pink-600/30 translate-x-6 translate-y-6 blur-md group-hover:translate-x-8 group-hover:translate-y-8 transition-all duration-500"></div>
+                
+                {/* Layer 3 */}
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/40 to-blue-600/40 translate-x-4 translate-y-4 blur-sm group-hover:translate-x-6 group-hover:translate-y-6 transition-all duration-500"></div>
+                
+                {/* Layer 2 */}
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/50 to-purple-500/50 translate-x-2 translate-y-2 group-hover:translate-x-4 group-hover:translate-y-4 transition-all duration-500"></div>
+                
+                {/* Layer 1 - Closest shadow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-400/60 to-cyan-400/60 translate-x-1 translate-y-1 group-hover:translate-x-2 group-hover:translate-y-2 transition-all duration-500"></div>
+                
+                {/* Main image card */}
+                <div className="relative bg-white dark:bg-gray-900 p-2 shadow-2xl overflow-hidden">
+                  {/* Gradient border that appears on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-[3px] bg-white dark:bg-gray-900"></div>
+                  
+                  {/* Image */}
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src="Sujay.jpeg" 
+                      alt="Profile" 
+                      className="w-80 h-96 object-cover relative z-10 transform group-hover:scale-105 transition-transform duration-700"
+                    />
+                    
+                    {/* Corner accent lines that illuminate on hover */}
+                    {/* Top left */}
+                    <div className="absolute top-0 left-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                      <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-purple-500 to-transparent"></div>
+                      <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-purple-500 to-transparent"></div>
+                    </div>
+                    
+                    {/* Top right */}
+                    <div className="absolute top-0 right-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-75">
+                      <div className="absolute top-0 right-0 w-full h-[3px] bg-gradient-to-l from-cyan-500 to-transparent"></div>
+                      <div className="absolute top-0 right-0 w-[3px] h-full bg-gradient-to-b from-cyan-500 to-transparent"></div>
+                    </div>
+                    
+                    {/* Bottom left */}
+                    <div className="absolute bottom-0 left-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-150">
+                      <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-pink-500 to-transparent"></div>
+                      <div className="absolute bottom-0 left-0 w-[3px] h-full bg-gradient-to-t from-pink-500 to-transparent"></div>
+                    </div>
+                    
+                    {/* Bottom right */}
+                    <div className="absolute bottom-0 right-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200">
+                      <div className="absolute bottom-0 right-0 w-full h-[3px] bg-gradient-to-l from-cyan-500 to-transparent"></div>
+                      <div className="absolute bottom-0 right-0 w-[3px] h-full bg-gradient-to-t from-cyan-500 to-transparent"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating particles scattered around for dynamic feel */}
+              <div className="absolute -top-6 left-1/4 w-2 h-2 bg-purple-400 rounded-full shadow-lg shadow-purple-400/50 animate-float"></div>
+              <div className="absolute -top-4 right-1/3 w-1.5 h-1.5 bg-pink-400 rounded-full shadow-lg shadow-pink-400/50 animate-float animation-delay-1000"></div>
+              <div className="absolute top-1/4 -left-6 w-2.5 h-2.5 bg-cyan-400 rounded-full shadow-lg shadow-cyan-400/50 animate-float animation-delay-2000"></div>
+              <div className="absolute top-1/2 -right-5 w-1.5 h-1.5 bg-purple-400 rounded-full shadow-lg shadow-purple-400/50 animate-float animation-delay-3000"></div>
+              <div className="absolute bottom-1/4 -left-5 w-2 h-2 bg-pink-400 rounded-full shadow-lg shadow-pink-400/50 animate-float animation-delay-1500"></div>
+              <div className="absolute -bottom-6 left-1/3 w-2.5 h-2.5 bg-cyan-400 rounded-full shadow-lg shadow-cyan-400/50 animate-float animation-delay-2500"></div>
+              <div className="absolute -bottom-4 right-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full shadow-lg shadow-purple-400/50 animate-float animation-delay-500"></div>
+              <div className="absolute top-2/3 -right-6 w-2 h-2 bg-pink-400 rounded-full shadow-lg shadow-pink-400/50 animate-float animation-delay-3500"></div>
+
+              {/* Animation styles */}
+              <style>{`
+                @keyframes float {
+                  0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.6; }
+                  25% { transform: translateY(-10px) translateX(5px); opacity: 0.8; }
+                  50% { transform: translateY(-5px) translateX(-5px); opacity: 1; }
+                  75% { transform: translateY(-15px) translateX(3px); opacity: 0.7; }
+                }
+                .animate-float { animation: float 4s ease-in-out infinite; }
+                .animation-delay-500 { animation-delay: 0.5s; }
+                .animation-delay-1000 { animation-delay: 1s; }
+                .animation-delay-1500 { animation-delay: 1.5s; }
+                .animation-delay-2000 { animation-delay: 2s; }
+                .animation-delay-2500 { animation-delay: 2.5s; }
+                .animation-delay-3000 { animation-delay: 3s; }
+                .animation-delay-3500 { animation-delay: 3.5s; }
+              `}</style>
             </motion.div>
 
             {/* Stats Column */}
