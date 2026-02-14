@@ -131,7 +131,7 @@ const About = () => {
               className="relative"
             >
               <img 
-                src="sujay.jpg" 
+                src="favicon.png" 
                 alt="Profile" 
                 className="w-80 h-96 object-cover"
               />
