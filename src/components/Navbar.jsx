@@ -149,15 +149,13 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div 
-          className="md:hidden fixed inset-0 top-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ease-in-out z-40"
+          className="md:hidden fixed inset-0 top-0 bg-transparent transition-opacity duration-300 ease-in-out z-40"
           onClick={closeMobileMenu}
         >
-          <div className="flex flex-col items-center justify-center h-screen gap-8 px-6">
-            {/* Mobile Navigation Links Container */}
-            <div 
-              className="bg-white dark:bg-gray-800 rounded-3xl border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] p-8 flex flex-col gap-6 min-w-[280px]"
-              onClick={(e) => e.stopPropagation()}
-            >
+          <div 
+            className="bg-white dark:bg-gray-800 mx-0 mt-0 rounded-3xl border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] p-8 flex flex-col gap-6 animate-slideDown"
+            onClick={(e) => e.stopPropagation()}
+          >
             <Link 
               to="/" 
               onClick={closeMobileMenu}
@@ -198,6 +196,16 @@ const Navbar = () => {
               Experience
             </Link>
             <div className="h-px bg-gray-200 dark:bg-gray-600"></div>
+            <Link 
+              to="/contact" 
+              onClick={closeMobileMenu}
+              className={`text-2xl font-bold transition-colors hover:text-black dark:hover:text-white text-center ${
+                isActive('/contact') ? 'text-black dark:text-white' : 'text-gray-700 dark:text-gray-300'
+              }`}
+            >
+              Contact
+            </Link>
+            <div className="h-px bg-gray-200 dark:bg-gray-600"></div>
             <button 
               onClick={toggleDarkMode}
               className="text-black dark:text-white hover:opacity-70 transition-opacity flex items-center justify-center gap-2 text-xl font-bold"
@@ -207,8 +215,23 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-        </div>
       )}
+      
+      <style jsx>{`
+        @keyframes slideDown {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .animate-slideDown {
+          animation: slideDown 0.3s ease-out;
+        }
+      `}</style>
     </nav>
   );
 };
