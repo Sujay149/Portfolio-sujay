@@ -149,11 +149,11 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div 
-          className="md:hidden fixed inset-0 top-0 bg-transparent transition-opacity duration-300 ease-in-out z-40"
+          className="md:hidden fixed inset-0 top-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ease-in-out z-40"
           onClick={closeMobileMenu}
         >
           <div 
-            className="bg-white dark:bg-gray-800 mx-0 mt-0 rounded-3xl border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] p-8 flex flex-col gap-6 animate-slideDown"
+            className="bg-white dark:bg-gray-800 mx-4 mt-0 rounded-3xl border-4 border-black dark:border-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] p-8 flex flex-col gap-6 animate-slideDown"
             onClick={(e) => e.stopPropagation()}
           >
             <Link 
