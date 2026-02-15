@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Github } from 'lucide-react';
+import { Github, ChevronLeft, ChevronRight } from 'lucide-react';
 import { mockData } from '../mock';
 
 const FeaturedProject = ({ project, index }) => {
@@ -129,10 +129,85 @@ const RegularProject = ({ project }) => {
 const ProjectRow = ({ projects, title, delay = 0 }) => {
   const scrollRef = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   useEffect(() => {
     setIsLoaded(true);
+
+    // Check if screen is small (mobile/tablet)
+    const checkScreenSize = () => {
+      setIsSmallScreen(window.innerWidth < 768);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
+
+  // Update scroll button visibility
+  const updateScrollButtons = () => {
+    if (!scrollRef.current) return;
+    
+    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+    setCanScrollLeft(scrollLeft > 0);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+  };
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    updateScrollButtons();
+    scrollContainer.addEventListener('scroll', updateScrollButtons);
+    window.addEventListener('resize', updateScrollButtons);
+
+    return () => {
+      scrollContainer.removeEventListener('scroll', updateScrollButtons);
+      window.removeEventListener('resize', updateScrollButtons);
+    };
+  }, []);
+
+  // Auto-scroll functionality for small screens
+  useEffect(() => {
+    if (!isSmallScreen || !scrollRef.current) return;
+
+    const scrollContainer = scrollRef.current;
+    let scrollInterval;
+
+    const autoScroll = () => {
+      const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+      const currentScroll = scrollContainer.scrollLeft;
+
+      // If we've reached the end, scroll back to the beginning
+      if (currentScroll >= maxScroll - 10) {
+        scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        // Scroll by one card width (360px + 24px gap)
+        scrollContainer.scrollBy({ left: 384, behavior: 'smooth' });
+      }
+    };
+
+    // Start auto-scrolling every 3 seconds
+    scrollInterval = setInterval(autoScroll, 3000);
+
+    return () => clearInterval(scrollInterval);
+  }, [isSmallScreen]);
+
+  // Scroll functions
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -384, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 384, behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="mb-16">
@@ -144,18 +219,42 @@ const ProjectRow = ({ projects, title, delay = 0 }) => {
       >
         {title}
       </h2>
-      <div 
-        ref={scrollRef}
-        className="flex gap-6 overflow-x-auto scroll-smooth pb-4 scrollbar-hide"
-        style={{
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none',
-          WebkitOverflowScrolling: 'touch'
-        }}
-      >
-        {projects.map((project, index) => (
-          <FeaturedProject key={project.id} project={project} index={index} />
-        ))}
+      <div className="relative group">
+        {/* Left Scroll Button */}
+        {canScrollLeft && (
+          <button
+            onClick={scrollLeft}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-full p-3 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all opacity-0 group-hover:opacity-100 hover:scale-110"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft size={24} />
+          </button>
+        )}
+
+        {/* Right Scroll Button */}
+        {canScrollRight && (
+          <button
+            onClick={scrollRight}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-full p-3 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all opacity-0 group-hover:opacity-100 hover:scale-110"
+            aria-label="Scroll right"
+          >
+            <ChevronRight size={24} />
+          </button>
+        )}
+
+        <div 
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-auto scroll-smooth pb-4 scrollbar-hide"
+          style={{
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            WebkitOverflowScrolling: 'touch'
+          }}
+        >
+          {projects.map((project, index) => (
+            <FeaturedProject key={project.id} project={project} index={index} />
+          ))}
+        </div>
       </div>
     </div>
   );
