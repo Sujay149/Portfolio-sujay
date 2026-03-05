@@ -141,6 +141,7 @@ export const mockData = {
   },
 
 projects: [
+  
   {
     id: 1,
     title: "Prompt2Code",
