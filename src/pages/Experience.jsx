@@ -5,9 +5,10 @@ import { mockData } from '../mock';
 const ExperienceCard = ({ exp, index }) => {
   // Color schemes for cards
   const colors = [
-    { bg: 'bg-[#912f56]', text: 'text-white', badge: 'bg-white/20' }, // Berry
+    { bg: 'bg-[#0D9BA5]', text: 'text-white', badge: 'bg-white/20' }, // Teal
     { bg: 'bg-[#f13c77]', text: 'text-[#fff8e1]', badge: 'bg-white/20' }, // Peach
     { bg: 'bg-[#97a87a]', text: 'text-white', badge: 'bg-white/20' }, // Forest Green
+    { bg: 'bg-[#5B4D7D]', text: 'text-white', badge: 'bg-white/20' }, // Purple
   ];
   
   const colorScheme = colors[index % colors.length];

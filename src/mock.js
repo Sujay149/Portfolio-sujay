@@ -9,7 +9,7 @@ export const mockData = {
     description: "Highly driven Full Stack Developer with hands-on experience building production-ready web applications and AI-powered systems. Skilled in modern frameworks, scalable architectures and real-world deployments with a strong focus on problem-solving, rapid learning, and product-oriented development.",
     hireMeText: "Hire Me | Full Stack Developer | AI Enthusiast",
     email: "sujayss149@gmail.com",
-    resume: "Sujay_Babu_Thota_Software_Development_Engineer.pdf",
+    resume: "Sujay_Babu_Thota_SDE_1.pdf",
     phone: "+91-9346491221"
   },
   
@@ -68,8 +68,25 @@ export const mockData = {
 
     ],
     experience: [
-       {
+      {
         id: 1,
+        title: "Junior Software Developer",
+        company: "Techub",
+        period: "Mar 2026 – Present",
+        description: "Building mobile and web applications using React Native and modern JavaScript frameworks.",
+        technologies: ["React Native", "JavaScript", "Web Applications"],
+        achievements: [
+          "Developing mobile and web applications using React Native and modern JavaScript frameworks.",
+          "Contributing to production projects and strengthening skills in scalable system design.",
+          "Working on full-cycle development from design to deployment."
+        ],
+        links: {
+          live: "",
+          github: ""
+        }
+      },
+       {
+        id: 2,
         title: "Fullstack Developer  Intern ",
         company: "Brandverse Technologies India Pvt. Ltd.",
         period: "Sep 2025 – Oct 2025",
@@ -86,7 +103,7 @@ export const mockData = {
         }
       },
       {
-        id: 2,
+        id: 3,
         title: "Fullstack Developer and Prompt Engineering Intern ",
         company: "Asvix",
         period: "Jun 2025 – Sep 2025",
@@ -105,7 +122,7 @@ export const mockData = {
       },
      
       {
-        id: 3,
+        id: 4,
         title: "Freelance Web Developer — WonderKids",
         company: "Freelance Project",
         period: "Oct 2024 – Dec 2024",

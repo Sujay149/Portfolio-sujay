@@ -44,6 +44,15 @@ const Navbar = () => {
               About
               {isActive('/about') && <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-black dark:bg-white"></span>}
             </Link>
+             <Link 
+              to="/experience" 
+              className={`text-base font-medium transition-colors hover:text-black dark:hover:text-white relative ${
+                isActive('/experience') ? 'text-black dark:text-white' : 'text-gray-700 dark:text-gray-300'
+              }`}
+            >
+              Experience
+              {isActive('/experience') && <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-black dark:bg-white"></span>}
+            </Link>
             <Link 
               to="/projects" 
               className={`text-base font-medium transition-colors hover:text-black dark:hover:text-white relative ${
@@ -53,15 +62,7 @@ const Navbar = () => {
               Projects
               {isActive('/projects') && <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-black dark:bg-white"></span>}
             </Link>
-            <Link 
-              to="/experience" 
-              className={`text-base font-medium transition-colors hover:text-black dark:hover:text-white relative ${
-                isActive('/experience') ? 'text-black dark:text-white' : 'text-gray-700 dark:text-gray-300'
-              }`}
-            >
-              Experience
-              {isActive('/experience') && <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-black dark:bg-white"></span>}
-            </Link>
+           
             <Link 
               to="/contact" 
               className={`text-base font-medium transition-colors hover:text-black dark:hover:text-white relative ${
