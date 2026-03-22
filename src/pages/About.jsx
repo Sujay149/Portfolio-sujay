@@ -25,7 +25,7 @@ const Card = ({ title, icon, children, des, index, activeCardIndex, setActiveCar
           setActiveCardIndex(index);
         }
       },
-      { 
+      {
         threshold: 0.6,
         rootMargin: '-10% 0px -10% 0px'
       }
@@ -94,7 +94,7 @@ const About = () => {
         const sectionTop = rect.top;
         const sectionHeight = rect.height;
         const windowHeight = window.innerHeight;
-        
+
         if (sectionTop < windowHeight && sectionTop + sectionHeight > 0) {
           const visibleHeight = Math.min(windowHeight, sectionTop + sectionHeight) - Math.max(0, sectionTop);
           const progress = Math.min(100, Math.max(0, (visibleHeight / sectionHeight) * 150 - 25));
@@ -105,185 +105,453 @@ const About = () => {
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial check
-    
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   return (
-    <div className="min-h-screen pt-0 bg-gray-50 dark:bg-black transition-colors duration-300">
+    <div className="min-h-screen pt-0 bg-[#f5f0ec] dark:bg-[#0a0a0a] transition-colors duration-300">
+      {/* === HERO SECTION - Pixel-perfect Jenny Rose layout === */}
+      <section className="about-hero-section">
+        {/* Subtle background dot texture */}
+        <div className="about-hero-halftone"></div>
+
+        {/* Ghost/Watermark name behind image */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, delay: 0.3 }}
+          className="about-hero-ghost-name"
+          aria-hidden="true"
+        >
+          SUJAY THOTA
+        </motion.div>
+
+        {/* === Giant Name - Full Width, Centered === */}
+        <motion.h1
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="about-hero-name"
+        >
+          <span className="about-hero-name-line">SUJAY</span>
+          <span className="about-hero-name-line">THOTA</span>
+        </motion.h1>
+
+        {/* === Profile Image - Centered, overlapping name === */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          className="about-hero-image-wrapper"
+        >
+          {/* Halftone dots behind image */}
+          <div className="about-hero-dots"></div>
+          <img
+            src="Sujay.png"
+            alt="Sujay Babu Thota - Full Stack Developer"
+            className="about-hero-image"
+          />
+        </motion.div>
+
+        {/* === Left Column - Bio Text === */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="about-hero-bio"
+        >
+          <p>
+            Hey there! I'm a <strong>Full Stack Developer & UI/UX Designer</strong> working in the global marketplace.
+          </p>
+        </motion.div>
+
+        {/* === "// HIRE ME →" CTA - Bottom Left === */}
+        <motion.a
+          href="/contact"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.7 }}
+          className="about-hero-cta"
+        >
+          <span className="about-hero-cta-slash">//</span>
+          <span className="about-hero-cta-text">HIRE ME</span>
+          <span className="about-hero-cta-arrow">→</span>
+        </motion.a>
+
+        {/* === Right Column - Skills/Services List === */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+          className="about-hero-skills"
+        >
+          <span className="about-hero-skill light">Full Stack Development</span>
+          <span className="about-hero-skill bold">React & Next.js</span>
+          <span className="about-hero-skill light">UI/UX Design</span>
+          <span className="about-hero-skill light">AI & Automation</span>
+        </motion.div>
+
+        {/* ====== ALL HERO STYLES ====== */}
+        <style>{`
+          /* --- Section container --- */
+          .about-hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 700px;
+            overflow: hidden;
+            background: #f5f0ec;
+            transition: background 0.3s;
+          }
+          .dark .about-hero-section {
+            background: #0a0a0a;
+          }
+
+          /* --- Background halftone texture --- */
+          .about-hero-halftone {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, rgba(91, 26, 26, 0.05) 1px, transparent 1px);
+            background-size: 24px 24px;
+            pointer-events: none;
+            z-index: 0;
+          }
+          .dark .about-hero-halftone {
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+          }
+
+          /* --- Ghost watermark name --- */
+          .about-hero-ghost-name {
+            position: absolute;
+            top: 8%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(6rem, 16vw, 20rem);
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+            color: rgba(0, 0, 0, 0.04);
+            white-space: nowrap;
+            pointer-events: none;
+            user-select: none;
+            z-index: 1;
+          }
+          .dark .about-hero-ghost-name {
+            color: rgba(255, 255, 255, 0.03);
+          }
+
+          /* --- Giant Name --- */
+          .about-hero-name {
+            position: absolute;
+            top: 8%;
+            left: 5%;
+            z-index: 2;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(3.5rem, 11vw, 12rem);
+            font-weight: 900;
+            line-height: 0.88;
+            letter-spacing: -0.04em;
+            color: #5b1a1a;
+            margin: 0;
+            transition: color 0.3s;
+          }
+          .dark .about-hero-name {
+            color: #ffffff;
+          }
+          .about-hero-name-line {
+            display: block;
+          }
+
+          /* --- Profile Image Wrapper --- */
+          .about-hero-image-wrapper {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-45%);
+            z-index: 3;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+          }
+          .about-hero-image {
+            width: clamp(280px, 32vw, 480px);
+            height: clamp(380px, 75vh, 650px);
+            object-fit: cover;
+            object-position: top center;
+            position: relative;
+            z-index: 2;
+            -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 98%);
+            mask-image: linear-gradient(to bottom, black 80%, transparent 98%);
+          }
+
+          /* --- Halftone dots behind image --- */
+          .about-hero-dots {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 100%;
+            z-index: 1;
+            background-image: radial-gradient(circle, rgba(91, 26, 26, 0.22) 1.2px, transparent 1.2px);
+            background-size: 10px 10px;
+            -webkit-mask-image: radial-gradient(ellipse 55% 55% at 50% 45%, black 20%, transparent 70%);
+            mask-image: radial-gradient(ellipse 55% 55% at 50% 45%, black 20%, transparent 70%);
+            pointer-events: none;
+          }
+          .dark .about-hero-dots {
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1.2px, transparent 1.2px);
+          }
+
+          /* --- Bio Text (left column) --- */
+          .about-hero-bio {
+            position: absolute;
+            left: 5%;
+            top: 46%;
+            width: clamp(200px, 24vw, 340px);
+            z-index: 10;
+          }
+          .about-hero-bio p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.85rem, 1.1vw, 1.05rem);
+            font-weight: 400;
+            line-height: 1.65;
+            color: #444;
+            margin: 0;
+            transition: color 0.3s;
+          }
+          .dark .about-hero-bio p {
+            color: #aaa;
+          }
+          .about-hero-bio strong {
+            color: #5b1a1a;
+            font-weight: 700;
+          }
+          .dark .about-hero-bio strong {
+            color: #fff;
+          }
+
+          /* --- HIRE ME CTA (bottom left) --- */
+          .about-hero-cta {
+            position: absolute;
+            left: 5%;
+            bottom: 12%;
+            z-index: 10;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: gap 0.3s;
+          }
+          .about-hero-cta:hover {
+            gap: 16px;
+          }
+          .about-hero-cta-slash {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #999;
+            font-weight: 400;
+          }
+          .about-hero-cta-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            color: #1a1a1a;
+            transition: color 0.3s;
+          }
+          .dark .about-hero-cta-text {
+            color: #fff;
+          }
+          .about-hero-cta-arrow {
+            font-size: 1rem;
+            color: #1a1a1a;
+            transition: transform 0.3s, color 0.3s;
+          }
+          .dark .about-hero-cta-arrow {
+            color: #fff;
+          }
+          .about-hero-cta:hover .about-hero-cta-arrow {
+            transform: translateX(4px);
+          }
+
+          /* --- Skills list (right column) --- */
+          .about-hero-skills {
+            position: absolute;
+            right: 5%;
+            top: 56%;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+          }
+          .about-hero-skill {
+            font-family: 'Montserrat', sans-serif;
+            display: block;
+            text-align: right;
+            transition: transform 0.3s, color 0.3s;
+            cursor: default;
+          }
+          .about-hero-skill:hover {
+            transform: translateX(-6px);
+          }
+          .about-hero-skill.light {
+            font-size: clamp(0.8rem, 1vw, 0.95rem);
+            font-weight: 400;
+            color: #999;
+            letter-spacing: 0.02em;
+          }
+          .dark .about-hero-skill.light {
+            color: #666;
+          }
+          .about-hero-skill.bold {
+            font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: 0.01em;
+          }
+          .dark .about-hero-skill.bold {
+            color: #fff;
+          }
+
+          /* --- Responsive adjustments --- */
+          @media (max-width: 1024px) {
+            .about-hero-section {
+              height: auto;
+              min-height: 100vh;
+              padding-bottom: 60px;
+            }
+            .about-hero-name {
+              position: relative;
+              top: auto;
+              left: auto;
+              padding: 100px 24px 0;
+              font-size: clamp(3rem, 12vw, 5.5rem);
+            }
+            .about-hero-ghost-name {
+              font-size: clamp(4rem, 18vw, 8rem);
+              top: 6%;
+            }
+            .about-hero-image-wrapper {
+              position: relative;
+              top: auto;
+              left: auto;
+              transform: none;
+              display: flex;
+              justify-content: center;
+              margin-top: -30px;
+            }
+            .about-hero-image {
+              width: clamp(260px, 55vw, 360px);
+              height: clamp(340px, 60vh, 480px);
+            }
+            .about-hero-bio {
+              position: relative;
+              top: auto;
+              left: auto;
+              width: auto;
+              padding: 30px 24px 0;
+            }
+            .about-hero-bio p {
+              font-size: 0.95rem;
+              max-width: 400px;
+            }
+            .about-hero-skills {
+              position: relative;
+              top: auto;
+              right: auto;
+              align-items: flex-start;
+              padding: 24px 24px 0;
+            }
+            .about-hero-skill {
+              text-align: left;
+            }
+            .about-hero-cta {
+              position: relative;
+              left: auto;
+              bottom: auto;
+              padding: 30px 24px 0;
+            }
+          }
+        `}</style>
+      </section>
+
+      {/* === STATS + BIOGRAPHY SECTION === */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
-        {/* Main Heading */}
-        <div className="text-center mb-20 pt-[50px]">
-          <h1 className="text-7xl lg:text-8xl font-black text-black dark:text-white leading-[1.02] tracking-tight transition-colors">
-            Passion Fuels<br />Purpose!
-          </h1>
-        </div>
-
-        {/* Biography and Image Section */}
-        <div className="mb-32">
-          {/* Profile Image and Stats Row */}
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-12 mb-16">
-            {/* Profile Image */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="relative group"
-            >
-              {/* Stacked shadow cards for 3D depth */}
-              <div className="relative transform-gpu group-hover:translate-y-[-4px] transition-all duration-500 ease-out">
-                {/* Layer 4 - Deepest shadow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/30 to-pink-600/30 translate-x-6 translate-y-6 blur-md group-hover:translate-x-8 group-hover:translate-y-8 transition-all duration-500"></div>
-                
-                {/* Layer 3 */}
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/40 to-blue-600/40 translate-x-4 translate-y-4 blur-sm group-hover:translate-x-6 group-hover:translate-y-6 transition-all duration-500"></div>
-                
-                {/* Layer 2 */}
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/50 to-purple-500/50 translate-x-2 translate-y-2 group-hover:translate-x-4 group-hover:translate-y-4 transition-all duration-500"></div>
-                
-                {/* Layer 1 - Closest shadow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-400/60 to-cyan-400/60 translate-x-1 translate-y-1 group-hover:translate-x-2 group-hover:translate-y-2 transition-all duration-500"></div>
-                
-                {/* Main image card */}
-                <div className="relative bg-white dark:bg-gray-900 p-2 shadow-2xl overflow-hidden">
-                  {/* Gradient border that appears on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute inset-[3px] bg-white dark:bg-gray-900"></div>
-                  
-                  {/* Image */}
-                  <div className="relative overflow-hidden">
-                    <img 
-                      src="Sujay.jpeg" 
-                      alt="Profile" 
-                      className="w-80 h-96 object-cover relative z-10 transform group-hover:scale-105 transition-transform duration-700"
-                    />
-                    
-                    {/* Corner accent lines that illuminate on hover */}
-                    {/* Top left */}
-                    <div className="absolute top-0 left-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                      <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-purple-500 to-transparent"></div>
-                      <div className="absolute top-0 left-0 w-[3px] h-full bg-gradient-to-b from-purple-500 to-transparent"></div>
-                    </div>
-                    
-                    {/* Top right */}
-                    <div className="absolute top-0 right-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-75">
-                      <div className="absolute top-0 right-0 w-full h-[3px] bg-gradient-to-l from-cyan-500 to-transparent"></div>
-                      <div className="absolute top-0 right-0 w-[3px] h-full bg-gradient-to-b from-cyan-500 to-transparent"></div>
-                    </div>
-                    
-                    {/* Bottom left */}
-                    <div className="absolute bottom-0 left-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-150">
-                      <div className="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-pink-500 to-transparent"></div>
-                      <div className="absolute bottom-0 left-0 w-[3px] h-full bg-gradient-to-t from-pink-500 to-transparent"></div>
-                    </div>
-                    
-                    {/* Bottom right */}
-                    <div className="absolute bottom-0 right-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200">
-                      <div className="absolute bottom-0 right-0 w-full h-[3px] bg-gradient-to-l from-cyan-500 to-transparent"></div>
-                      <div className="absolute bottom-0 right-0 w-[3px] h-full bg-gradient-to-t from-cyan-500 to-transparent"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating particles scattered around for dynamic feel */}
-              <div className="absolute -top-6 left-1/4 w-2 h-2 bg-purple-400 rounded-full shadow-lg shadow-purple-400/50 animate-float"></div>
-              <div className="absolute -top-4 right-1/3 w-1.5 h-1.5 bg-pink-400 rounded-full shadow-lg shadow-pink-400/50 animate-float animation-delay-1000"></div>
-              <div className="absolute top-1/4 -left-6 w-2.5 h-2.5 bg-cyan-400 rounded-full shadow-lg shadow-cyan-400/50 animate-float animation-delay-2000"></div>
-              <div className="absolute top-1/2 -right-5 w-1.5 h-1.5 bg-purple-400 rounded-full shadow-lg shadow-purple-400/50 animate-float animation-delay-3000"></div>
-              <div className="absolute bottom-1/4 -left-5 w-2 h-2 bg-pink-400 rounded-full shadow-lg shadow-pink-400/50 animate-float animation-delay-1500"></div>
-              <div className="absolute -bottom-6 left-1/3 w-2.5 h-2.5 bg-cyan-400 rounded-full shadow-lg shadow-cyan-400/50 animate-float animation-delay-2500"></div>
-              <div className="absolute -bottom-4 right-1/4 w-1.5 h-1.5 bg-purple-400 rounded-full shadow-lg shadow-purple-400/50 animate-float animation-delay-500"></div>
-              <div className="absolute top-2/3 -right-6 w-2 h-2 bg-pink-400 rounded-full shadow-lg shadow-pink-400/50 animate-float animation-delay-3500"></div>
-
-              {/* Animation styles */}
-              <style>{`
-                @keyframes float {
-                  0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.6; }
-                  25% { transform: translateY(-10px) translateX(5px); opacity: 0.8; }
-                  50% { transform: translateY(-5px) translateX(-5px); opacity: 1; }
-                  75% { transform: translateY(-15px) translateX(3px); opacity: 0.7; }
-                }
-                .animate-float { animation: float 4s ease-in-out infinite; }
-                .animation-delay-500 { animation-delay: 0.5s; }
-                .animation-delay-1000 { animation-delay: 1s; }
-                .animation-delay-1500 { animation-delay: 1.5s; }
-                .animation-delay-2000 { animation-delay: 2s; }
-                .animation-delay-2500 { animation-delay: 2.5s; }
-                .animation-delay-3000 { animation-delay: 3s; }
-                .animation-delay-3500 { animation-delay: 3.5s; }
-              `}</style>
-            </motion.div>
-
-            {/* Stats Column */}
-            <div className="flex flex-col gap-8">
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="text-center lg:text-left"
-              >
-                <div className="text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-cyan-600 dark:from-purple-400 dark:to-cyan-400">10+</div>
-                <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mt-2 tracking-wide transition-colors">PROJECTS COMPLETED</div>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="text-center lg:text-left"
-              >
-                <div className="text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-orange-600 dark:from-pink-400 dark:to-orange-400">3+</div>
-                <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mt-2 tracking-wide transition-colors">CLIENT PROJECTS</div>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="text-center lg:text-left"
-              >
-                <div className="text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400">1+</div>
-                <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mt-2 tracking-wide transition-colors">YEARS EXPERIENCE</div>
-              </motion.div>
-            </div>
-          </div>
-
-          {/* Biography Section */}
+        {/* Stats Row */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-12 sm:gap-20 mb-20">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <div className="text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#5b1a1a] to-[#8b3a3a] dark:from-purple-400 dark:to-cyan-400">10+</div>
+            <div className="text-sm font-semibold text-gray-600 dark:text-gray-400 mt-2 tracking-widest transition-colors">PROJECTS</div>
+          </motion.div>
+
+          <div className="hidden sm:block w-px h-16 bg-gray-300 dark:bg-gray-700"></div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
+            className="text-center"
           >
-            <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 lg:p-12 border-2 border-gray-200 dark:border-gray-700 shadow-xl transition-colors">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-1 bg-gradient-to-r from-purple-600 to-cyan-600 dark:from-purple-400 dark:to-cyan-400 rounded-full"></div>
-                <h2 className="text-sm font-bold uppercase tracking-widest text-gray-600 dark:text-gray-400 transition-colors">
-                  BIOGRAPHY
-                </h2>
-              </div>
+            <div className="text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#5b1a1a] to-[#8b3a3a] dark:from-pink-400 dark:to-orange-400">3+</div>
+            <div className="text-sm font-semibold text-gray-600 dark:text-gray-400 mt-2 tracking-widest transition-colors">CLIENTS</div>
+          </motion.div>
 
-              <div className="space-y-5 text-base leading-relaxed text-gray-700 dark:text-gray-300 transition-colors">
-                <p>
-                  Hi, I'm <strong className="text-black dark:text-white font-bold">Sujay Babu Thota</strong>, a Full Stack Developer passionate about crafting modern, scalable, and high-performance digital experiences. I'm currently pursuing a B.Tech in Computer Science and Design at SRKR Engineering College, where I focus on building clean, efficient, and production-ready applications.
-                </p>
+          <div className="hidden sm:block w-px h-16 bg-gray-300 dark:bg-gray-700"></div>
 
-                <p>
-                  For me, technology is more than just writing code â€” it's about solving real problems with thoughtful design, smart systems, and user-centered thinking. I love transforming ideas into reliable and meaningful products that people enjoy using.
-                </p>
-
-                <p>
-                  Whether it's developing AI-powered healthcare tools, intuitive dashboards, or full-stack platforms, I bring creativity, precision, and a product-first mindset to every project. I'm excited to continue growing and contributing to impactful software that makes a difference.
-                </p>
-              </div>
-            </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <div className="text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#5b1a1a] to-[#8b3a3a] dark:from-emerald-400 dark:to-teal-400">1+</div>
+            <div className="text-sm font-semibold text-gray-600 dark:text-gray-400 mt-2 tracking-widest transition-colors">YEARS EXP</div>
           </motion.div>
         </div>
+
+        {/* Biography Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto mb-32"
+        >
+          <div className="bg-white dark:bg-gray-900/50 rounded-3xl p-8 lg:p-12 border border-gray-200 dark:border-gray-800 shadow-xl transition-colors">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-1 bg-gradient-to-r from-[#5b1a1a] to-[#8b3a3a] dark:from-purple-400 dark:to-cyan-400 rounded-full"></div>
+              <h2 className="text-sm font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 transition-colors">
+                BIOGRAPHY
+              </h2>
+            </div>
+
+            <div className="space-y-5 text-base leading-relaxed text-gray-700 dark:text-gray-300 transition-colors">
+              <p>
+                Hi, I'm <strong className="text-[#5b1a1a] dark:text-white font-bold">Sujay Babu Thota</strong>, a Full Stack Developer passionate about crafting modern, scalable, and high-performance digital experiences. I'm currently pursuing a B.Tech in Computer Science and Design at SRKR Engineering College, where I focus on building clean, efficient, and production-ready applications.
+              </p>
+
+              <p>
+                For me, technology is more than just writing code – it's about solving real problems with thoughtful design, smart systems, and user-centered thinking. I love transforming ideas into reliable and meaningful products that people enjoy using.
+              </p>
+
+              <p>
+                Whether it's developing AI-powered healthcare tools, intuitive dashboards, or full-stack platforms, I bring creativity, precision, and a product-first mindset to every project. I'm excited to continue growing and contributing to impactful software that makes a difference.
+              </p>
+            </div>
+          </div>
+        </motion.div>
 
         <div className="mb-32">
           <h2 className="text-center text-5xl font-bold text-black dark:text-white mb-16 transition-colors">Skills</h2>
@@ -372,23 +640,21 @@ const About = () => {
             <div className="relative">
               {/* Animated timeline line */}
               <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700 transition-colors">
-                <div 
+                <div
                   className="w-full bg-purple-500 transition-all duration-200 ease-out"
                   style={{ height: `${educationProgress}%` }}
                 ></div>
               </div>
-              
+
               <div className="space-y-12">
                 {mockData.about.education.map((edu, index) => {
                   const threshold = index === 0 ? 10 : 50;
                   return (
                     <div key={index} className="flex gap-8">
-                      <div className={`flex-shrink-0 w-8 h-8 rounded-full border-4 border-white dark:border-gray-900 shadow-lg relative z-10 transition-all duration-300 ${
-                        educationProgress > threshold ? 'bg-purple-500 scale-100' : 'bg-gray-300 dark:bg-gray-600 scale-75'
-                      }`}></div>
-                      <div className={`flex-1 transition-all duration-500 ${
-                        educationProgress > threshold ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
-                      }`}>
+                      <div className={`flex-shrink-0 w-8 h-8 rounded-full border-4 border-white dark:border-gray-900 shadow-lg relative z-10 transition-all duration-300 ${educationProgress > threshold ? 'bg-purple-500 scale-100' : 'bg-gray-300 dark:bg-gray-600 scale-75'
+                        }`}></div>
+                      <div className={`flex-1 transition-all duration-500 ${educationProgress > threshold ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+                        }`}>
                         <h3 className="text-2xl font-bold text-black dark:text-white mb-2 transition-colors">{edu.degree}</h3>
                         <div className="text-base text-gray-600 dark:text-gray-400 mb-4 transition-colors">{edu.period} | {edu.institution}, {edu.location}</div>
                         <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed transition-colors">
@@ -422,11 +688,11 @@ const About = () => {
                 MY APPROACH
                 <motion.div
                   className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-purple-600/20 to-cyan-600/20 rounded-3xl blur-xl sm:blur-2xl"
-                  animate={{ 
+                  animate={{
                     scale: [1, 1.1, 1],
                     opacity: [0.5, 0.8, 0.5]
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 4,
                     repeat: Infinity,
                     ease: "easeInOut"
@@ -434,7 +700,7 @@ const About = () => {
                 />
               </h2>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
