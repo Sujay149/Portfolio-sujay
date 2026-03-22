@@ -201,6 +201,7 @@ const About = () => {
             min-height: 700px;
             overflow: hidden;
             background: #f5f0ec;
+            padding-top: 70px;
             transition: background 0.3s;
           }
           .dark .about-hero-section {
@@ -223,7 +224,7 @@ const About = () => {
           /* --- Ghost watermark name --- */
           .about-hero-ghost-name {
             position: absolute;
-            top: 8%;
+            top: calc(70px + 3%);
             left: 50%;
             transform: translateX(-50%);
             font-family: 'Montserrat', sans-serif;
@@ -244,7 +245,7 @@ const About = () => {
           /* --- Giant Name --- */
           .about-hero-name {
             position: absolute;
-            top: 8%;
+            top: calc(70px + 3%);
             left: 5%;
             z-index: 2;
             font-family: 'Montserrat', sans-serif;
@@ -266,7 +267,7 @@ const About = () => {
           /* --- Profile Image Wrapper --- */
           .about-hero-image-wrapper {
             position: absolute;
-            top: 10%;
+            top: calc(70px + 5%);
             left: 50%;
             transform: translateX(-45%);
             z-index: 3;
