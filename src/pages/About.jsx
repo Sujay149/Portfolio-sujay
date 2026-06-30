@@ -88,7 +88,6 @@ const About = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Education section scroll progress
       if (educationRef.current) {
         const rect = educationRef.current.getBoundingClientRect();
         const sectionTop = rect.top;
@@ -104,380 +103,180 @@ const About = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
   return (
-    <div className="min-h-screen pt-0 bg-[#f5f0ec] dark:bg-[#0a0a0a] transition-colors duration-300">
-      {/* === HERO SECTION - Pixel-perfect Jenny Rose layout === */}
-      <section className="about-hero-section">
-        {/* Subtle background dot texture */}
-        <div className="about-hero-halftone"></div>
-
-        {/* Ghost/Watermark name behind image */}
+    <div className="min-h-screen pt-0 bg-white dark:bg-black transition-colors duration-300">
+      {/* === HERO SECTION - Editorial Redesign === */}
+      <section className="relative w-full h-screen min-h-[850px] overflow-hidden bg-white dark:bg-black">
+        {/* Background outlined ABOUT text */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, delay: 0.3 }}
-          className="about-hero-ghost-name"
+          transition={{ duration: 1.2 }}
+          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0"
           aria-hidden="true"
         >
-          SUJAY THOTA
+          <span
+            className="font-black uppercase tracking-tighter"
+            style={{
+              fontSize: 'clamp(240px, 38vw, 420px)',
+              lineHeight: '0.9',
+              color: 'transparent',
+              WebkitTextStroke: '1px rgba(0,0,0,0.08)',
+              textStroke: '1px rgba(0,0,0,0.08)',
+            }}
+          >
+            ABOUT
+          </span>
         </motion.div>
 
-        {/* === Giant Name - Full Width, Centered === */}
-        <motion.h1
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="about-hero-name"
-        >
-          <span className="about-hero-name-line">SUJAY</span>
-          <span className="about-hero-name-line">THOTA</span>
-        </motion.h1>
-
-        {/* === Profile Image - Centered, overlapping name === */}
+        {/* Handwritten SUJAY background script */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="about-hero-image-wrapper"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.09 }}
+          transition={{ duration: 1.4, delay: 0.2 }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] pointer-events-none select-none z-0"
+          aria-hidden="true"
         >
-          {/* Halftone dots behind image */}
-          <div className="about-hero-dots"></div>
-          <img
-            src="Sujay.png"
-            alt="Sujay Babu Thota - Full Stack Developer"
-            className="about-hero-image"
-          />
+          <span
+            className="font-script text-gray-400 dark:text-gray-300 whitespace-nowrap"
+            style={{
+              fontSize: 'clamp(280px, 45vw, 520px)',
+              lineHeight: '1',
+              fontFamily: "'Brush Script MT', 'Segoe Script', cursive",
+            }}
+          >
+            SUJAY
+          </span>
         </motion.div>
 
-        {/* === Left Column - Bio Text === */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="about-hero-bio"
-        >
-          <p>
-            Hey there! I'm a <strong>Full Stack Developer & UI/UX Designer</strong> working in the global marketplace.
-          </p>
-        </motion.div>
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 h-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left Column */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 flex flex-col justify-center pt-24 lg:pt-0"
+          >
+            {/* Accent line */}
+            <div className="w-10 h-1 bg-[#8b3a3a] mb-6" />
 
-        {/* === "// HIRE ME →" CTA - Bottom Left === */}
-        <motion.a
-          href="/contact"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.7 }}
-          className="about-hero-cta"
-        >
-          <span className="about-hero-cta-slash">//</span>
-          <span className="about-hero-cta-text">HIRE ME</span>
-          <span className="about-hero-cta-arrow">→</span>
-        </motion.a>
+            {/* Name block */}
+            <div className="mb-5">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-black dark:text-white tracking-tighter leading-[0.95]">
+                SUJAY
+                <br />
+                THOTA
+              </h1>
+            </div>
 
-        {/* === Right Column - Skills/Services List === */}
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.6 }}
-          className="about-hero-skills"
-        >
-          <span className="about-hero-skill light">Full Stack Development</span>
-          <span className="about-hero-skill bold">React & Next.js</span>
-          <span className="about-hero-skill light">UI/UX Design</span>
-          <span className="about-hero-skill light">AI & Automation</span>
-        </motion.div>
+            {/* Role */}
+            <div className="text-sm sm:text-base font-bold text-[#8b3a3a] mb-5 tracking-wide uppercase">
+              Full Stack Developer
+            </div>
 
-        {/* ====== ALL HERO STYLES ====== */}
-        <style>{`
-          /* --- Section container --- */
-          .about-hero-section {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            min-height: 700px;
-            overflow: hidden;
-            background: #f5f0ec;
-            padding-top: 70px;
-            transition: background 0.3s;
-          }
-          .dark .about-hero-section {
-            background: #0a0a0a;
-          }
+            {/* Description */}
+            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 leading-relaxed max-w-md mb-6 font-normal">
+              {mockData.about.bio}
+            </p>
 
-          /* --- Background halftone texture --- */
-          .about-hero-halftone {
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(circle, rgba(91, 26, 26, 0.05) 1px, transparent 1px);
-            background-size: 24px 24px;
-            pointer-events: none;
-            z-index: 0;
-          }
-          .dark .about-hero-halftone {
-            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-          }
+            {/* Tech stack row */}
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs sm:text-sm text-gray-700 dark:text-gray-300 mb-8">
+              <span className="font-medium">React</span>
+              <span className="w-px h-4 bg-[#8b3a3a]" />
+              <span className="font-medium">Next.js</span>
+              <span className="w-px h-4 bg-[#8b3a3a]" />
+              <span className="font-medium">Spring Boot</span>
+              <span className="w-px h-4 bg-[#8b3a3a]" />
+              <span className="font-medium">React Native</span>
+              <span className="w-px h-4 bg-[#8b3a3a]" />
+              <span className="font-medium">MySQL</span>
+              <span className="w-px h-4 bg-[#8b3a3a]" />
+              <span className="font-medium">Docker</span>
+            </div>
 
-          /* --- Ghost watermark name --- */
-          .about-hero-ghost-name {
-            position: absolute;
-            top: calc(70px + 3%);
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(6rem, 16vw, 20rem);
-            font-weight: 900;
-            line-height: 0.85;
-            letter-spacing: -0.04em;
-            color: rgba(0, 0, 0, 0.04);
-            white-space: nowrap;
-            pointer-events: none;
-            user-select: none;
-            z-index: 1;
-          }
-          .dark .about-hero-ghost-name {
-            color: rgba(255, 255, 255, 0.03);
-          }
+            {/* CTA */}
+            <motion.a
+              href="/contact"
+              whileHover={{ y: -2, boxShadow: '0 12px 24px rgba(139, 58, 58, 0.25)' }}
+              transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+              className="inline-flex items-center justify-center gap-2 h-14 px-8 bg-[#8b3a3a] text-white rounded-2xl text-sm font-semibold tracking-wide hover:bg-[#7a2e2e]"
+            >
+              HIRE ME
+              <span className="text-lg leading-none">→</span>
+            </motion.a>
+          </motion.div>
 
-          /* --- Giant Name --- */
-          .about-hero-name {
-            position: absolute;
-            top: calc(70px + 3%);
-            left: 5%;
-            z-index: 2;
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(3.5rem, 11vw, 12rem);
-            font-weight: 900;
-            line-height: 0.88;
-            letter-spacing: -0.04em;
-            color: #5b1a1a;
-            margin: 0;
-            transition: color 0.3s;
-          }
-          .dark .about-hero-name {
-            color: #ffffff;
-          }
-          .about-hero-name-line {
-            display: block;
-          }
+          {/* Right Column - Portrait */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            className="lg:col-span-7 relative flex items-end justify-center h-[85vh] max-h-[700px]"
+          >
+            {/* Soft glow */}
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+              style={{
+                width: 'clamp(300px, 40vw, 520px)',
+                height: 'clamp(300px, 40vw, 520px)',
+                background: 'radial-gradient(circle, rgba(0,0,0,0.04) 0%, transparent 70%)',
+              }}
+            />
 
-          /* --- Profile Image Wrapper --- */
-          .about-hero-image-wrapper {
-            position: absolute;
-            top: calc(70px + 5%);
-            left: 50%;
-            transform: translateX(-45%);
-            z-index: 3;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-          }
-          .about-hero-image {
-            width: clamp(280px, 32vw, 480px);
-            height: clamp(380px, 75vh, 650px);
-            object-fit: cover;
-            object-position: top center;
-            position: relative;
-            z-index: 2;
-            -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 98%);
-            mask-image: linear-gradient(to bottom, black 80%, transparent 98%);
-          }
+            {/* Subtle dotted pattern */}
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-[0.25]"
+              style={{
+                width: 'clamp(300px, 40vw, 500px)',
+                height: 'clamp(300px, 40vw, 500px)',
+                backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.18) 0.8px, transparent 0.8px)',
+                backgroundSize: '12px 12px',
+                maskImage: 'radial-gradient(ellipse 60% 60% at 50% 45%, black 0%, transparent 70%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 60% 60% at 50% 45%, black 0%, transparent 70%)',
+              }}
+            />
 
-          /* --- Halftone dots behind image --- */
-          .about-hero-dots {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 120%;
-            height: 100%;
-            z-index: 1;
-            background-image: radial-gradient(circle, rgba(91, 26, 26, 0.22) 1.2px, transparent 1.2px);
-            background-size: 10px 10px;
-            -webkit-mask-image: radial-gradient(ellipse 55% 55% at 50% 45%, black 20%, transparent 70%);
-            mask-image: radial-gradient(ellipse 55% 55% at 50% 45%, black 20%, transparent 70%);
-            pointer-events: none;
-          }
-          .dark .about-hero-dots {
-            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1.2px, transparent 1.2px);
-          }
+            {/* Portrait */}
+            <div className="relative z-10 w-full flex justify-center lg:justify-end h-full">
+              <img
+                src="Sujay.png"
+                alt="Sujay Babu Thota - Full Stack Developer"
+                className="h-full w-auto max-w-[clamp(260px,35vw,420px)] object-contain object-bottom"
+                style={{
+                  maskImage: 'linear-gradient(to bottom, black 80%, transparent 98%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 98%)',
+                  maxHeight: '100%',
+                }}
+              />
+            </div>
 
-          /* --- Bio Text (left column) --- */
-          .about-hero-bio {
-            position: absolute;
-            left: 5%;
-            top: 46%;
-            width: clamp(200px, 24vw, 340px);
-            z-index: 10;
-          }
-          .about-hero-bio p {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(0.85rem, 1.1vw, 1.05rem);
-            font-weight: 400;
-            line-height: 1.65;
-            color: #444;
-            margin: 0;
-            transition: color 0.3s;
-          }
-          .dark .about-hero-bio p {
-            color: #aaa;
-          }
-          .about-hero-bio strong {
-            color: #5b1a1a;
-            font-weight: 700;
-          }
-          .dark .about-hero-bio strong {
-            color: #fff;
-          }
-
-          /* --- HIRE ME CTA (bottom left) --- */
-          .about-hero-cta {
-            position: absolute;
-            left: 5%;
-            bottom: 12%;
-            z-index: 10;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: gap 0.3s;
-          }
-          .about-hero-cta:hover {
-            gap: 16px;
-          }
-          .about-hero-cta-slash {
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-            color: #999;
-            font-weight: 400;
-          }
-          .about-hero-cta-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 800;
-            letter-spacing: 0.15em;
-            color: #1a1a1a;
-            transition: color 0.3s;
-          }
-          .dark .about-hero-cta-text {
-            color: #fff;
-          }
-          .about-hero-cta-arrow {
-            font-size: 1rem;
-            color: #1a1a1a;
-            transition: transform 0.3s, color 0.3s;
-          }
-          .dark .about-hero-cta-arrow {
-            color: #fff;
-          }
-          .about-hero-cta:hover .about-hero-cta-arrow {
-            transform: translateX(4px);
-          }
-
-          /* --- Skills list (right column) --- */
-          .about-hero-skills {
-            position: absolute;
-            right: 5%;
-            top: 56%;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 10px;
-          }
-          .about-hero-skill {
-            font-family: 'Montserrat', sans-serif;
-            display: block;
-            text-align: right;
-            transition: transform 0.3s, color 0.3s;
-            cursor: default;
-          }
-          .about-hero-skill:hover {
-            transform: translateX(-6px);
-          }
-          .about-hero-skill.light {
-            font-size: clamp(0.8rem, 1vw, 0.95rem);
-            font-weight: 400;
-            color: #999;
-            letter-spacing: 0.02em;
-          }
-          .dark .about-hero-skill.light {
-            color: #666;
-          }
-          .about-hero-skill.bold {
-            font-size: clamp(0.95rem, 1.2vw, 1.15rem);
-            font-weight: 700;
-            color: #1a1a1a;
-            letter-spacing: 0.01em;
-          }
-          .dark .about-hero-skill.bold {
-            color: #fff;
-          }
-
-          /* --- Responsive adjustments --- */
-          @media (max-width: 1024px) {
-            .about-hero-section {
-              height: auto;
-              min-height: 100vh;
-              padding-bottom: 60px;
-            }
-            .about-hero-name {
-              position: relative;
-              top: auto;
-              left: auto;
-              padding: 100px 24px 0;
-              font-size: clamp(3rem, 12vw, 5.5rem);
-            }
-            .about-hero-ghost-name {
-              font-size: clamp(4rem, 18vw, 8rem);
-              top: 6%;
-            }
-            .about-hero-image-wrapper {
-              position: relative;
-              top: auto;
-              left: auto;
-              transform: none;
-              display: flex;
-              justify-content: center;
-              margin-top: -30px;
-            }
-            .about-hero-image {
-              width: clamp(260px, 55vw, 360px);
-              height: clamp(340px, 60vh, 480px);
-            }
-            .about-hero-bio {
-              position: relative;
-              top: auto;
-              left: auto;
-              width: auto;
-              padding: 30px 24px 0;
-            }
-            .about-hero-bio p {
-              font-size: 0.95rem;
-              max-width: 400px;
-            }
-            .about-hero-skills {
-              position: relative;
-              top: auto;
-              right: auto;
-              align-items: flex-start;
-              padding: 24px 24px 0;
-            }
-            .about-hero-skill {
-              text-align: left;
-            }
-            .about-hero-cta {
-              position: relative;
-              left: auto;
-              bottom: auto;
-              padding: 30px 24px 0;
-            }
-          }
-        `}</style>
+            {/* Floating glass card */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
+              whileHover={{ y: -4 }}
+              className="absolute bottom-[18%] left-4 sm:left-8 lg:left-12 z-20 max-w-[220px] rounded-3xl px-5 py-5"
+              style={{
+                background: 'rgba(255,255,255,0.72)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                border: '1px solid rgba(0,0,0,0.05)',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
+              }}
+            >
+              <div className="text-xs font-semibold text-gray-900 dark:text-white mb-2">Full Stack Developer</div>
+              <div className="text-xs text-gray-600 dark:text-gray-300 mb-1">React & Next.js</div>
+              <div className="text-xs text-gray-600 dark:text-gray-300 mb-1">UI/UX Design</div>
+              <div className="text-xs text-gray-600 dark:text-gray-300">AI & Automation</div>
+            </motion.div>
+          </motion.div>
+        </div>
       </section>
 
       {/* === STATS + BIOGRAPHY SECTION === */}
@@ -722,8 +521,8 @@ const About = () => {
               className="mt-6"
             >
               <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 text-center flex items-center justify-center gap-2">
-                <span className="hidden lg:inline">ðŸ’¡ Hover over cards to reveal details</span>
-                <span className="lg:hidden">ðŸ’¡ Scroll through cards to reveal details</span>
+                <span className="hidden lg:inline">💡 Hover over cards to reveal details</span>
+                <span className="lg:hidden">💡 Scroll through cards to reveal details</span>
               </p>
             </motion.div>
           </motion.div>
