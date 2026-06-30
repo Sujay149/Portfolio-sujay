@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { ArrowUpRight, MapPin, Clock, Mail, Phone } from 'lucide-react';
 import { mockData } from '../mock';
 
-const budgetOptions =[
+const budgetOptions = [
   { value: "", label: "Select a budget" },
   { value: "5k-10k", label: "₹5,000 - ₹10,000" },
   { value: "10k-25k", label: "₹10,000 - ₹25,000" },
   { value: "25k-50k", label: "₹25,000 - ₹50,000" },
   { value: "50k+", label: "₹50,000+" },
 ];
-
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -23,8 +22,20 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    // You can add your form submission logic here
+    const recipient = "sujayss149@gmail.com";
+    const subject = encodeURIComponent(`New Contact Form Submission from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company || "N/A"}\nPhone: ${formData.phone || "N/A"}\nBudget: ${formData.budget || "N/A"}\n\nMessage:\n${formData.message}`
+    );
+    window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+    setFormData({
+      name: "",
+      email: "",
+      company: "",
+      phone: "",
+      budget: "",
+      message: "",
+    });
   };
 
   return (
@@ -36,8 +47,7 @@ const Contact = () => {
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-2 transition-colors">Book a call</p>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 transition-colors">Let's Collaborate</h1>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-10 max-w-md transition-colors">
-              Reach out and let's explore how we can bring your ideas to life. Whether you're ready to begin or just
-              have questions.
+              Reach out and let's explore how we can bring your ideas to life. Whether you're ready to begin or just have questions.
             </p>
 
             {/* Contact details */}
