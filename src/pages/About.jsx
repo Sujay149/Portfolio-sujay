@@ -445,75 +445,155 @@ const About = () => {
       </section>
 
       {/* === STATS + BIOGRAPHY SECTION === */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+      <div className="max-w-6xl mx-auto px-6 lg:px-12 py-20 lg:py-28">
         {/* Stats Row */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-12 sm:gap-20 mb-20">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-12 sm:gap-24 mb-24 lg:mb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
             viewport={{ once: true }}
             className="text-center"
           >
-            <div className="text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#5b1a1a] to-[#8b3a3a] dark:from-purple-400 dark:to-cyan-400">10+</div>
-            <div className="text-sm font-semibold text-gray-600 dark:text-gray-400 mt-2 tracking-widest transition-colors">PROJECTS</div>
+            <div className="text-6xl lg:text-7xl font-black text-black dark:text-white" style={{ fontFamily: "'Inter', sans-serif", letterSpacing: '-2px' }}>10+</div>
+            <div className="text-sm font-semibold text-gray-500 dark:text-gray-400 mt-2 tracking-[0.2em]" style={{ fontFamily: "'Inter', sans-serif" }}>PROJECTS</div>
           </motion.div>
 
-          <div className="hidden sm:block w-px h-16 bg-gray-300 dark:bg-gray-700"></div>
+          <div className="hidden sm:block w-px h-12 bg-gray-200 dark:bg-gray-700"></div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.2 }}
             viewport={{ once: true }}
             className="text-center"
           >
-            <div className="text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#5b1a1a] to-[#8b3a3a] dark:from-pink-400 dark:to-orange-400">3+</div>
-            <div className="text-sm font-semibold text-gray-600 dark:text-gray-400 mt-2 tracking-widest transition-colors">CLIENTS</div>
+            <div className="text-6xl lg:text-7xl font-black text-black dark:text-white" style={{ fontFamily: "'Inter', sans-serif", letterSpacing: '-2px' }}>3+</div>
+            <div className="text-sm font-semibold text-gray-500 dark:text-gray-400 mt-2 tracking-[0.2em]" style={{ fontFamily: "'Inter', sans-serif" }}>CLIENTS</div>
           </motion.div>
 
-          <div className="hidden sm:block w-px h-16 bg-gray-300 dark:bg-gray-700"></div>
+          <div className="hidden sm:block w-px h-12 bg-gray-200 dark:bg-gray-700"></div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
             viewport={{ once: true }}
             className="text-center"
           >
-            <div className="text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#5b1a1a] to-[#8b3a3a] dark:from-emerald-400 dark:to-teal-400">1+</div>
-            <div className="text-sm font-semibold text-gray-600 dark:text-gray-400 mt-2 tracking-widest transition-colors">YEARS EXP</div>
+            <div className="text-6xl lg:text-7xl font-black text-black dark:text-white" style={{ fontFamily: "'Inter', sans-serif", letterSpacing: '-2px' }}>1+</div>
+            <div className="text-sm font-semibold text-gray-500 dark:text-gray-400 mt-2 tracking-[0.2em]" style={{ fontFamily: "'Inter', sans-serif" }}>YEARS EXP</div>
           </motion.div>
         </div>
 
-        {/* Biography Section */}
+        {/* Biography Section - Editorial Two Column Layout */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
           viewport={{ once: true }}
-          className="max-w-4xl mx-auto mb-32"
+          className="max-w-6xl mx-auto mb-24 lg:mb-32"
         >
-          <div className="bg-white dark:bg-gray-900/50 rounded-3xl p-8 lg:p-12 border border-gray-200 dark:border-gray-800 shadow-xl transition-colors">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-1 bg-gradient-to-r from-[#5b1a1a] to-[#8b3a3a] dark:from-purple-400 dark:to-cyan-400 rounded-full"></div>
-              <h2 className="text-sm font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 transition-colors">
-                BIOGRAPHY
-              </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            {/* Left Column - Bio Text */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-[3px]" style={{ backgroundColor: '#7B1F2A' }} />
+                <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  BIOGRAPHY
+                </h2>
+              </div>
+
+              <h3 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-black dark:text-white leading-[1.1] mb-8" style={{ fontFamily: "'Inter', sans-serif", letterSpacing: '-1px' }}>
+                Building digital solutions<br />
+                that make an <span style={{ color: '#7B1F2A' }}>impact.</span>
+              </h3>
+
+              <div className="space-y-5 text-[15px] lg:text-base leading-[1.7] text-gray-600 dark:text-gray-400" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
+                <p>
+                  Hi, I'm <strong style={{ color: '#7B1F2A', fontWeight: 600 }}>Sujay Babu Thota</strong>, a Full Stack Developer passionate about crafting modern, scalable, and high-performance digital experiences. I'm currently pursuing a B.Tech in Computer Science and Design at SRKR Engineering College, where I focus on building clean, efficient, and production-ready applications.
+                </p>
+
+                <p>
+                  For me, technology is more than just writing code – it's about solving real problems with thoughtful design, smart systems, and user-centered thinking. I love transforming ideas into reliable and meaningful products that people enjoy using.
+                </p>
+
+                <p>
+                  Whether it's developing AI-powered healthcare tools, intuitive dashboards, or full-stack platforms, I bring creativity, precision, and a product-first mindset to every project. I'm excited to continue growing and contributing to impactful software that makes a difference.
+                </p>
+              </div>
             </div>
 
-            <div className="space-y-5 text-base leading-relaxed text-gray-700 dark:text-gray-300 transition-colors">
-              <p>
-                Hi, I'm <strong className="text-[#5b1a1a] dark:text-white font-bold">Sujay Babu Thota</strong>, a Full Stack Developer passionate about crafting modern, scalable, and high-performance digital experiences. I'm currently pursuing a B.Tech in Computer Science and Design at SRKR Engineering College, where I focus on building clean, efficient, and production-ready applications.
-              </p>
+            {/* Right Column - Feature Cards */}
+            <div className="rounded-[24px] p-8 lg:p-10" style={{ backgroundColor: '#FAFAFA', border: '1px solid #F0E0E0' }}>
+              <div className="space-y-8">
+                {/* Clean Code */}
+                <div className="flex gap-5">
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0" style={{ border: '1.5px solid #C47D85' }}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7B1F2A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="16 18 22 12 16 6"></polyline>
+                      <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-base font-bold text-black dark:text-white mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>Clean Code</h4>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
+                      Writing clean, maintainable, and efficient code that scales.
+                    </p>
+                  </div>
+                </div>
 
-              <p>
-                For me, technology is more than just writing code – it's about solving real problems with thoughtful design, smart systems, and user-centered thinking. I love transforming ideas into reliable and meaningful products that people enjoy using.
-              </p>
+                {/* Problem Solver */}
+                <div className="flex gap-5">
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0" style={{ border: '1.5px solid #C47D85' }}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7B1F2A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9 18h6"></path>
+                      <path d="M10 22h4"></path>
+                      <path d="M12 2a7 7 0 0 0-7 7c0 3 2 5 4 7l3 3 3-3c2-2 4-4 4-7a7 7 0 0 0-7-7z"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-base font-bold text-black dark:text-white mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>Problem Solver</h4>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
+                      Turning complex problems into simple, smart, and effective solutions.
+                    </p>
+                  </div>
+                </div>
 
-              <p>
-                Whether it's developing AI-powered healthcare tools, intuitive dashboards, or full-stack platforms, I bring creativity, precision, and a product-first mindset to every project. I'm excited to continue growing and contributing to impactful software that makes a difference.
-              </p>
+                {/* User Focused */}
+                <div className="flex gap-5">
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0" style={{ border: '1.5px solid #C47D85' }}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7B1F2A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-base font-bold text-black dark:text-white mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>User Focused</h4>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
+                      Building products that provide real value and great user experiences.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Always Learning */}
+                <div className="flex gap-5">
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0" style={{ border: '1.5px solid #C47D85' }}>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7B1F2A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
+                      <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
+                      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+                      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-base font-bold text-black dark:text-white mb-2" style={{ fontFamily: "'Inter', sans-serif" }}>Always Learning</h4>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed" style={{ fontFamily: "'Inter', sans-serif", fontWeight: 400 }}>
+                      Continuously exploring new technologies and improving every day.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
