@@ -111,171 +111,336 @@ const About = () => {
   return (
     <div className="min-h-screen pt-0 bg-white dark:bg-black transition-colors duration-300">
       {/* === HERO SECTION - Editorial Redesign === */}
-      <section className="relative w-full h-screen min-h-[850px] overflow-hidden bg-white dark:bg-black">
-        {/* Background outlined ABOUT text */}
+      <section className="relative w-full h-screen min-h-[700px] overflow-hidden bg-white dark:bg-black">
+        {/* Layer 1: PORTFOLIO Outline */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2 }}
-          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, ease: 'easeOut' }}
+          className="absolute text-center w-full pointer-events-none select-none"
+          style={{ top: '140px', left: 0, right: 0, zIndex: 1 }}
           aria-hidden="true"
         >
           <span
-            className="font-black uppercase tracking-tighter"
+            className="font-black uppercase leading-none inline-block"
             style={{
-              fontSize: 'clamp(240px, 38vw, 420px)',
-              lineHeight: '0.9',
+              fontFamily: "'Inter', 'Montserrat', sans-serif",
+              fontSize: 'clamp(100px, 16vw, 240px)',
+              letterSpacing: '6px',
               color: 'transparent',
-              WebkitTextStroke: '1px rgba(0,0,0,0.08)',
-              textStroke: '1px rgba(0,0,0,0.08)',
+              WebkitTextStroke: '1.5px solid #D0D0D0',
+              textStroke: '1.5px solid #D0D0D0',
+              whiteSpace: 'nowrap',
             }}
           >
-            ABOUT
+            PORTFOLIO
           </span>
         </motion.div>
 
-        {/* Handwritten SUJAY background script */}
+        {/* Layer 2: SUJAY Watermark */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.09 }}
-          transition={{ duration: 1.4, delay: 0.2 }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] pointer-events-none select-none z-0"
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.9, ease: 'easeOut', delay: 0.15 }}
+          className="absolute pointer-events-none select-none"
+          style={{
+            bottom: '-20px',
+            left: '25%',
+            zIndex: 2,
+            transform: 'rotate(-8deg)',
+            transformOrigin: 'bottom left',
+          }}
           aria-hidden="true"
         >
           <span
-            className="font-script text-gray-400 dark:text-gray-300 whitespace-nowrap"
             style={{
-              fontSize: 'clamp(280px, 45vw, 520px)',
-              lineHeight: '1',
-              fontFamily: "'Brush Script MT', 'Segoe Script', cursive",
+              fontFamily: "'Dancing Script', 'Great Vibes', cursive",
+              fontSize: 'clamp(150px, 28vw, 380px)',
+              color: '#E8E8E8',
+              opacity: 0.5,
+              whiteSpace: 'nowrap',
+              lineHeight: '0.9',
+              display: 'block',
             }}
           >
             SUJAY
           </span>
         </motion.div>
 
-        <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 h-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Left Column */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 flex flex-col justify-center pt-24 lg:pt-0"
+        {/* Layer 3: "My" Script */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 }}
+          className="absolute pointer-events-none select-none hidden lg:block"
+          style={{
+            top: '110px',
+            left: '130px',
+            zIndex: 3,
+            transform: 'rotate(-3deg)',
+            transformOrigin: 'bottom left',
+          }}
+          aria-hidden="true"
+        >
+          <span
+            style={{
+              fontFamily: "'Permanent Marker', 'Rock Salt', cursive",
+              fontSize: '130px',
+              color: '#000',
+              lineHeight: 1,
+            }}
           >
-            {/* Accent line */}
-            <div className="w-10 h-1 bg-[#8b3a3a] mb-6" />
+            My
+          </span>
+        </motion.div>
 
-            {/* Name block */}
-            <div className="mb-5">
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-black dark:text-white tracking-tighter leading-[0.95]">
-                SUJAY
-                <br />
-                THOTA
-              </h1>
-            </div>
+        {/* Layer 4: Portrait */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: 'easeOut', delay: 0.15 }}
+          className="absolute hidden lg:block"
+          style={{ right: 0, bottom: 0, width: '55%', height: '100%', zIndex: 4, overflow: 'hidden' }}
+        >
+          <img
+            src="Sujay.png"
+            alt="Sujay Babu Thota - Full Stack Developer"
+            style={{
+              height: '95vh',
+              width: 'auto',
+              maxWidth: '100%',
+              objectFit: 'cover',
+              objectPosition: 'top center',
+              display: 'block',
+              position: 'absolute',
+              right: 0,
+              bottom: 0,
+              maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%)',
+            }}
+          />
+        </motion.div>
 
-            {/* Role */}
-            <div className="text-sm sm:text-base font-bold text-[#8b3a3a] mb-5 tracking-wide uppercase">
-              Full Stack Developer
-            </div>
-
-            {/* Description */}
-            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 leading-relaxed max-w-md mb-6 font-normal">
-              {mockData.about.bio}
-            </p>
-
-            {/* Tech stack row */}
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs sm:text-sm text-gray-700 dark:text-gray-300 mb-8">
-              <span className="font-medium">React</span>
-              <span className="w-px h-4 bg-[#8b3a3a]" />
-              <span className="font-medium">Next.js</span>
-              <span className="w-px h-4 bg-[#8b3a3a]" />
-              <span className="font-medium">Spring Boot</span>
-              <span className="w-px h-4 bg-[#8b3a3a]" />
-              <span className="font-medium">React Native</span>
-              <span className="w-px h-4 bg-[#8b3a3a]" />
-              <span className="font-medium">MySQL</span>
-              <span className="w-px h-4 bg-[#8b3a3a]" />
-              <span className="font-medium">Docker</span>
-            </div>
-
-            {/* CTA */}
-            <motion.a
-              href="/contact"
-              whileHover={{ y: -2, boxShadow: '0 12px 24px rgba(139, 58, 58, 0.25)' }}
-              transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-              className="inline-flex items-center justify-center gap-2 h-14 px-8 bg-[#8b3a3a] text-white rounded-2xl text-sm font-semibold tracking-wide hover:bg-[#7a2e2e]"
+        {/* Layer 5: Content */}
+        <div
+          className="absolute h-full hidden lg:block"
+          style={{ left: 0, top: 0, width: '45%', paddingLeft: '130px', zIndex: 5 }}
+        >
+          <div className="h-full flex items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.9, ease: 'easeOut', delay: 0.2 }}
             >
-              HIRE ME
-              <span className="text-lg leading-none">→</span>
-            </motion.a>
-          </motion.div>
-
-          {/* Right Column - Portrait */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-            className="lg:col-span-7 relative flex items-end justify-center h-[85vh] max-h-[700px]"
-          >
-            {/* Soft glow */}
-            <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
-              style={{
-                width: 'clamp(300px, 40vw, 520px)',
-                height: 'clamp(300px, 40vw, 520px)',
-                background: 'radial-gradient(circle, rgba(0,0,0,0.04) 0%, transparent 70%)',
-              }}
-            />
-
-            {/* Subtle dotted pattern */}
-            <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-[0.25]"
-              style={{
-                width: 'clamp(300px, 40vw, 500px)',
-                height: 'clamp(300px, 40vw, 500px)',
-                backgroundImage: 'radial-gradient(circle, rgba(0,0,0,0.18) 0.8px, transparent 0.8px)',
-                backgroundSize: '12px 12px',
-                maskImage: 'radial-gradient(ellipse 60% 60% at 50% 45%, black 0%, transparent 70%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 60% 60% at 50% 45%, black 0%, transparent 70%)',
-              }}
-            />
-
-            {/* Portrait */}
-            <div className="relative z-10 w-full flex justify-center lg:justify-end h-full">
-              <img
-                src="Sujay.png"
-                alt="Sujay Babu Thota - Full Stack Developer"
-                className="h-full w-auto max-w-[clamp(260px,35vw,420px)] object-contain object-bottom"
+              <h1
                 style={{
-                  maskImage: 'linear-gradient(to bottom, black 80%, transparent 98%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 98%)',
-                  maxHeight: '100%',
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 900,
+                  fontSize: '52px',
+                  lineHeight: '1.05',
+                  color: '#000',
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  margin: 0,
+                }}
+              >
+                SUJAY<br />THOTA
+              </h1>
+
+              <div
+                style={{
+                  width: '45px',
+                  height: '4px',
+                  backgroundColor: '#7B1F2A',
+                  marginTop: '20px',
+                  borderRadius: '2px',
                 }}
               />
-            </div>
 
-            {/* Floating glass card */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.6 }}
-              whileHover={{ y: -4 }}
-              className="absolute bottom-[18%] left-4 sm:left-8 lg:left-12 z-20 max-w-[220px] rounded-3xl px-5 py-5"
+              <div
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 600,
+                  fontSize: '18px',
+                  color: '#7B1F2A',
+                  marginTop: '28px',
+                }}
+              >
+                Full Stack Developer
+              </div>
+
+              <p
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 400,
+                  fontSize: '16px',
+                  lineHeight: '1.6',
+                  color: '#333',
+                  maxWidth: '320px',
+                  marginTop: '12px',
+                }}
+              >
+                building scalable, efficient and user-friendly web & mobile applications.
+              </p>
+
+              <div
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 400,
+                  fontSize: '14px',
+                  color: '#555',
+                  marginTop: '36px',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <span style={{ paddingRight: '12px' }}>React</span>|
+                <span style={{ padding: '0 12px' }}>Next.js</span>|
+                <span style={{ padding: '0 12px' }}>Spring Boot</span>|
+                <span style={{ padding: '0 12px' }}>React Native</span>|
+                <span style={{ padding: '0 12px' }}>MySQL</span>|
+                <span style={{ paddingLeft: '12px' }}>Docker</span>
+              </div>
+
+              <motion.a
+                href="/contact"
+                whileHover={{
+                  y: -2,
+                  boxShadow: '0 4px 12px rgba(123,31,42,0.25)',
+                  backgroundColor: '#5A1620',
+                }}
+                transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  backgroundColor: '#7B1F2A',
+                  color: '#FFF',
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 600,
+                  fontSize: '14px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px',
+                  padding: '14px 36px',
+                  borderRadius: '8px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  textDecoration: 'none',
+                  marginTop: '36px',
+                }}
+              >
+                HIRE ME
+                <span style={{ fontSize: '16px', lineHeight: 1 }}>→</span>
+              </motion.a>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Mobile layout */}
+        <div className="lg:hidden relative z-10 h-full flex flex-col overflow-y-auto">
+          <div className="flex flex-col items-center justify-center min-h-screen px-6 py-8">
+            <img
+              src="Sujay.png"
+              alt="Sujay Babu Thota"
               style={{
-                background: 'rgba(255,255,255,0.72)',
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
-                border: '1px solid rgba(0,0,0,0.05)',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
+                maxHeight: '40vh',
+                width: 'auto',
+                objectFit: 'cover',
+                objectPosition: 'top center',
+                maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%)',
+                display: 'block',
+                marginBottom: '24px',
+              }}
+            />
+            <h1
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 900,
+                fontSize: '28px',
+                lineHeight: '1.05',
+                color: '#000',
+                textTransform: 'uppercase',
+                letterSpacing: '1px',
+                margin: 0,
+                textAlign: 'center',
               }}
             >
-              <div className="text-xs font-semibold text-gray-900 dark:text-white mb-2">Full Stack Developer</div>
-              <div className="text-xs text-gray-600 dark:text-gray-300 mb-1">React & Next.js</div>
-              <div className="text-xs text-gray-600 dark:text-gray-300 mb-1">UI/UX Design</div>
-              <div className="text-xs text-gray-600 dark:text-gray-300">AI & Automation</div>
-            </motion.div>
-          </motion.div>
+              SUJAY<br />THOTA
+            </h1>
+            <div
+              style={{
+                width: '40px',
+                height: '3px',
+                backgroundColor: '#7B1F2A',
+                marginTop: '12px',
+                borderRadius: '1px',
+              }}
+            />
+            <div
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 600,
+                fontSize: '14px',
+                color: '#7B1F2A',
+                marginTop: '16px',
+                textAlign: 'center',
+              }}
+            >
+              Full Stack Developer
+            </div>
+            <p
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 400,
+                fontSize: '13px',
+                lineHeight: '1.5',
+                color: '#333',
+                marginTop: '10px',
+                textAlign: 'center',
+                maxWidth: '280px',
+              }}
+            >
+              building scalable, efficient and user-friendly web & mobile applications.
+            </p>
+            <div
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 400,
+                fontSize: '10px',
+                color: '#666',
+                marginTop: '20px',
+                textAlign: 'center',
+              }}
+            >
+              React | Next.js | Spring Boot | React Native | MySQL | Docker
+            </div>
+            <motion.a
+              href="/contact"
+              whileHover={{ backgroundColor: '#5A1620' }}
+              transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                backgroundColor: '#7B1F2A',
+                color: '#FFF',
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 600,
+                fontSize: '13px',
+                textTransform: 'uppercase',
+                letterSpacing: '1px',
+                padding: '12px 28px',
+                borderRadius: '8px',
+                border: 'none',
+                cursor: 'pointer',
+                textDecoration: 'none',
+                marginTop: '24px',
+              }}
+            >
+              HIRE ME
+              <span style={{ fontSize: '14px', lineHeight: 1 }}>→</span>
+            </motion.a>
+          </div>
         </div>
       </section>
 
