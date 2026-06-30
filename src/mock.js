@@ -89,7 +89,7 @@ export const mockData = {
         id: 2,
         title: "Fullstack Developer  Intern ",
         company: "Brandverse Technologies India Pvt. Ltd.",
-        period: "Sep 2025 – Oct 2025",
+        period: "July  2025 – Dec 2025",
         description: "E-commerce application with payments, order analytics and delivery workflow.",
         technologies: ["React.js", "Node.js", "Supabase", "Tailwind", "Razorpay"],
         achievements: [
