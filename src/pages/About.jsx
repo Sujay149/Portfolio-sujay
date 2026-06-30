@@ -190,7 +190,7 @@ const About = () => {
               lineHeight: 1,
             }}
           >
-            My
+            
           </span>
         </motion.div>
 
