@@ -144,8 +144,8 @@ const About = () => {
           transition={{ duration: 0.9, ease: 'easeOut', delay: 0.15 }}
           className="absolute pointer-events-none select-none"
           style={{
-            bottom: '-20px',
-            left: '25%',
+            bottom: '60px',
+            left: '15%',
             zIndex: 2,
             transform: 'rotate(-8deg)',
             transformOrigin: 'bottom left',
