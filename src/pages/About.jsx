@@ -145,7 +145,7 @@ const About = () => {
           className="absolute pointer-events-none select-none"
           style={{
             bottom: '60px',
-            left: '15%',
+            left: '5%',
             zIndex: 2,
             transform: 'rotate(-8deg)',
             transformOrigin: 'bottom left',
@@ -163,7 +163,7 @@ const About = () => {
               display: 'block',
             }}
           >
-            SUJAY
+            About Me
           </span>
         </motion.div>
 
