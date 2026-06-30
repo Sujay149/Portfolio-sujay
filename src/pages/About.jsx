@@ -84,7 +84,27 @@ const AnimatePresence = ({ children }) => {
 const About = () => {
   const [educationProgress, setEducationProgress] = useState(0);
   const [activeCardIndex, setActiveCardIndex] = useState(null);
+  const [activeSkillTab, setActiveSkillTab] = useState('FRONTEND');
   const educationRef = useRef();
+
+  const getFilteredSkills = () => {
+    const frontend = ['JavaScript', 'TypeScript', 'React.js', 'Next.js', 'HTML5', 'CSS3', 'Tailwind'];
+    const backend = ['Java', 'Node.js', 'Express.js', 'PHP', 'Spring Boot'];
+    const database = ['MongoDB', 'MySQL', 'Firebase', 'Supabase'];
+    const tools = ['Git', 'GitHub', 'Vercel', 'Netlify', 'Docker', 'Figma', 'Bootstrap', 'Material UI'];
+    const mobile = ['React Native'];
+    const others = ['Python'];
+
+    switch (activeSkillTab) {
+      case 'FRONTEND': return frontend;
+      case 'BACKEND': return backend;
+      case 'DATABASE': return database;
+      case 'TOOLS & SERVICES': return tools;
+      case 'MOBILE': return mobile;
+      case 'OTHERS': return others;
+      default: return mockData.about.skills;
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -598,82 +618,103 @@ const About = () => {
           </div>
         </motion.div>
 
+        {/* Skills Section - Tabbed Interface */}
         <div className="mb-32">
-          <h2 className="text-center text-5xl font-bold text-black dark:text-white mb-16 transition-colors">Skills</h2>
-          <div className="max-w-6xl mx-auto space-y-8">
-            {/* Languages */}
-            <div className="group">
-              <div className="flex items-center gap-3 mb-4">
-                <h3 className="text-2xl font-bold text-black dark:text-white transition-colors">Languages</h3>
-                <div className="flex-1 h-px bg-gradient-to-r from-purple-500 to-transparent dark:from-purple-400"></div>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {['JavaScript', 'Python', 'PHP', 'TypeScript', 'Java'].map((skill) => (
-                  <span key={skill} className="px-5 py-2.5 bg-white dark:bg-gray-800 border-2 border-black dark:border-white rounded-full text-sm font-semibold text-black dark:text-white transition-all hover:scale-105 hover:shadow-lg hover:bg-purple-50 dark:hover:bg-purple-900/30">
-                    {skill}
-                  </span>
-                ))}
-              </div>
+          <div className="max-w-6xl mx-auto px-6 lg:px-12">
+            {/* Section Header */}
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-10 h-[3px]" style={{ backgroundColor: '#7B1F2A' }} />
+              <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500" style={{ fontFamily: "'Inter', sans-serif" }}>
+                SKILLS
+              </h2>
             </div>
 
-            {/* Frontend */}
-            <div className="group">
-              <div className="flex items-center gap-3 mb-4">
-                <h3 className="text-2xl font-bold text-black dark:text-white transition-colors">Frontend</h3>
-                <div className="flex-1 h-px bg-gradient-to-r from-cyan-500 to-transparent dark:from-cyan-400"></div>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {['React.js', 'Next.js', 'HTML5', 'CSS3', 'Tailwind', 'Bootstrap', 'Material UI'].map((skill) => (
-                  <span key={skill} className="px-5 py-2.5 bg-white dark:bg-gray-800 border-2 border-black dark:border-white rounded-full text-sm font-semibold text-black dark:text-white transition-all hover:scale-105 hover:shadow-lg hover:bg-cyan-50 dark:hover:bg-cyan-900/30">
-                    {skill}
-                  </span>
-                ))}
-              </div>
+            {/* Category Tabs */}
+            <div className="flex flex-wrap gap-6 mb-10 text-sm font-semibold" style={{ fontFamily: "'Inter', sans-serif" }}>
+              {['FRONTEND', 'BACKEND', 'DATABASE', 'TOOLS & SERVICES', 'MOBILE', 'OTHERS'].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveSkillTab(tab)}
+                  className={`pb-2 border-b-2 transition-colors ${
+                    activeSkillTab === tab
+                      ? 'text-black dark:text-white'
+                      : 'border-transparent text-gray-400 hover:text-gray-600 dark:hover:text-gray-300'
+                  }`}
+                  style={activeSkillTab === tab ? { borderColor: '#7B1F2A' } : {}}
+                >
+                  {tab}
+                </button>
+              ))}
             </div>
 
-            {/* Backend/DB */}
-            <div className="group">
-              <div className="flex items-center gap-3 mb-4">
-                <h3 className="text-2xl font-bold text-black dark:text-white transition-colors">Backend/DB</h3>
-                <div className="flex-1 h-px bg-gradient-to-r from-emerald-500 to-transparent dark:from-emerald-400"></div>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {['Node.js', 'Express.js', 'PHP', 'MongoDB', 'MySQL', 'Firebase', 'Supabase'].map((skill) => (
-                  <span key={skill} className="px-5 py-2.5 bg-white dark:bg-gray-800 border-2 border-black dark:border-white rounded-full text-sm font-semibold text-black dark:text-white transition-all hover:scale-105 hover:shadow-lg hover:bg-emerald-50 dark:hover:bg-emerald-900/30">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
+            {/* Skills Grid - Filtered by active tab */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+              {getFilteredSkills().map((skill, index) => {
+                const skillColors = {
+                  'JavaScript': { bg: '#F7DF1E', text: '#000', abbr: 'JS' },
+                  'Python': { bg: '#3776AB', text: '#FFF', abbr: 'PY' },
+                  'TypeScript': { bg: '#3178C6', text: '#FFF', abbr: 'TS' },
+                  'Java': { bg: '#007396', text: '#FFF', abbr: 'JV' },
+                  'React.js': { bg: '#61DAFB', svg: true },
+                  'Next.js': { bg: 'transparent', border: true, abbr: 'N' },
+                  'HTML5': { bg: '#E34F26', text: '#FFF', abbr: '5' },
+                  'CSS3': { bg: '#1572B6', text: '#FFF', abbr: '3' },
+                  'Tailwind': { bg: '#06B6D4', svg: true },
+                  'Bootstrap': { bg: '#7952B3', text: '#FFF', abbr: 'BS' },
+                  'Material UI': { bg: '#007FFF', text: '#FFF', abbr: 'MU' },
+                  'Node.js': { bg: '#339933', text: '#FFF', abbr: 'ND' },
+                  'Express.js': { bg: '#000000', text: '#FFF', abbr: 'EX' },
+                  'MongoDB': { bg: '#47A248', text: '#FFF', abbr: 'MG' },
+                  'MySQL': { bg: '#4479A1', text: '#FFF', abbr: 'MY' },
+                  'Firebase': { bg: '#FFCA28', text: '#000', abbr: 'FB' },
+                  'Supabase': { bg: '#3ECF8E', text: '#000', abbr: 'SB' },
+                  'Git': { bg: '#F05032', text: '#FFF', abbr: 'GT' },
+                  'GitHub': { bg: '#181717', text: '#FFF', abbr: 'GH' },
+                  'Vercel': { bg: '#000000', text: '#FFF', abbr: 'VC' },
+                  'Netlify': { bg: '#00C7B7', text: '#000', abbr: 'NL' },
+                  'Figma': { bg: '#F24E1E', text: '#FFF', abbr: 'FG' },
+                  'Docker': { bg: '#2496ED', text: '#FFF', abbr: 'DK' },
+                  'PHP': { bg: '#777BB4', text: '#FFF', abbr: 'PHP' },
+                  'Spring Boot': { bg: '#6DB33F', text: '#FFF', abbr: 'SB' },
+                  'React Native': { bg: '#61DAFB', text: '#000', abbr: 'RN' },
+                };
 
-            {/* Tools */}
-            <div className="group">
-              <div className="flex items-center gap-3 mb-4">
-                <h3 className="text-2xl font-bold text-black dark:text-white transition-colors">Tools</h3>
-                <div className="flex-1 h-px bg-gradient-to-r from-pink-500 to-transparent dark:from-pink-400"></div>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {['Git', 'GitHub', 'Vercel', 'Netlify', 'Render', 'Postman', 'Figma', 'CI/CD'].map((skill) => (
-                  <span key={skill} className="px-5 py-2.5 bg-white dark:bg-gray-800 border-2 border-black dark:border-white rounded-full text-sm font-semibold text-black dark:text-white transition-all hover:scale-105 hover:shadow-lg hover:bg-pink-50 dark:hover:bg-pink-900/30">
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
+                const color = skillColors[skill] || { bg: '#6366F1', text: '#FFF', abbr: skill.substring(0, 2).toUpperCase() };
 
-            {/* AI/Automation */}
-            <div className="group">
-              <div className="flex items-center gap-3 mb-4">
-                <h3 className="text-2xl font-bold text-black dark:text-white transition-colors">AI/Automation</h3>
-                <div className="flex-1 h-px bg-gradient-to-r from-orange-500 to-transparent dark:from-orange-400"></div>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {['Machine Learning', 'Prompt Engineering', 'N8N', 'AI APIs'].map((skill) => (
-                  <span key={skill} className="px-5 py-2.5 bg-white dark:bg-gray-800 border-2 border-black dark:border-white rounded-full text-sm font-semibold text-black dark:text-white transition-all hover:scale-105 hover:shadow-lg hover:bg-orange-50 dark:hover:bg-orange-900/30">
-                    {skill}
-                  </span>
-                ))}
-              </div>
+                return (
+                  <div key={index} className="flex flex-col items-center justify-center p-6 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-3" style={{ 
+                      backgroundColor: color.bg,
+                      color: color.text,
+                      border: color.border ? '2px solid #000' : 'none'
+                    }}>
+                      {color.svg ? (
+                        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
+                          {skill === 'React.js' && (
+                            <>
+                              <circle cx="12" cy="12" r="2.5" fill="currentColor"/>
+                              <ellipse cx="12" cy="12" rx="10" ry="4" stroke="currentColor" strokeWidth="1" fill="none"/>
+                              <ellipse cx="12" cy="12" rx="10" ry="4" stroke="currentColor" strokeWidth="1" fill="none" transform="rotate(60 12 12)"/>
+                              <ellipse cx="12" cy="12" rx="10" ry="4" stroke="currentColor" strokeWidth="1" fill="none" transform="rotate(120 12 12)"/>
+                            </>
+                          )}
+                          {skill === 'Tailwind' && (
+                            <>
+                              <path d="M12.001 4.5c-1.5 0-2.5.5-3.5 1.5M12.001 4.5c1.5 0 2.5.5 3.5 1.5M12.001 4.5v2m0 0c-1.5 0-2.5.5-3.5 1.5m3.5-1.5c1.5 0 2.5.5 3.5 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                              <path d="M12 7c-3 0-5.5 1.5-7 4 1.5 2.5 4 4 7 4s5.5-1.5 7-4c-1.5-2.5-4-4-7-4z" stroke="currentColor" strokeWidth="1.5"/>
+                            </>
+                          )}
+                        </svg>
+                      ) : color.border ? (
+                        <span className="text-lg font-bold">{color.abbr}</span>
+                      ) : (
+                        <span className="text-sm font-bold">{color.abbr}</span>
+                      )}
+                    </div>
+                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300" style={{ fontFamily: "'Inter', sans-serif" }}>{skill}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
