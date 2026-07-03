@@ -173,7 +173,7 @@ const About = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: 'easeOut', delay: 0.15 }}
               className="absolute inset-0"
-              style={{ top: 'var(--header-height)', zIndex: 4, overflow: 'hidden' }}
+              style={{ top: 0, zIndex: 4, overflow: 'hidden' }}
             >
               <img
                 src="about-desk.png"
