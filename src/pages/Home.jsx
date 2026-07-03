@@ -1,9 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { ExternalLink } from 'lucide-react';
 import HireMeBadge from '../components/HireMeBadge';
 import { mockData } from '../mock';
 import { useTheme } from '../contexts/ThemeContext';
+
+// Smooth scroll helper for anchor links
+const scrollToSection = (e, sectionId) => {
+  e.preventDefault();
+  const element = document.querySelector(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
 
 const Home = () => {
   const { darkMode } = useTheme();
@@ -13,8 +21,8 @@ const Home = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4 lg:py-8 min-h-full lg:h-full flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-center">
           {/* Left Side - Watercolor Portrait */}
-          <div className="relative order-1 lg:order-1">
-  <div className="relative max-w-sm sm:max-w-md lg:max-w-md mx-auto lg:mx-0 mt-10 lg:mt-0">
+          <div className="relative order-1 lg:order-1 flex justify-center lg:justify-start">
+  <div className="relative w-full sm:max-w-md lg:max-w-md mx-auto lg:mx-0 mt-10 lg:mt-0">
    <img 
   src={darkMode ? "/herodark.png" : "/herobg.png"}
   alt="Developer portrait"
@@ -34,9 +42,9 @@ const Home = () => {
 
 
     {/* Watercolor splash effects */}
-    <div className="absolute inset-0 -z-10">
+    <div className="absolute inset-0 -z-10 overflow-hidden">
       <div className="absolute top-0 left-0 w-28 sm:w-40 lg:w-40 h-28 sm:h-40 lg:h-40 bg-purple-400 rounded-full opacity-30 blur-3xl"></div>
-      <div className="absolute top-10 sm:top-16 lg:top-16 right-0 w-40 sm:w-56 lg:w-56 h-40 sm:h-56 lg:h-56 bg-blue-500 rounded-full opacity-20 blur-3xl"></div>
+      <div className="absolute top-10 sm:top-16 lg:top-16 -right-4 sm:right-0 w-40 sm:w-56 lg:w-56 h-40 sm:h-56 lg:h-56 bg-blue-500 rounded-full opacity-20 blur-3xl"></div>
       <div className="absolute bottom-10 sm:bottom-16 lg:bottom-16 left-6 sm:left-8 lg:left-10 w-36 sm:w-48 lg:w-48 h-36 sm:h-48 lg:h-48 bg-orange-400 rounded-full opacity-25 blur-3xl"></div>
     </div>
 
@@ -64,12 +72,13 @@ const Home = () => {
               >
                 Resume <ExternalLink size={18} />
               </a>
-              <Link
-                to="/contact"
+              <a
+                href="#contact"
+                onClick={(e) => scrollToSection(e, '#contact')}
                 className="text-black dark:text-white font-semibold hover:underline underline-offset-4 transition-all text-sm md:text-base text-center sm:text-left w-full sm:w-auto"
               >
                 Contact
-              </Link>
+              </a>
               <a
                 href="mailto:sujayss149@gmail.com"
                 className="lg:hidden inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-200 font-semibold text-sm md:text-base shadow-lg hover:shadow-xl w-full sm:w-auto"
