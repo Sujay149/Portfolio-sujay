@@ -156,9 +156,9 @@ const About = () => {
   }, []);
   
   return (
-    <div className="min-h-screen pt-0 bg-white dark:bg-black transition-colors duration-300">
+    <div className="min-h-screen w-full pt-0 bg-white dark:bg-black transition-colors duration-300">
       {/* === HERO SECTION - Editorial Redesign === */}
-      <section className="relative w-full h-screen min-h-[700px] overflow-hidden bg-white dark:bg-black">
+      <section className="relative w-full overflow-hidden bg-white dark:bg-black" style={{ height: 'calc(100vh - 100px)' }}>
         {/* Layer 1: PORTFOLIO Outline */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -246,22 +246,15 @@ const About = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: 'easeOut', delay: 0.15 }}
-          className="absolute hidden lg:block"
-          style={{ right: 0, bottom: 0, width: '55%', height: '100%', zIndex: 4, overflow: 'hidden' }}
+          className="hidden lg:block absolute inset-0"
+          style={{ zIndex: 4, overflow: 'hidden' }}
         >
           <img
-            src="Sujay.png"
+            src="about.png"
             alt="Sujay Babu Thota - Full Stack Developer"
+            className="w-full h-full object-contain"
             style={{
-              height: '95vh',
-              width: 'auto',
-              maxWidth: '100%',
-              objectFit: 'cover',
-              objectPosition: 'top center',
-              display: 'block',
-              position: 'absolute',
-              right: 0,
-              bottom: 0,
+              objectPosition: 'center',
               maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%)',
               WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%)',
             }}
@@ -384,22 +377,18 @@ const About = () => {
         </div>
 
         {/* Mobile layout */}
-        <div className="lg:hidden relative z-10 h-full flex flex-col overflow-y-auto">
-          <div className="flex flex-col items-center justify-center min-h-screen px-6 py-8">
-            <img
-              src="Sujay.png"
-              alt="Sujay Babu Thota"
-              style={{
-                maxHeight: '40vh',
-                width: 'auto',
-                objectFit: 'cover',
-                objectPosition: 'top center',
-                maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%)',
-                WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%)',
-                display: 'block',
-                marginBottom: '24px',
-              }}
-            />
+        <div className="lg:hidden relative z-10 h-full flex flex-col justify-center">
+          <img
+            src="about.png"
+            alt="Sujay Babu Thota"
+            className="w-full h-full object-contain"
+            style={{
+              objectPosition: 'center',
+              maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%)',
+            }}
+          />
+          <div className="text-center px-2">
             <h1
               style={{
                 fontFamily: "'Inter', sans-serif",

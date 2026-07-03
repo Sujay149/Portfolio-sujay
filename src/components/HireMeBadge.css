@@ -1,7 +1,7 @@
 .hire-me-badge {
   position: absolute;
   bottom: 0%;
-  left: -90px;
+  right: 20px;
   transform: translateY(-20px);
   width: 140px;
   height: 140px;
@@ -102,7 +102,7 @@
     width: 100px;
     height: 100px;
     bottom: 40px;
-    left: 40px;
+    right: 20px;
   }
   
   .badge-rotating-text {

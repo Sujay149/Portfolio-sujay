@@ -39,7 +39,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-16 md:py-44 bg-gray-50 dark:bg-black transition-colors duration-300">
+    <section className="w-full py-16 md:py-44 bg-gray-50 dark:bg-black transition-colors duration-300">
       <div className="mx-auto max-w-[1200px] px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {/* Left side - Contact Info */}

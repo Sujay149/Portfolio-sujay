@@ -1,14 +1,29 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Github, Linkedin, Moon, Sun, Home, User, Briefcase, FolderOpen, Mail } from 'lucide-react';
 import { mockData } from '../mock';
 import { useTheme } from '../contexts/ThemeContext';
+
+const springConfig = {
+  type: 'spring',
+  stiffness: 300,
+  damping: 30,
+};
 
 const Navbar = () => {
   const location = useLocation();
   const { darkMode, toggleDarkMode } = useTheme();
 
   const isActive = (path) => location.pathname === path;
+
+  const tabs = [
+    { id: '/', label: 'Home', icon: Home },
+    { id: '/about', label: 'About', icon: User },
+    { id: '/projects', label: 'Projects', icon: FolderOpen },
+    { id: '/experience', label: 'Experience', icon: Briefcase },
+    { id: '/contact', label: 'Contact', icon: Mail },
+  ];
 
   return (
     <>
@@ -158,67 +173,84 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Bottom Navigation - Floating Style */}
-      <nav className="md:hidden fixed bottom-4 left-4 right-4 z-50 bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg rounded-full shadow-lg border border-gray-200 dark:border-gray-700 transition-all duration-300">
-        <div className="flex items-center justify-around py-3">
-          <Link 
-            to="/" 
-            className={`flex flex-col items-center gap-1 p-2 transition-colors ${
-              isActive('/') ? 'text-black dark:text-white' : 'text-gray-700 dark:text-gray-300'
-            }`}
-          >
-            <Home size={20} />
-          </Link>
-          <Link 
-            to="/about" 
-            className={`flex flex-col items-center gap-1 p-2 transition-colors ${
-              isActive('/about') ? 'text-black dark:text-white' : 'text-gray-700 dark:text-gray-300'
-            }`}
-          >
-            <User size={20} />
-          </Link>
-          <Link 
-            to="/projects" 
-            className={`flex flex-col items-center gap-1 p-2 transition-colors ${
-              isActive('/projects') ? 'text-black dark:text-white' : 'text-gray-700 dark:text-gray-300'
-            }`}
-          >
-            <FolderOpen size={20} />
-          </Link>
-          <Link 
-            to="/experience" 
-            className={`flex flex-col items-center gap-1 p-2 transition-colors ${
-              isActive('/experience') ? 'text-black dark:text-white' : 'text-gray-700 dark:text-gray-300'
-            }`}
-          >
-            <Briefcase size={20} />
-          </Link>
-          <Link 
-            to="/contact" 
-            className={`flex flex-col items-center gap-1 p-2 transition-colors ${
-              isActive('/contact') ? 'text-black dark:text-white' : 'text-gray-700 dark:text-gray-300'
-            }`}
-          >
-            <Mail size={20} />
-          </Link>
+      {/* Mobile Bottom Navigation - Fluid Morphing Style */}
+      <nav 
+        className="md:hidden fixed z-50 w-full"
+        style={{
+          bottom: 24,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          pointerEvents: 'none',
+        }}
+      >
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 6,
+            background: '#0A0A0A',
+            padding: 8,
+            borderRadius: 9999,
+            boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
+            pointerEvents: 'auto',
+          }}
+        >
+        {tabs.map((tab) => {
+          const active = isActive(tab.id);
+          const Icon = tab.icon;
+
+          return (
+            <Link key={tab.id} to={tab.id}>
+              <motion.div
+                layout
+                transition={springConfig}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: active ? 8 : 0,
+                  height: 48,
+                  padding: active ? '0 20px' : '0 12px',
+                  borderRadius: 9999,
+                  border: 'none',
+                  background: active ? '#1A1A1A' : 'transparent',
+                  color: '#fff',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+              >
+              <motion.div
+                layout
+                transition={springConfig}
+                style={{ display: 'flex', alignItems: 'center' }}
+              >
+                <Icon size={22} strokeWidth={1.5} />
+              </motion.div>
+
+              {active && (
+                <motion.span
+                  initial={{ opacity: 0, x: -8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -8 }}
+                  transition={{ duration: 0.2, delay: 0.05 }}
+                  style={{
+                    fontSize: 14,
+                    fontWeight: 500,
+                    whiteSpace: 'nowrap',
+                    color: '#fff',
+                  }}
+                >
+                  {tab.label}
+                </motion.span>
+              )}
+            </motion.div>
+            </Link>
+          );
+        })}
         </div>
       </nav>
-      
-      <style jsx>{`
-        @keyframes slideDown {
-          from {
-            opacity: 0;
-            transform: translateY(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-slideDown {
-          animation: slideDown 0.3s ease-out;
-        }
-      `}</style>
     </>
   );
 };

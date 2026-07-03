@@ -278,7 +278,7 @@ const Projects = () => {
   const frontendProjects = sortedProjects.filter(p => p.type === 'frontend');
 
   return (
-    <div className="min-h-screen bg-[#f8fafc] dark:bg-black pt-0 transition-colors duration-300">
+    <div className="min-h-screen w-full bg-[#f8fafc] dark:bg-black pt-0 transition-colors duration-300">
       <div className="mx-auto max-w-[1400px] px-4 md:px-8 py-24">
         {/* Main Heading */}
         <div className="text-center mb-16 pt-[50px]">
