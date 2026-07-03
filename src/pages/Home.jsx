@@ -66,7 +66,7 @@ const Home = () => {
               </a>
               <Link
                 to="/contact"
-                className="flex-1 text-center text-black dark:text-white font-semibold hover:underline underline-offset-4 transition-all text-xs sm:text-sm md:text-base whitespace-nowrap"
+                className="flex-1 inline-flex items-center justify-center gap-2 bg-black dark:bg-white text-white dark:text-black px-3 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-200 font-semibold text-xs sm:text-sm md:text-base whitespace-nowrap shadow-lg hover:shadow-xl"
               >
                 Contact
               </Link>
