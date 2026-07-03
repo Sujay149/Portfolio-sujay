@@ -1,34 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ExternalLink } from 'lucide-react';
 import HireMeBadge from '../components/HireMeBadge';
 import { mockData } from '../mock';
 import { useTheme } from '../contexts/ThemeContext';
 
-// Smooth scroll helper for anchor links
-const scrollToSection = (e, sectionId) => {
-  e.preventDefault();
-  const element = document.querySelector(sectionId);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
-  }
-};
-
 const Home = () => {
   const { darkMode } = useTheme();
   
   return (
-    <div className="min-h-screen lg:h-screen pt-[70px] bg-gray-50 dark:bg-transparent relative overflow-hidden transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4 lg:py-8 min-h-full lg:h-full flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-16 items-center">
+    <div className="h-screen lg:h-screen pt-[70px] bg-gray-50 dark:bg-transparent relative overflow-hidden transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-3 lg:py-8 h-full lg:h-full flex items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-16 items-center w-full">
           {/* Left Side - Watercolor Portrait */}
           <div className="relative order-1 lg:order-1 flex justify-center lg:justify-start">
-  <div className="relative w-full sm:max-w-md lg:max-w-md mx-auto lg:mx-0 mt-10 lg:mt-0">
+  <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto lg:mx-0">
    <img 
   src={darkMode ? "/herodark.png" : "/herobg.png"}
   alt="Developer portrait"
   className="
     w-full
-    h-[420px] sm:h-[470px] lg:h-[720px]
+    h-[35vh] sm:h-[40vh] lg:h-[720px]
     object-contain
     relative z-10
   "
@@ -56,35 +48,34 @@ const Home = () => {
 
 
           {/* Right Side - Content */}
-          <div className="space-y-6 md:space-y-8 order-2 lg:order-2">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight text-black dark:text-white transition-colors">
+          <div className="space-y-4 sm:space-y-6 md:space-y-8 order-2 lg:order-2">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight tracking-tight text-black dark:text-white transition-colors">
               {mockData.profile.tagline}
             </h1>
-            <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl transition-colors">
+            <p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed max-w-xl transition-colors">
               {mockData.profile.description}
             </p>
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 pt-0">
+            <div className="flex flex-row items-center gap-2 sm:gap-4 md:gap-6 pt-0 w-full">
               <a
                 href={mockData.profile.resume}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-black dark:bg-white text-white dark:text-black px-6 md:px-8 py-3 md:py-4 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-200 font-semibold text-sm md:text-base shadow-lg hover:shadow-xl w-full sm:w-auto"
+                className="flex-1 inline-flex items-center justify-center gap-2 bg-black dark:bg-white text-white dark:text-black px-3 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-200 font-semibold text-xs sm:text-sm md:text-base shadow-lg hover:shadow-xl"
               >
-                Resume <ExternalLink size={18} />
+                Resume <ExternalLink size={14} className="sm:w-4 sm:h-4" />
               </a>
-              <a
-                href="#contact"
-                onClick={(e) => scrollToSection(e, '#contact')}
-                className="text-black dark:text-white font-semibold hover:underline underline-offset-4 transition-all text-sm md:text-base text-center sm:text-left w-full sm:w-auto"
+              <Link
+                to="/contact"
+                className="flex-1 text-center text-black dark:text-white font-semibold hover:underline underline-offset-4 transition-all text-xs sm:text-sm md:text-base whitespace-nowrap"
               >
                 Contact
-              </a>
-              <a
-                href="mailto:sujayss149@gmail.com"
-                className="lg:hidden inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-200 font-semibold text-sm md:text-base shadow-lg hover:shadow-xl w-full sm:w-auto"
+              </Link>
+              <Link
+                to="/contact"
+                className="hidden lg:inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-200 font-semibold text-sm md:text-base shadow-lg hover:shadow-xl whitespace-nowrap"
               >
                 Hire Me
-              </a>
+              </Link>
             </div>
           </div>
         </div>

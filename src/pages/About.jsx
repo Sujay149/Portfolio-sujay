@@ -1,4 +1,5 @@
 ﻿import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { mockData } from '../mock';
 import { motion } from 'framer-motion';
 import { CanvasRevealEffect } from '../components/ui/canvas-reveal-effect';
@@ -347,36 +348,37 @@ const About = () => {
                 <span style={{ paddingLeft: '12px' }}>Docker</span>
               </div>
 
-              <motion.a
-                href="/contact"
-                whileHover={{
-                  y: -2,
-                  boxShadow: '0 4px 12px rgba(123,31,42,0.25)',
-                  backgroundColor: '#5A1620',
-                }}
-                transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  backgroundColor: '#7B1F2A',
-                  color: '#FFF',
-                  fontFamily: "'Inter', sans-serif",
-                  fontWeight: 600,
-                  fontSize: '14px',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.5px',
-                  padding: '14px 36px',
-                  borderRadius: '8px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  textDecoration: 'none',
-                  marginTop: '36px',
-                }}
-              >
-                HIRE ME
-                <span style={{ fontSize: '16px', lineHeight: 1 }}>→</span>
-              </motion.a>
+              <Link to="/contact">
+                <motion.div
+                  whileHover={{
+                    y: -2,
+                    boxShadow: '0 4px 12px rgba(123,31,42,0.25)',
+                    backgroundColor: '#5A1620',
+                  }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '10px',
+                    backgroundColor: '#7B1F2A',
+                    color: '#FFF',
+                    fontFamily: "'Inter', sans-serif",
+                    fontWeight: 600,
+                    fontSize: '14px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.5px',
+                    padding: '14px 36px',
+                    borderRadius: '8px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    textDecoration: 'none',
+                    marginTop: '36px',
+                  }}
+                >
+                  HIRE ME
+                  <span style={{ fontSize: '16px', lineHeight: 1 }}>→</span>
+                </motion.div>
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -460,32 +462,33 @@ const About = () => {
             >
               React | Next.js | Spring Boot | React Native | MySQL | Docker
             </div>
-            <motion.a
-              href="/contact"
-              whileHover={{ backgroundColor: '#5A1620' }}
-              transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                backgroundColor: '#7B1F2A',
-                color: '#FFF',
-                fontFamily: "'Inter', sans-serif",
-                fontWeight: 600,
-                fontSize: '13px',
-                textTransform: 'uppercase',
-                letterSpacing: '1px',
-                padding: '12px 28px',
-                borderRadius: '8px',
-                border: 'none',
-                cursor: 'pointer',
-                textDecoration: 'none',
-                marginTop: '24px',
-              }}
-            >
-              HIRE ME
-              <span style={{ fontSize: '14px', lineHeight: 1 }}>→</span>
-            </motion.a>
+            <Link to="/contact">
+              <motion.div
+                whileHover={{ backgroundColor: '#5A1620' }}
+                transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  backgroundColor: '#7B1F2A',
+                  color: '#FFF',
+                  fontFamily: "'Inter', sans-serif",
+                  fontWeight: 600,
+                  fontSize: '13px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  padding: '12px 28px',
+                  borderRadius: '8px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  textDecoration: 'none',
+                  marginTop: '24px',
+                }}
+              >
+                HIRE ME
+                <span style={{ fontSize: '14px', lineHeight: 1 }}>→</span>
+              </motion.div>
+            </Link>
           </div>
         </div>
       </section>
