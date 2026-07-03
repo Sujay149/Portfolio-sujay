@@ -174,13 +174,10 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Bottom Navigation - Fluid Morphing Style */}
-      <nav 
-        className="md:hidden fixed z-50 w-full"
+      <nav
+        className="md:hidden fixed z-50 w-full flex justify-center items-center"
         style={{
           bottom: 24,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
           pointerEvents: 'none',
         }}
       >
