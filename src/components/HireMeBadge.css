@@ -1,7 +1,7 @@
 .hire-me-badge {
   position: absolute;
   bottom: 0%;
-  right: 20px;
+  left: 20px;
   transform: translateY(-20px);
   width: 140px;
   height: 140px;
@@ -99,16 +99,22 @@
 
 @media (max-width: 768px) {
   .hire-me-badge {
-    width: 100px;
-    height: 100px;
+    width: 128px;
+    height: 128px;
     bottom: 40px;
-    right: 20px;
+    left: 16px;
   }
-  
+
   .badge-rotating-text {
-    font-size: 7px;
+    font-size: 26px;
+    letter-spacing: 2px;
   }
-  
+
+  .badge-center {
+    width: 62px;
+    height: 62px;
+  }
+
   .badge-hire-text {
     font-size: 12px;
   }

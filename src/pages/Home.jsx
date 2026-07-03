@@ -40,7 +40,7 @@ const Home = () => {
       <div className="absolute bottom-10 sm:bottom-16 lg:bottom-16 left-6 sm:left-8 lg:left-10 w-36 sm:w-48 lg:w-48 h-36 sm:h-48 lg:h-48 bg-orange-400 rounded-full opacity-25 blur-3xl"></div>
     </div>
 
-    <div className="hidden lg:block">
+    <div className="block">
       <HireMeBadge />
     </div>
   </div>
@@ -69,12 +69,6 @@ const Home = () => {
                 className="flex-1 text-center text-black dark:text-white font-semibold hover:underline underline-offset-4 transition-all text-xs sm:text-sm md:text-base whitespace-nowrap"
               >
                 Contact
-              </Link>
-              <Link
-                to="/contact"
-                className="hidden lg:inline-flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 md:px-8 py-3 md:py-4 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-200 font-semibold text-sm md:text-base shadow-lg hover:shadow-xl whitespace-nowrap"
-              >
-                Hire Me
               </Link>
             </div>
           </div>
