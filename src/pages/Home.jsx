@@ -9,18 +9,18 @@ const Home = () => {
   const { darkMode } = useTheme();
   
   return (
-    <div className="h-screen lg:h-screen pt-[70px] bg-gray-50 dark:bg-transparent relative overflow-hidden transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-3 lg:py-8 h-full lg:h-full flex items-center">
+    <div className="min-h-screen lg:h-screen pt-[70px] pb-28 lg:pb-0 bg-gray-50 dark:bg-transparent relative overflow-visible lg:overflow-hidden transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-3 lg:py-8 lg:h-full flex items-start lg:items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-16 items-center w-full">
           {/* Left Side - Watercolor Portrait */}
           <div className="relative order-1 lg:order-1 flex justify-center lg:justify-start">
-  <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md mx-auto lg:mx-0">
-   <img 
+  <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-md mx-auto lg:mx-0 -mt-5 lg:mt-0">
+   <img
   src={darkMode ? "/herodark.png" : "/herobg.png"}
   alt="Developer portrait"
   className="
     w-full
-    h-[35vh] sm:h-[40vh] lg:h-[720px]
+    h-[44vh] sm:h-[48vh] lg:h-[720px]
     object-contain
     relative z-10
   "
