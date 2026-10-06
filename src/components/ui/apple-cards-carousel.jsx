@@ -63,7 +63,19 @@ export function Carousel({ items, label = 'Achievements' }) {
   );
 }
 
+// Pull a leading stat ("10+", "1+") out of a title so the key number can
+// be shown large while the rest reads as a short label.
+export const splitStat = (title) => {
+  const tokens = title.trim().split(/\s+/);
+  const first = tokens[0] || "";
+  if (/^[0-9.]+(\+)?$/.test(first) && tokens.length > 1) {
+    return { stat: first, label: title.trim().slice(first.length).trim() };
+  }
+  return { stat: null, label: title.trim() };
+};
+
 export function Card({ card }) {
+  const { stat, label } = splitStat(card.title);
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -73,10 +85,12 @@ export function Card({ card }) {
           className="group relative flex h-[180px] w-40 flex-col items-start justify-start overflow-hidden whitespace-normal rounded-3xl bg-muted p-0 text-left shadow-none ring-inset focus-visible:ring-2 transition-shadow duration-500 hover:shadow-2xl hover:shadow-black/25 dark:hover:shadow-black/60 md:h-[340px] md:w-64"
         >
           <BlurImage src={card.src} alt="" className="absolute inset-0 object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.02]" />
-          <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-transparent" />
-          <span className="relative z-10 p-8 text-white">
-            <span className="block text-[11px] font-medium uppercase tracking-[0.18em] md:text-sm">{card.category}</span>
-            <span className="mt-2 block max-w-xs text-xl font-semibold leading-tight [text-wrap:balance] drop-shadow-sm md:text-3xl">{card.title}</span>
+          <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/5" />
+          <span className="relative z-10 mt-auto flex w-full flex-col items-start gap-1.5 p-5 text-white md:p-6">
+            {stat && (
+              <span className="text-3xl font-black leading-none md:text-5xl">{stat}</span>
+            )}
+            <span className="text-sm font-semibold leading-snug [text-wrap:balance] md:text-lg">{label}</span>
           </span>
         </Button>
       </DialogTrigger>

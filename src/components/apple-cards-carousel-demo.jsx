@@ -39,7 +39,7 @@ export default function AppleCardsCarouselDemo() {
           className="mb-4 max-w-3xl"
         >
           <h2 id="achievements-title" className="mb-4 text-4xl font-bold text-foreground md:text-5xl">My Achievements</h2>
-          <p className="text-lg text-muted-foreground">Curious about what I've accomplished? Let my track record speak for itself.</p>
+          <p className="text-lg font-medium text-gray-800 dark:text-gray-200">More than a résumé — 10+ shipped projects, a Top-3 hackathon finish, and a year of hands-on builds.</p>
         </motion.div>
         <Carousel items={cards} />
       </div>

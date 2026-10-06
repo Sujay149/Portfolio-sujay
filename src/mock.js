@@ -43,7 +43,7 @@ export const mockData = {
       },
       {
         id: 2,
-        title: "1+ Years of Experience as Sofware Developer",
+        title: "1+ Years of Experience as Software Developer",
         description: "Bringing hands-on expertise in modern web technologies and AI systems",
         image: "achievements/experience.png",
         bgColor: "bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700",
