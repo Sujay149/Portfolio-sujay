@@ -1,8 +1,9 @@
-﻿import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { mockData } from '../mock';
 import { motion } from 'framer-motion';
 import { CanvasRevealEffect } from '../components/ui/canvas-reveal-effect';
+import AppleCardsCarouselDemo from '../components/apple-cards-carousel-demo';
 
 const AceternityIcon = ({ order }) => {
   return (
@@ -139,7 +140,7 @@ const About = () => {
           {/* Mobile layout - portrait image, starts directly below the fixed header */}
           <div className="lg:hidden hero-media" style={{ zIndex: 4 }}>
             <img
-              src="about.png"
+              src="about-new.jpg"
               alt="Sujay Babu Thota"
               className="w-full h-full"
               style={{
@@ -152,7 +153,7 @@ const About = () => {
           </div>
 
           {/* Desktop layout - Full width image hero */}
-          <div className="hidden lg:block w-full h-full">
+          <div className="hidden lg:block w-full h-full relative">
             {/* Decorative watermark */}
             <div className="absolute pointer-events-none select-none" style={{ bottom: '60px', left: '5%', zIndex: 2, transform: 'rotate(-8deg)', transformOrigin: 'bottom left' }} aria-hidden="true">
               <span style={{ fontFamily: "'Dancing Script', 'Great Vibes', cursive", fontSize: 'clamp(150px, 28vw, 380px)', color: '#E8E8E8', opacity: 0.5, whiteSpace: 'nowrap', lineHeight: '0.9', display: 'block' }}>About Me</span>
@@ -173,18 +174,12 @@ const About = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: 'easeOut', delay: 0.15 }}
               className="absolute inset-0"
-              style={{ top: 0, zIndex: 4, overflow: 'hidden' }}
+              style={{ top: -50, zIndex: 4, overflow: 'hidden' }}
             >
               <img
-                src="about-desk.png"
+                src="about-new.jpg"
                 alt="Sujay Babu Thota - Full Stack Developer"
-                className="w-full h-full"
-                style={{
-                  objectFit: 'cover',
-                  objectPosition: 'center top',
-                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0.8) 75%, rgba(0,0,0,0.4) 85%, rgba(0,0,0,0) 100%)',
-                }}
+                className="w-full h-full object-cover object-center"
               />
             </motion.div>
           </div>
@@ -550,32 +545,7 @@ const About = () => {
       </section>
 
       {/* Achievements Section */}
-      <section id="achievements" className="py-20 relative overflow-hidden">
-        <div className="relative z-10">
-          <div className="mx-auto max-w-5xl px-6">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 transition-colors">
-                My Achievements
-              </motion.h2>
-              <motion.p initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }} viewport={{ once: true }} className="text-gray-600 dark:text-gray-400 text-lg transition-colors">
-                Curious about what I've accomplished? Let my track record speak for itself.
-              </motion.p>
-            </div>
-            <div className="mb-16 border-t border-dashed border-gray-300 dark:border-gray-700" />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {mockData.about.achievements.map((achievement, index) => (
-                <motion.div key={achievement.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: index * 0.15 }} viewport={{ once: true }} whileHover={{ scale: 1.02 }} className={`rounded-3xl p-8 transition-all duration-300 ${achievement.bgColor}`}>
-                  <div className="mb-6 w-full aspect-video relative rounded-2xl overflow-hidden">
-                    <img src={achievement.image} alt={achievement.title} className="w-full h-full object-cover" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 transition-colors">{achievement.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed transition-colors">{achievement.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <AppleCardsCarouselDemo />
     </div>
   );
 };
