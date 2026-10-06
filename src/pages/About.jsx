@@ -187,6 +187,35 @@ const About = () => {
                 Building scalable, efficient and user-friendly web &amp; mobile applications
                 with modern technologies.
               </p>
+
+              {/* Resume CTA */}
+              <motion.a
+                href={mockData.profile.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: 'easeOut', delay: 0.15 }}
+                className="group mt-7 inline-flex items-center gap-2.5 rounded-full bg-[#0b1220] px-6 py-3 text-[13px] font-semibold uppercase tracking-[0.15em] text-white transition-all duration-300 hover:bg-[#7B1F2A] dark:bg-white dark:text-[#0b1220] dark:hover:bg-[#7B1F2A] dark:hover:text-white"
+                style={{ fontFamily: heroFont }}
+              >
+                Resume
+                <svg
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="8" y1="13" x2="16" y2="13" />
+                  <line x1="8" y1="17" x2="13" y2="17" />
+                </svg>
+              </motion.a>
             </motion.div>
           </div>
 
@@ -242,6 +271,40 @@ const About = () => {
                   Building scalable, efficient and user-friendly web &amp; mobile applications
                   with modern technologies.
                 </p>
+
+                {/* Resume CTA */}
+                <motion.a
+                  href={mockData.profile.resume}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.6, ease: 'easeOut' }}
+                  className="group pointer-events-auto mt-7 inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-[13px] font-semibold uppercase tracking-[0.18em] transition-all duration-300"
+                  style={{
+                    fontFamily: heroFont,
+                    background: INK,
+                    color: '#fff',
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.background = '#7B1F2A'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.background = INK; }}
+                >
+                  Resume
+                  <svg
+                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="8" y1="13" x2="16" y2="13" />
+                    <line x1="8" y1="17" x2="13" y2="17" />
+                  </svg>
+                </motion.a>
               </motion.div>
 
               {/* Right: role + stack */}

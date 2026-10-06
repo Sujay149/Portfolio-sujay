@@ -9,7 +9,7 @@ export const mockData = {
     description: "Highly driven Full Stack Developer with hands-on experience building production-ready web applications and AI-powered systems. Skilled in modern frameworks, scalable architectures and real-world deployments with a strong focus on problem-solving, rapid learning, and product-oriented development.",
     hireMeText: "Hire Me | Full Stack Developer | AI Enthusiast",
     email: "sujayss149@gmail.com",
-    resume: "Sujay_Babu_Thota_SDE1.pdf",
+    resume: "https://drive.google.com/file/d/1tc_gVLwUJ-35GduXwDmvwoDtLH_wgMec/view?usp=sharing",
     phone: "+91-9346491221"
   },
   
