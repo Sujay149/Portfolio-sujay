@@ -2,92 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { mockData } from '../mock';
 import { motion } from 'framer-motion';
-import { CanvasRevealEffect } from '../components/ui/canvas-reveal-effect';
 import AppleCardsCarouselDemo from '../components/apple-cards-carousel-demo';
-
-const AceternityIcon = ({ order }) => {
-  return (
-    <div className="relative w-16 h-16 flex items-center justify-center">
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 to-cyan-500 rounded-full blur-xl opacity-60 animate-pulse"></div>
-      <div className="relative bg-gradient-to-br from-purple-600 to-cyan-600 dark:from-purple-400 dark:to-cyan-400 rounded-full w-14 h-14 flex items-center justify-center border-2 border-white dark:border-black shadow-lg">
-        <span className="text-white dark:text-black font-extrabold text-xs tracking-wide">{order}</span>
-      </div>
-    </div>
-  );
-};
-
-const Card = ({ title, icon, children, des, index, activeCardIndex, setActiveCardIndex }) => {
-  const [hovered, setHovered] = useState(false);
-  const cardRef = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && window.innerWidth < 1024) {
-          setActiveCardIndex(index);
-        }
-      },
-      {
-        threshold: 0.6,
-        rootMargin: '-10% 0px -10% 0px'
-      }
-    );
-
-    if (cardRef.current) {
-      observer.observe(cardRef.current);
-    }
-
-    return () => {
-      if (cardRef.current) {
-        observer.unobserve(cardRef.current);
-      }
-    };
-  }, [index, setActiveCardIndex]);
-
-  const shouldShowEffect = hovered || (activeCardIndex === index && window.innerWidth < 1024);
-
-  return (
-    <div
-      ref={cardRef}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="border border-black/[0.2] dark:border-white/[0.2] group/canvas-card flex items-center justify-center max-w-sm w-full mx-auto p-4 relative h-[30rem] rounded-3xl bg-white dark:bg-black"
-    >
-      <div className="absolute h-10 w-10 top-3 left-3">{icon}</div>
-      <AnimatePresence>
-        {shouldShowEffect && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="h-full w-full absolute inset-0"
-          >
-            {children}
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <div className="relative z-20">
-        <div className={`text-center transition duration-200 w-full mx-auto flex items-center justify-center absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] ${shouldShowEffect ? '-translate-y-4 opacity-0' : ''}`}>
-          <h2 className="text-black dark:text-white text-3xl md:text-4xl font-extrabold px-4">{title}</h2>
-        </div>
-        <p className={`text-base md:text-lg relative z-10 text-white transition duration-200 text-center px-6 leading-relaxed font-semibold ${shouldShowEffect ? 'opacity-100 -translate-y-2' : 'opacity-0'}`}>
-          {des}
-        </p>
-      </div>
-    </div>
-  );
-};
-
-const AnimatePresence = ({ children }) => {
-  return <>{children}</>;
-};
+import HowIWork from '../components/How-i-work';
 
 const techBadges = ['React', 'Next.js', 'Spring Boot', 'Node.js', 'React Native', 'MySQL', 'Docker'];
 
 const About = () => {
   const [educationProgress, setEducationProgress] = useState(0);
-  const [activeCardIndex, setActiveCardIndex] = useState(null);
   const [activeSkillTab, setActiveSkillTab] = useState('FRONTEND');
   const educationRef = useRef();
 
@@ -261,7 +182,7 @@ const About = () => {
       </div>
 
       {/* === STATISTICS SECTION === */}
-      <div className="px-4 lg:px-12 max-w-5xl mx-auto mt-10 lg:mt-16">
+      {/* <div className="px-4 lg:px-12 max-w-5xl mx-auto mt-10 lg:mt-16">
         <div className="grid grid-cols-3 gap-3 lg:gap-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -322,10 +243,10 @@ const About = () => {
             <div className="text-xs lg:text-sm font-semibold text-gray-500 dark:text-gray-400 tracking-[0.15em]" style={{ fontFamily: "'Inter', sans-serif" }}>YEARS EXP</div>
           </motion.div>
         </div>
-      </div>
+      </div> */}
 
       {/* === QUICK HIGHLIGHTS === */}
-      <div className="px-4 lg:px-12 max-w-5xl mx-auto mt-10 lg:mt-16">
+      {/* <div className="px-4 lg:px-12 max-w-5xl mx-auto mt-10 lg:mt-16">
         <div className="grid grid-cols-2 gap-3 lg:gap-4">
           {[
             { icon: 'code', title: 'Clean Code', desc: 'Writing clean, maintainable and efficient code that scales.' },
@@ -392,10 +313,10 @@ const About = () => {
             </motion.div>
           ))}
         </div>
-      </div>
+      </div> */}
 
       {/* === BIOGRAPHY FULL SECTION === */}
-      <div className="px-4 lg:px-12 max-w-5xl mx-auto mt-10 lg:mt-16 pb-10 lg:pb-16">
+      {/* <div className="px-4 lg:px-12 max-w-5xl mx-auto mt-10 lg:mt-16 pb-10 lg:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -413,7 +334,7 @@ const About = () => {
             <p>Whether it's developing AI-powered healthcare tools, intuitive dashboards, or full-stack platforms, I bring creativity, precision, and a product-first mindset to every project.</p>
           </div>
         </motion.div>
-      </div>
+      </div> */}
 
       {/* Skills Section */}
       <div className="mb-32 relative">
@@ -511,38 +432,8 @@ const About = () => {
         </div>
       </div>
 
-      {/* My Approach Section */}
-      <section className="w-full py-16 relative">
-        <div className="relative z-10">
-          <div className="text-center mb-16">
-            <motion.div initial={{ opacity: 0, scale: 0.5 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, type: "spring", stiffness: 100 }} className="relative inline-block">
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-black via-purple-600 to-cyan-600 dark:from-white dark:via-purple-400 dark:to-cyan-400 mb-6 relative">
-                MY APPROACH
-                <motion.div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-purple-600/20 to-cyan-600/20 rounded-3xl blur-xl sm:blur-2xl"
-                  animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} />
-              </h2>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} className="relative">
-              <p className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-light tracking-wide max-w-4xl mx-auto leading-relaxed">
-                From Concept to Deployment:{" "}
-                <span className="bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent font-semibold">My Three-Phase Development Process</span>
-              </p>
-            </motion.div>
-          </div>
-          <div className="my-16 flex flex-col lg:flex-row items-center justify-center w-full gap-8">
-            <Card title="Planning & Strategy" icon={<AceternityIcon order="Phase 1" />} des="I begin by deeply understanding project requirements and user needs." index={0} activeCardIndex={activeCardIndex} setActiveCardIndex={setActiveCardIndex}>
-              <CanvasRevealEffect animationSpeed={5.1} containerClassName="bg-yellow-500 rounded-3xl overflow-hidden" />
-            </Card>
-            <Card title="Development & Iteration" icon={<AceternityIcon order="Phase 2" />} des="With designs approved, I dive into coding with best practices and clean architecture." index={1} activeCardIndex={activeCardIndex} setActiveCardIndex={setActiveCardIndex}>
-              <CanvasRevealEffect animationSpeed={3} containerClassName="bg-[#f13c77] rounded-3xl overflow-hidden" colors={[[255, 166, 158], [221, 255, 247]]} dotSize={2} />
-            </Card>
-            <Card title="Deployment & Launch" icon={<AceternityIcon order="Phase 3" />} des="The final phase focuses on optimization and deployment." index={2} activeCardIndex={activeCardIndex} setActiveCardIndex={setActiveCardIndex}>
-              <CanvasRevealEffect animationSpeed={3} containerClassName="bg-[#97a87a] rounded-3xl overflow-hidden" colors={[[125, 211, 252]]} />
-            </Card>
-          </div>
-        </div>
-      </section>
+      {/* My Approach Section - uses HowIWork component */}
+      <HowIWork />
 
       {/* Achievements Section */}
       <AppleCardsCarouselDemo />
