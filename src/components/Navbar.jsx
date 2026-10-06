@@ -103,53 +103,65 @@ const Navbar = () => {
 </nav>
 
       {/* Mobile Header */}
-      <nav className="md:hidden fixed top-0 left-0 right-0 z-50 bg-gray-50/80 dark:bg-black/80 backdrop-blur-md transition-colors duration-300">
-        <div className="w-full px-4 py-2">
-          <div className="flex items-center justify-between">
-            {/* Left - Social Icons */}
-            <div className="flex items-center gap-3">
-              <a 
-                href={mockData.socialLinks.github} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-black dark:text-white hover:opacity-70 transition-opacity"
-                aria-label="Github"
-              >
-                <Github size={20} />
-              </a>
-              <a 
-                href={mockData.socialLinks.linkedin} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-[#0A66C2] dark:text-[#0A66C2] hover:opacity-70 transition-opacity"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={20} fill="currentColor" />
-              </a>
-            </div>
+      {/* Mobile Header - Notch Style */}
+<nav className="md:hidden fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none">
+  <div className="relative pointer-events-auto [--nav-bg:#0A0A0A] dark:[--nav-bg:#141414]">
+    {/* Concave flares on the top-left and top-right */}
+    <div
+      aria-hidden
+      className="absolute top-0 right-full w-4 h-4"
+      style={{ background: 'radial-gradient(circle at 0 100%, transparent 16px, var(--nav-bg) 16px)' }}
+    />
+    <div
+      aria-hidden
+      className="absolute top-0 left-full w-4 h-4"
+      style={{ background: 'radial-gradient(circle at 100% 100%, transparent 16px, var(--nav-bg) 16px)' }}
+    />
 
-            {/* Center Logo */}
-            <Link to="/">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                <img 
-                  src={darkMode ? "/middlelight.png" : "/middledark.png"}
-                  alt="Logo"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            </Link>
+    {/* Pill */}
+    <div className="flex items-center gap-5 bg-[var(--nav-bg)] rounded-b-[24px] px-5 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.25)]">
+      {/* Socials */}
+      <div className="flex items-center gap-3">
+        <a
+          href={mockData.socialLinks.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white hover:opacity-70 transition-opacity"
+          aria-label="Github"
+        >
+          <Github size={20} />
+        </a>
+        <a
+          href={mockData.socialLinks.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#0A66C2] hover:opacity-70 transition-opacity"
+          aria-label="LinkedIn"
+        >
+          <Linkedin size={20} fill="currentColor" />
+        </a>
+      </div>
 
-            {/* Right - Theme Toggle */}
-            <button 
-              onClick={toggleDarkMode}
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-400 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-              aria-label="Toggle dark mode"
-            >
-              {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </button>
-          </div>
-        </div>
-      </nav>
+      {/* Logo */}
+      <Link to="/" className="flex items-center shrink-0">
+        <img
+          src="/middlelight.png"
+          alt="Logo"
+          className="h-8 w-auto object-contain"
+        />
+      </Link>
+
+      {/* Theme toggle */}
+      <button
+        onClick={toggleDarkMode}
+        className="h-9 w-9 flex items-center justify-center rounded-xl bg-white text-black hover:bg-gray-200 transition"
+        aria-label="Toggle dark mode"
+      >
+        {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+      </button>
+    </div>
+  </div>
+</nav>
 
       {/* Mobile Bottom Navigation - Fluid Morphing Style */}
       <nav

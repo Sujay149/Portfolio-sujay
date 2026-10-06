@@ -129,16 +129,16 @@ const About = () => {
           <div className="lg:hidden" style={{ fontFamily: heroFont }}>
             {/* Screen 1: full-viewport photo with name on top */}
             <div className="relative h-[100svh] min-h-[560px] w-full overflow-hidden">
-              <img
-                src="about-new.jpg"
-                alt="Sujay Babu Thota"
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{
-                  objectPosition: '55% 40%',
-                  maskImage: 'linear-gradient(to bottom, #000 0%, #000 82%, rgba(0,0,0,0.5) 93%, transparent 100%)',
-                  WebkitMaskImage: 'linear-gradient(to bottom, #000 0%, #000 82%, rgba(0,0,0,0.5) 93%, transparent 100%)',
-                }}
-              />
+             <img
+  src="about-new.jpg"
+  alt="Sujay Babu Thota"
+  className="absolute inset-0 w-full h-full object-cover"
+  style={{
+    objectPosition: '47% 40%',   // was '55% 40%'
+    maskImage: 'linear-gradient(to bottom, #000 0%, #000 82%, rgba(0,0,0,0.5) 93%, transparent 100%)',
+    WebkitMaskImage: 'linear-gradient(to bottom, #000 0%, #000 82%, rgba(0,0,0,0.5) 93%, transparent 100%)',
+  }}
+/>
 
               <motion.h1
                 aria-label="Sujay Thota"
@@ -364,9 +364,17 @@ const About = () => {
       </div>
 
       {/* === EDUCATION === */}
-      <div className="mb-16 lg:mb-20 relative" id="education" ref={educationRef}>
+      <div className="mx-auto max-w-7xl px-6 lg:px-12 mb-16 lg:mb-20 relative" id="education" ref={educationRef}>
         <div className="relative z-10">
-          <h2 className="text-center text-4xl sm:text-5xl font-bold text-black dark:text-white mb-12 lg:mb-16 transition-colors">Education</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="mb-4 max-w-3xl"
+          >
+            <h2 className="mb-4 text-4xl font-bold text-foreground md:text-5xl">Education</h2>
+          </motion.div>
           <div className="max-w-4xl mx-auto px-5 lg:px-6">
             <div className="relative">
               <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700 transition-colors">

@@ -53,7 +53,7 @@ const ExperienceCard = ({ exp, index }) => {
             className="flex items-center gap-2 bg-black dark:bg-white text-white dark:text-black px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
           >
             <ExternalLink size={18} />
-            <span>View Project</span>
+            <span>Visit Company</span>
           </a>
         </div>
       </div>

@@ -1,265 +1,111 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { Github, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Github, ArrowUpRight, Layers } from 'lucide-react';
 import { mockData } from '../mock';
 
-const FeaturedProject = ({ project, index }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+/* ---------- Bento layout (same classes as the bento-grid component) ---------- */
+const BentoGrid = ({ className = '', children }) => (
+  <div
+    className={`mx-auto grid max-w-7xl grid-cols-1 gap-4 md:auto-rows-[21rem] md:grid-cols-3 md:[grid-auto-flow:dense] ${className}`}
+  >
+    {children}
+  </div>
+);
 
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
-  return (
-    <div
-      className={`group relative bg-white dark:bg-gray-800 rounded-[40px] p-8 border border-gray-200 dark:border-gray-700 shadow-sm transition-all duration-300 ease-out w-[360px] h-[480px] flex-shrink-0 hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_16px_50px_rgba(0,0,0,0.15)] dark:hover:shadow-[0_16px_50px_rgba(255,255,255,0.1)] ${
-        isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
-      }`}
-      style={{ transitionDelay: `${200 + index * 100}ms` }}
-    >
-      {/* Image Container */}
-      <div className="relative w-full h-52 mb-3 rounded-[28px] overflow-hidden bg-gray-50 dark:bg-gray-700">
-        <img 
-          src={project.image} 
-          alt={project.title}
-          className="w-full h-full object-cover"
-        />
-        {project.badge && (
-          <div className="absolute top-4 left-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-            {project.badge}
-          </div>
-        )}
-      </div>
-
-      {/* Category Label - Below Image */}
-      <div className="mb-5">
-        <span className="inline-block text-xs font-semibold text-pink-500 dark:text-pink-400 uppercase tracking-wide">
-          {project.category}
-        </span>
-      </div>
-
-      {/* Content positioned at bottom */}
-      <div className="absolute inset-x-8 bottom-8">
-        {/* Title */}
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 transition-colors line-clamp-2">
-          {project.title}
-        </h3>
-
-        {/* Description */}
-        <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-4 line-clamp-2 transition-colors">
-          {project.description}
-        </p>
-
-        {/* Action Buttons */}
-        <div className="flex items-center gap-3 mt-2">
-          <a 
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:opacity-70 transition-opacity"
-          >
-            <Github size={20} className="text-gray-900 dark:text-white transition-colors" />
-          </a>
-          <a 
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-black dark:bg-white text-white dark:text-black px-4 py-1.5 rounded-lg text-sm font-semibold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
-          >
-            Visit Project
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const RegularProject = ({ project }) => {
-  return (
-    <div className="border-4 border-black dark:border-white rounded-3xl overflow-hidden bg-white dark:bg-gray-800 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] transition-all h-full flex flex-col">
-      {/* Image Section */}
-      <div className="relative overflow-hidden bg-gray-100">
-        <img 
-          src={project.image} 
-          alt={project.title}
-          className="w-full h-48 md:h-56 lg:h-64 object-cover hover:scale-105 transition-transform duration-300"
-        />
-        {project.badge && (
-          <div className="absolute top-3 right-3 bg-white text-black p-2 rounded-full">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-              <path d="M2 17l10 5 10-5"/>
-              <path d="M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-        )}
-      </div>
-      
-      {/* Content Section */}
-      <div className="p-4 sm:p-5 md:p-6 bg-white dark:bg-gray-800 transition-colors flex-grow flex flex-col justify-between">
-        <div>
-          <p className="text-pink-500 dark:text-pink-400 font-semibold text-xs mb-2 transition-colors">{project.category}</p>
-          <h3 className="text-lg sm:text-xl font-bold text-black dark:text-white mb-3 transition-colors">
-            {project.title}
-          </h3>
-        </div>
-        
-        <div className="flex items-center gap-3 mt-auto">
-          <a 
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-black dark:text-white font-semibold text-sm hover:underline transition-colors"
-          >
-            Visit
-          </a>
-          <a 
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:opacity-70 transition-opacity"
-          >
-            <Github size={20} className="text-black dark:text-white transition-colors" />
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const ProjectRow = ({ projects, title, delay = 0 }) => {
-  const scrollRef = useRef(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  useEffect(() => {
-    setIsLoaded(true);
-
-    // Check if screen is small (mobile/tablet)
-    const checkScreenSize = () => {
-      setIsSmallScreen(window.innerWidth < 768);
-    };
-
-    checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
-
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
-
-  // Update scroll button visibility
-  const updateScrollButtons = () => {
-    if (!scrollRef.current) return;
-    
-    const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-    setCanScrollLeft(scrollLeft > 0);
-    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-  };
-
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
-
-    updateScrollButtons();
-    scrollContainer.addEventListener('scroll', updateScrollButtons);
-    window.addEventListener('resize', updateScrollButtons);
-
-    return () => {
-      scrollContainer.removeEventListener('scroll', updateScrollButtons);
-      window.removeEventListener('resize', updateScrollButtons);
-    };
-  }, []);
-
-  // Auto-scroll functionality for small screens
-  useEffect(() => {
-    if (!isSmallScreen || !scrollRef.current) return;
-
-    const scrollContainer = scrollRef.current;
-    let scrollInterval;
-
-    const autoScroll = () => {
-      const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
-      const currentScroll = scrollContainer.scrollLeft;
-
-      // If we've reached the end, scroll back to the beginning
-      if (currentScroll >= maxScroll - 10) {
-        scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        // Scroll by one card width (360px + 24px gap)
-        scrollContainer.scrollBy({ left: 384, behavior: 'smooth' });
-      }
-    };
-
-    // Start auto-scrolling every 3 seconds
-    scrollInterval = setInterval(autoScroll, 3000);
-
-    return () => clearInterval(scrollInterval);
-  }, [isSmallScreen]);
-
-  // Scroll functions
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -384, behavior: 'smooth' });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 384, behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <div className="mb-16">
-      <h2 
-        className={`text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-10 transition-all duration-700 ease-out ${
-          isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
-        style={{ transitionDelay: `${delay}ms` }}
-      >
+const BentoGridItem = ({ className = '', title, description, header, icon, footer }) => (
+  <article
+    className={`group/bento row-span-1 flex flex-col justify-between gap-4 rounded-xl border border-neutral-200 bg-white p-4 shadow-sm transition duration-200 hover:shadow-xl dark:border-white/[0.2] dark:bg-black dark:shadow-none ${className}`}
+  >
+    {header}
+    <div className="transition duration-200 group-hover/bento:translate-x-2">
+      {icon}
+      <h3 className="mt-2 mb-2 line-clamp-1 font-sans font-bold text-neutral-600 dark:text-neutral-200">
         {title}
-      </h2>
-      <div className="relative group">
-        {/* Left Scroll Button */}
-        {canScrollLeft && (
-          <button
-            onClick={scrollLeft}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-full p-3 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all opacity-0 group-hover:opacity-100 hover:scale-110"
-            aria-label="Scroll left"
-          >
-            <ChevronLeft size={24} />
-          </button>
-        )}
-
-        {/* Right Scroll Button */}
-        {canScrollRight && (
-          <button
-            onClick={scrollRight}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-full p-3 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all opacity-0 group-hover:opacity-100 hover:scale-110"
-            aria-label="Scroll right"
-          >
-            <ChevronRight size={24} />
-          </button>
-        )}
-
-        <div 
-          ref={scrollRef}
-          className="flex gap-6 overflow-x-auto scroll-smooth pb-4 scrollbar-hide"
-          style={{
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
-            WebkitOverflowScrolling: 'touch'
-          }}
-        >
-          {projects.map((project, index) => (
-            <FeaturedProject key={project.id} project={project} index={index} />
-          ))}
-        </div>
-      </div>
+      </h3>
+      <p className="line-clamp-2 font-sans text-xs font-normal leading-relaxed text-neutral-600 dark:text-neutral-300">
+        {description}
+      </p>
+      {footer}
     </div>
-  );
-};
+  </article>
+);
 
+/* ---------- Project card ---------- */
+const ProjectHeader = ({ project }) => (
+  <div className="relative min-h-[10rem] flex-1 w-full overflow-hidden rounded-xl bg-gradient-to-br from-neutral-200 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800">
+    {project.image && (
+      <img
+        src={project.image}
+        alt={project.title}
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover/bento:scale-105"
+      />
+    )}
+    {project.badge && (
+      <span className="absolute left-3 top-3 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 px-3 py-1 text-xs font-bold text-white">
+        {project.badge}
+      </span>
+    )}
+  </div>
+);
+
+const ProjectLinks = ({ project }) => (
+  <div className="mt-3 flex items-center gap-3">
+    {project.github && (
+      <a
+        href={project.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${project.title} on GitHub`}
+        className="text-neutral-600 transition-opacity hover:opacity-70 dark:text-neutral-200"
+      >
+        <Github size={18} />
+      </a>
+    )}
+    {project.demo && (
+      <a
+        href={project.demo}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1 rounded-lg bg-black px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+      >
+        Visit Project
+        <ArrowUpRight size={14} />
+      </a>
+    )}
+  </div>
+);
+
+/* Wide cards at positions 3 and 6 of every 7 (same rhythm as the bento demo) */
+const isWide = (i) => i % 7 === 3 || i % 7 === 6;
+
+const ProjectBento = ({ projects, title }) => (
+  <section className="mb-16 lg:mb-20">
+    <h2 className="mx-auto mb-8 max-w-7xl text-2xl font-bold text-gray-900 dark:text-white md:text-3xl">
+      {title}
+    </h2>
+    <BentoGrid>
+      {projects.map((project, i) => (
+        <BentoGridItem
+          key={project.id}
+          className={isWide(i) ? 'md:col-span-2' : ''}
+          header={<ProjectHeader project={project} />}
+          icon={
+            <div className="flex items-center gap-2">
+              <Layers size={16} className="text-neutral-500" />
+              <span className="text-xs font-semibold uppercase tracking-wide text-pink-500 dark:text-pink-400">
+                {project.category}
+              </span>
+            </div>
+          }
+          title={project.title}
+          description={project.description}
+          footer={<ProjectLinks project={project} />}
+        />
+      ))}
+    </BentoGrid>
+  </section>
+);
+
+/* ---------- Page ---------- */
 const Projects = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -267,23 +113,16 @@ const Projects = () => {
     setIsLoaded(true);
   }, []);
 
-  // Separate projects by type and sort (fullstack first, then frontend)
-  const sortedProjects = [...mockData.projects].sort((a, b) => {
-    const typeOrder = { fullstack: 0, frontend: 1 };
-    return (typeOrder[a.type] || 2) - (typeOrder[b.type] || 2);
-  });
-
-  // Group projects by type
-  const fullstackProjects = sortedProjects.filter(p => p.type === 'fullstack');
-  const frontendProjects = sortedProjects.filter(p => p.type === 'frontend');
+  const fullstackProjects = mockData.projects.filter((p) => p.type === 'fullstack');
+  const frontendProjects = mockData.projects.filter((p) => p.type === 'frontend');
 
   return (
     <div className="min-h-screen w-full bg-[#f8fafc] dark:bg-black pt-0 transition-colors duration-300">
       <div className="mx-auto max-w-[1400px] px-4 md:px-8 py-24">
         {/* Main Heading */}
-        <div className="text-center mb-16 pt-[50px]">
-          <h1 
-            className={`text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight tracking-tight transition-all duration-700 ease-out ${
+        <div className="text-center mb-16 lg:mb-20 pt-[50px]">
+          <h1
+            className={`text-5xl sm:text-7xl lg:text-8xl font-black text-black dark:text-white leading-[1.02] tracking-tight transition-all duration-700 ease-out ${
               isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
@@ -291,30 +130,14 @@ const Projects = () => {
           </h1>
         </div>
 
-        {/* Fullstack Projects Section */}
         {fullstackProjects.length > 0 && (
-          <ProjectRow 
-            projects={fullstackProjects} 
-            title="Full Stack Projects" 
-            delay={100}
-          />
+          <ProjectBento projects={fullstackProjects} title="Full Stack Projects" />
         )}
 
-        {/* Frontend Projects Section */}
         {frontendProjects.length > 0 && (
-          <ProjectRow 
-            projects={frontendProjects} 
-            title="Frontend Projects" 
-            delay={200}
-          />
+          <ProjectBento projects={frontendProjects} title="Frontend Projects" />
         )}
       </div>
-      
-      <style jsx>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </div>
   );
 };

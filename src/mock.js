@@ -98,8 +98,8 @@ export const mockData = {
           "Designed geo-based delivery workflow improving assignment accuracy and turnaround efficiency."
         ],
         links: {
-          live: "https://akepatimart.com/",
-          github: "https://github.com/Sujay149"
+          live: "https://brandversetech.com/",
+          // github: "https://github.com/Sujay149"
         }
       },
       {
@@ -209,19 +209,17 @@ projects: [
     demo: "https://clothingbrand-nu.vercel.app/",
   },
   {
-    id: 4,
-    title: "UIBlocks – Component Library & Gallery",
-    category: "Component Library",
-    type: "fullstack",
-    description:
-      "Modern interactive component library with live previews, search, filtering, and admin panel. Browse, create, edit, and share beautiful UI components with real-time rendering.",
-    image:
-      "/projects/uiblocks.png",
-    tags: ["React", "TypeScript", "shadcn/ui", "Tailwind", "Node.js", "Express", "PostgreSQL"],
-    badge: "In Progress",
-    github: "https://github.com/Sujay149/UIBlocks",
-    demo: "https://ui-blocks-rho.vercel.app/",
-  },
+  id: 4,
+  title: "Sites60 – AI Website Builder",
+  category: "AI WEB APPLICATION",
+  type: "fullstack",
+  description:
+    "AI-powered website builder that turns natural-language prompts into real React + Vite projects with instant previews, iterative editing, publishing, and downloadable source code.",
+  image: "/projects/sites60.png",
+  tags: ["React", "Vite", "AI", "TypeScript", "Tailwind CSS", "Node.js"],
+  badge: "In Progress",
+  demo: "https://sites60-gilt.vercel.app/",
+},
   {
     id: 5,
     title: "Slooze – Food Ordering System",
@@ -252,7 +250,7 @@ projects: [
   },
   {
     id: 7,
-    title: "CodeDale – Tech Agency Website",
+    title: "CodeDale – Website(Redesigned)",
     type: "frontend",
     category: "Web Application",
     description:
