@@ -45,34 +45,38 @@ const skillsByTab = {
   OTHERS: ['Python'],
 };
 
-const skillColors = {
-  'JavaScript': { bg: '#F7DF1E', text: '#000', abbr: 'JS' },
-  'Python': { bg: '#3776AB', text: '#FFF', abbr: 'PY' },
-  'TypeScript': { bg: '#3178C6', text: '#FFF', abbr: 'TS' },
-  'Java': { bg: '#007396', text: '#FFF', abbr: 'JV' },
-  'React.js': { bg: '#61DAFB', svg: true },
-  'Next.js': { bg: 'transparent', border: true, abbr: 'N' },
-  'HTML5': { bg: '#E34F26', text: '#FFF', abbr: '5' },
-  'CSS3': { bg: '#1572B6', text: '#FFF', abbr: '3' },
-  'Tailwind': { bg: '#06B6D4', svg: true },
-  'Bootstrap': { bg: '#7952B3', text: '#FFF', abbr: 'BS' },
-  'Material UI': { bg: '#007FFF', text: '#FFF', abbr: 'MU' },
-  'Node.js': { bg: '#339933', text: '#FFF', abbr: 'ND' },
-  'Express.js': { bg: '#000000', text: '#FFF', abbr: 'EX' },
-  'MongoDB': { bg: '#47A248', text: '#FFF', abbr: 'MG' },
-  'MySQL': { bg: '#4479A1', text: '#FFF', abbr: 'MY' },
-  'Firebase': { bg: '#FFCA28', text: '#000', abbr: 'FB' },
-  'Supabase': { bg: '#3ECF8E', text: '#000', abbr: 'SB' },
-  'Git': { bg: '#F05032', text: '#FFF', abbr: 'GT' },
-  'GitHub': { bg: '#181717', text: '#FFF', abbr: 'GH' },
-  'Vercel': { bg: '#000000', text: '#FFF', abbr: 'VC' },
-  'Netlify': { bg: '#00C7B7', text: '#000', abbr: 'NL' },
-  'Figma': { bg: '#F24E1E', text: '#FFF', abbr: 'FG' },
-  'Docker': { bg: '#2496ED', text: '#FFF', abbr: 'DK' },
-  'PHP': { bg: '#777BB4', text: '#FFF', abbr: 'PHP' },
-  'Spring Boot': { bg: '#6DB33F', text: '#FFF', abbr: 'SB' },
-  'React Native': { bg: '#61DAFB', text: '#000', abbr: 'RN' },
+/* ---------- Skill icons (https://skillicons.dev) ---------- */
+const skillIcons = {
+  'JavaScript': 'js',
+  'TypeScript': 'ts',
+  'Python': 'py',
+  'Java': 'java',
+  'PHP': 'php',
+  'React.js': 'react',
+  'Next.js': 'nextjs',
+  'HTML5': 'html',
+  'CSS3': 'css',
+  'Tailwind': 'tailwind',
+  'Bootstrap': 'bootstrap',
+  'Material UI': 'materialui',
+  'Node.js': 'nodejs',
+  'Express.js': 'express',
+  'Spring Boot': 'spring',
+  'MongoDB': 'mongodb',
+  'MySQL': 'mysql',
+  'Firebase': 'firebase',
+  'Supabase': 'supabase',
+  'Git': 'git',
+  'GitHub': 'github',
+  'Vercel': 'vercel',
+  'Netlify': 'netlify',
+  'Docker': 'docker',
+  'Figma': 'figma',
+  'React Native': 'react', // skillicons.dev has no React Native icon
 };
+
+const iconUrl = (skill, theme) =>
+  `https://skillicons.dev/icons?i=${skillIcons[skill]}&theme=${theme}`;
 
 const StackRows = ({ className = '', rowClassName = '' }) => (
   <div className={className}>
@@ -129,16 +133,16 @@ const About = () => {
           <div className="lg:hidden" style={{ fontFamily: heroFont }}>
             {/* Screen 1: full-viewport photo with name on top */}
             <div className="relative h-[100svh] min-h-[560px] w-full overflow-hidden">
-             <img
-  src="about-new.jpg"
-  alt="Sujay Babu Thota"
-  className="absolute inset-0 w-full h-full object-cover"
-  style={{
-    objectPosition: '47% 40%',   // was '55% 40%'
-    maskImage: 'linear-gradient(to bottom, #000 0%, #000 82%, rgba(0,0,0,0.5) 93%, transparent 100%)',
-    WebkitMaskImage: 'linear-gradient(to bottom, #000 0%, #000 82%, rgba(0,0,0,0.5) 93%, transparent 100%)',
-  }}
-/>
+              <img
+                src="about-new.jpg"
+                alt="Sujay Babu Thota"
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{
+                  objectPosition: '47% 40%', // was '55% 40%'
+                  maskImage: 'linear-gradient(to bottom, #000 0%, #000 82%, rgba(0,0,0,0.5) 93%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to bottom, #000 0%, #000 82%, rgba(0,0,0,0.5) 93%, transparent 100%)',
+                }}
+              />
 
               <motion.h1
                 aria-label="Sujay Thota"
@@ -383,44 +387,41 @@ const About = () => {
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 lg:gap-4">
-              {getFilteredSkills().map((skill) => {
-                const color = skillColors[skill] || { bg: '#6366F1', text: '#FFF', abbr: skill.substring(0, 2).toUpperCase() };
-                return (
-                  <div
-                    key={skill}
-                    className="flex flex-col items-center justify-center p-4 sm:p-6 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-                  >
-                    <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center mb-3"
-                      style={{ backgroundColor: color.bg, color: color.text, border: color.border ? '2px solid #000' : 'none' }}
-                    >
-                      {color.svg ? (
-                        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                          {skill === 'React.js' && (
-                            <>
-                              <circle cx="12" cy="12" r="2.5" fill="currentColor" />
-                              <ellipse cx="12" cy="12" rx="10" ry="4" stroke="currentColor" strokeWidth="1" fill="none" />
-                              <ellipse cx="12" cy="12" rx="10" ry="4" stroke="currentColor" strokeWidth="1" fill="none" transform="rotate(60 12 12)" />
-                              <ellipse cx="12" cy="12" rx="10" ry="4" stroke="currentColor" strokeWidth="1" fill="none" transform="rotate(120 12 12)" />
-                            </>
-                          )}
-                          {skill === 'Tailwind' && (
-                            <>
-                              <path d="M12.001 4.5c-1.5 0-2.5.5-3.5 1.5M12.001 4.5c1.5 0 2.5.5 3.5 1.5M12.001 4.5v2m0 0c-1.5 0-2.5.5-3.5 1.5m3.5-1.5c1.5 0 2.5.5 3.5 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                              <path d="M12 7c-3 0-5.5 1.5-7 4 1.5 2.5 4 4 7 4s5.5-1.5 7-4c-1.5-2.5-4-4-7-4z" stroke="currentColor" strokeWidth="1.5" />
-                            </>
-                          )}
-                        </svg>
-                      ) : color.border ? (
-                        <span className="text-lg font-bold">{color.abbr}</span>
-                      ) : (
-                        <span className="text-sm font-bold">{color.abbr}</span>
-                      )}
+              {getFilteredSkills().map((skill) => (
+                <div
+                  key={skill}
+                  className="flex flex-col items-center justify-center p-4 sm:p-6 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                >
+                  {skillIcons[skill] ? (
+                    <>
+                      {/* light-mode icon */}
+                      <img
+                        src={iconUrl(skill, 'light')}
+                        alt={skill}
+                        loading="lazy"
+                        className="w-12 h-12 mb-3 dark:hidden"
+                      />
+                      {/* dark-mode icon */}
+                      <img
+                        src={iconUrl(skill, 'dark')}
+                        alt={skill}
+                        loading="lazy"
+                        className="hidden dark:block w-12 h-12 mb-3"
+                      />
+                    </>
+                  ) : (
+                    <div className="w-12 h-12 mb-3 rounded-xl bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-sm font-bold text-gray-700 dark:text-gray-200">
+                      {skill.substring(0, 2).toUpperCase()}
                     </div>
-                    <span className="text-sm font-semibold text-center text-gray-700 dark:text-gray-300" style={{ fontFamily: "'Inter', sans-serif" }}>{skill}</span>
-                  </div>
-                );
-              })}
+                  )}
+                  <span
+                    className="text-sm font-semibold text-center text-gray-700 dark:text-gray-300"
+                    style={{ fontFamily: "'Inter', sans-serif" }}
+                  >
+                    {skill}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
